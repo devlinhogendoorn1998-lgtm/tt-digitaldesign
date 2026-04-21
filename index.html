@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT-Digital | DigitalDesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div id="stars-container"></div>
+
+    <div class="announcement-bar">
+        <span class="announcement-text">BEPERKTE ACTIE: Start vandaag en ontvang 50% korting! Portfolio uitbreiding!!</span>
+    </div>
+
+    <nav id="nav-menu" class="sticky-header">
+        <div class="nav-container">
+            <a href="#" class="nav-logo-text" aria-label="TT-DigitalDesign home">
+                TT-<span class="highlight">DIGITAL</span>DESIGN
+            </a>
+
+            <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="primary-nav-links" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+
+            <div class="nav-links" id="primary-nav-links">
+                <a href="#ai-intro" class="nav-btn">AI GUIDE</a>
+                <a href="#pakketten" class="nav-link-simple">Pakketten</a>
+                <a href="#contact" class="nav-btn-highlight">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="logo-fase" class="hero-impact">
+            <div class="logo-container">
+                <img src="logo.png" class="hero-logo logo-hero" alt="TT-digitalDesign Logo">
+            </div>
+            
+            <div class="ai-status-container">
+                <span class="status-dot"></span>
+                <p class="ai-invite-text">
+                    <span class="puzzel-stuk">TT-Guide</span>
+                    <span class="puzzel-stuk">wacht</span>
+                    <span class="puzzel-stuk">op</span>
+                    <span class="puzzel-stuk">je</span>
+                    <span class="puzzel-stuk">visie</span>
+                    <span class="puzzel-stuk">om</span>
+                    <span class="puzzel-stuk">de</span>
+                    <span class="puzzel-stuk">digitale</span>
+                    <span class="puzzel-stuk">blauwdruk</span>
+                    <span class="puzzel-stuk">te</span>
+                    <span class="puzzel-stuk">genereren...</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="ai-intro" class="offer-section">
+            <h1 class="main-title">ONTWERP UW DIGITALE TOEKOMST</h1>
+            
+            <p class="price-callout">Projecten starten vanaf <strong>€299,-</strong></p>
+
+            <div class="steps-grid step-container">
+                <div class="step-item" id="step-1" onclick="activeerStap(1)">
+                    <span class="step-num">1</span>
+                    <div><strong>Type?</strong><small>Website, Shop of Kaart</small></div>
+                </div>
+                <div class="step-item" id="step-2" onclick="activeerStap(2)">
+                    <span class="step-num">2</span>
+                    <div><strong>Grootte?</strong><small>Aantal pagina's kiezen</small></div>
+                </div>
+                <div class="step-item" id="step-3" onclick="activeerStap(3)">
+                    <span class="step-num">3</span>
+                    <div><strong>Look?</strong><small>Kleuren & UI Design</small></div>
+                </div>
+                <div class="step-item" id="step-4" onclick="activeerStap(4)">
+                    <span class="step-num">4</span>
+                    <div><strong>Vulling?</strong><small>Uw eigen tekst & foto's</small></div>
+                </div>
+                <div class="step-item" id="step-5" onclick="activeerStap(5)">
+                    <span class="step-num">5</span>
+                    <div><strong>Tools?</strong><small>Boekingen, Koppelingen, etc.</small></div>
+                </div>
+                <div class="step-item" id="step-6" onclick="activeerStap(6)">
+                    <span class="step-num">6</span>
+                    <div><strong>Online!</strong><small>Domein, Mail & Beheer</small></div>
+                </div>
+            </div>
+
+            <div class="klant-bescherming-box">
+                <p class="bescherming-tekst">
+                    <span class="shield-icon">🛡️</span>
+                    <strong>KLANTBESCHERMING:</strong> De reserveringsfee van <strong>€50,-</strong> wordt bij aanvang voldaan en <strong>volledig verrekend</strong> met de definitieve eindfactuur van uw gekozen pakket.
+                </p>
+            </div>
+
+            <div id="chat-container" class="tt-guide-container">
+                <div id="chat-window"></div>
+                <div class="tt-guide-input-row">
+                    <input type="text" id="user-query" onkeydown="handleKeyPress(event)" placeholder="Typ hier...">
+                    <button onclick="askGemini()" class="send-icon-btn" aria-label="Verstuur bericht">➤</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pakketten" class="packages-section">
+            <h2 class="section-title">KIES UW STRATEGIE</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="badge">STARTER</div>
+                    <h3>The Digital Card</h3>
+                    <p class="price">Vanaf <span>€299</span></p>
+                    <ul class="features">
+                        <li>Digitale visitekaart</li>
+                        <li>3 Standaard pagina keuzes</li>
+                        <li>Custom kleuren & logo</li>
+                        <li>Contactpunt integratie</li>
+                        <li>1 Jaar groei-ondersteuning</li>
+                    </ul>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="badge-featured">MEEST GEKOZEN</div>
+                    <h3>Ultimate</h3>
+                    <p class="price">Vanaf <span>€999</span></p>
+                    <ul class="features">
+                        <li>Tot 5 Pagina's</li>
+                        <li>Unieke achtergrond overal</li>
+                        <li>Dagelijks contact voor perfectie</li>
+                        <li>SEO Basis optimalisatie</li>
+                        <li>Social Media koppeling</li>
+                    </ul>
+                </div>
+
+                <div class="package-card">
+                    <div class="badge">PREMIUM</div>
+                    <h3>Masterplan</h3>
+                    <p class="price">Vanaf <span>€1999</span></p>
+                    <ul class="features">
+                        <li>Onbeperkt maatwerk</li>
+                        <li>Full Brand Identity</li>
+                        <li>E-commerce / App functies</li>
+                        <li>24/7 Priority Support</li>
+                        <li>Maandelijkse analyse</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="glow-text" style="text-align: center; margin-bottom: 40px;">CONTACT</h2>
+                <div class="footer-contact">
+                    
+                    <div class="contact-link" onclick="startSupportFlow()" onkeydown="if (event.key === 'Enter' || event.key === ' ') startSupportFlow()" style="cursor: pointer;" role="button" tabindex="0">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Tech Support
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-grid">
+            <div>
+                <h2 class="site-footer-brand">TT-DigitalDesign</h2>
+                <p class="site-footer-copy">Wij bouwen de volgende generatie websites. Geen standaard templates, maar AI-gedreven maatwerk voor ondernemers die voorop willen lopen.</p>
+            </div>
+
+            <div>
+                <h3 class="site-footer-heading">Navigatie</h3>
+                <ul class="site-footer-links">
+                    <li><a href="#pakketten">Onze Projecten</a></li>
+                    <li><a href="#ai-intro">AI Prijs Calculator</a></li>
+                    <li><a href="#cookie-banner" onclick="showCookieBanner(); return false;">Privacy Instellingen</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="site-footer-heading">Support</h3>
+                <p class="site-footer-copy">Tech support nodig of vragen? Stuur een mail via de AI Guide.</p>
+                <div class="site-footer-status">
+                    <span class="site-footer-status-dot" aria-hidden="true"></span>
+                    Systems Operational
+                </div>
+            </div>
+        </div>
+
+        <div class="site-footer-bottom">
+            <span>© 2026 TT-DigitalDesign. Built with AI.</span>
+            <span>KVK: Op aanvraag beschikbaar</span>
+        </div>
+    </footer>
+
+    <div id="cookie-banner">
+        <div class="cookie-banner-inner">
+            <h3 class="cookie-banner-title">🍪 PRIVACY & TECH</h3>
+            <p class="cookie-banner-text">Bij <strong>TT-DigitalDesign</strong> gaan we voor tech, niet voor jouw data.<br><br>We gebruiken alleen functionele cookies om de AI-chat en de prijsberekening te laten werken. Na 30 dagen wissen we de rest automatisch. <strong>Simpel en veilig.</strong></p>
+            <div class="cookie-banner-actions">
+                <button onclick="acceptCookies()" class="cookie-btn cookie-btn-accept">Akkoord</button>
+                <button onclick="closeCookieBanner()" class="cookie-btn cookie-btn-decline">Weigeren</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    

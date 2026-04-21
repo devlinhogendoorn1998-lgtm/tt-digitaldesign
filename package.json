@@ -1,0 +1,17 @@
+{
+  "name": "tt-guide-ai",
+  "version": "1.0.0",
+  "description": "AI Chatbot voor TT-Digital",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.4.2",
+    "node-fetch": "^3.3.2"
+  },
+  "author": "Tw33ty",
+  "license": "ISC"
+}

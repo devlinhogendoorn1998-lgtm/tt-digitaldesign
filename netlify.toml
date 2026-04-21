@@ -1,0 +1,17 @@
+# [SECTION] BUILD INSTELLINGEN
+# NAAM: Functie Locatie
+[build]
+  functions = "netlify/functions"
+
+# [SECTION] FUNCTIE CONFIGURATIE
+# NAAM: De Bundler (De inpakker)
+[functions]
+  node_bundler = "esbuild" # Dit maakt je AI-functie razendsnel wakker
+  directory = "netlify/functions"
+
+# [SECTION] VERKEERSREGELS
+# NAAM: API Redirects
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
