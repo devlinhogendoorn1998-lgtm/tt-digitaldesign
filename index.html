@@ -30,6 +30,7 @@
 
             <div class="nav-links" id="primary-nav-links">
                 <a href="#ai-intro" class="nav-btn">AI GUIDE</a>
+                <a href="#over-ons" class="nav-link-simple">Over Ons</a>
                 <a href="#pakketten" class="nav-link-simple">Pakketten</a>
                 <a href="#contact" class="nav-btn-highlight">Contact</a>
             </div>
@@ -37,10 +38,11 @@
     </nav>
 
     <main>
-        <section id="logo-fase" class="hero-impact">
-            <div class="logo-container">
-                <img src="logo.png" class="hero-logo logo-hero" alt="TT-digitalDesign Logo">
-            </div>
+        <section id="logo-fase" class="hero hero-impact">
+    <div class="logo-container">
+        <img src="logo.png" class="hero-logo hero-logo-main hero-glow logo-hero" alt="TT-digitalDesign Logo - Webdeveloper & Automatiseringen">
+        <h1 class="hero-title">Webdeveloper & Automatiseringen</h1>
+    </div>
             
             <div class="ai-status-container">
                 <span class="status-dot"></span>
@@ -60,54 +62,117 @@
             </div>
         </section>
 
-        <section id="ai-intro" class="offer-section">
-            <h1 class="main-title">ONTWERP UW DIGITALE TOEKOMST</h1>
-            
-            <p class="price-callout">Projecten starten vanaf <strong>€299,-</strong></p>
+<section id="ai-intro" class="offer-section">
+    <h1 class="main-title">ONTWERP UW DIGITALE TOEKOMST</h1>
 
-            <div class="steps-grid step-container">
-                <div class="step-item" id="step-1" onclick="activeerStap(1)">
-                    <span class="step-num">1</span>
-                    <div><strong>Type?</strong><small>Website, Shop of Kaart</small></div>
-                </div>
-                <div class="step-item" id="step-2" onclick="activeerStap(2)">
-                    <span class="step-num">2</span>
-                    <div><strong>Grootte?</strong><small>Aantal pagina's kiezen</small></div>
-                </div>
-                <div class="step-item" id="step-3" onclick="activeerStap(3)">
-                    <span class="step-num">3</span>
-                    <div><strong>Look?</strong><small>Kleuren & UI Design</small></div>
-                </div>
-                <div class="step-item" id="step-4" onclick="activeerStap(4)">
-                    <span class="step-num">4</span>
-                    <div><strong>Vulling?</strong><small>Uw eigen tekst & foto's</small></div>
-                </div>
-                <div class="step-item" id="step-5" onclick="activeerStap(5)">
-                    <span class="step-num">5</span>
-                    <div><strong>Tools?</strong><small>Boekingen, Koppelingen, etc.</small></div>
-                </div>
-                <div class="step-item" id="step-6" onclick="activeerStap(6)">
-                    <span class="step-num">6</span>
-                    <div><strong>Online!</strong><small>Domein, Mail & Beheer</small></div>
-                </div>
+    <p class="price-callout">Projecten starten vanaf <strong>€299,-</strong></p>
+
+    <p class="steps-mobile-instruction">Volg de onderstaande stappen voor de beste ervaring bij het creëren van uw visie.</p>
+    
+    <div class="steps-mobile-progress" aria-live="polite">
+        <span class="steps-mobile-progress-label">Voortgang: Stap <strong id="steps-current">1</strong> van 6</span>
+        <div class="steps-mobile-progress-track" aria-hidden="true">
+            <span class="steps-mobile-progress-fill" id="steps-progress-fill"></span>
+        </div>
+    </div>
+
+    <div class="steps-container-main" id="steps-slider">
+        <div class="step-item active" id="step-1">
+            <span class="step-num">1</span>
+            <div><strong>Type?</strong><small>Kies uw platform</small></div>
+            <div class="choice-chips">
+                <button type="button" class="chip" onclick="selectChoice(1, 'Website', event)">Website</button>
+                <button type="button" class="chip" onclick="selectChoice(1, 'Webshop', event)">Webshop</button>
+                <button type="button" class="chip" onclick="selectChoice(1, 'Digitale Kaart', event)">Kaart</button>
             </div>
+        </div>
 
-            <div class="klant-bescherming-box">
-                <p class="bescherming-tekst">
-                    <span class="shield-icon">🛡️</span>
-                    <strong>KLANTBESCHERMING:</strong> De reserveringsfee van <strong>€50,-</strong> wordt bij aanvang voldaan en <strong>volledig verrekend</strong> met de definitieve eindfactuur van uw gekozen pakket.
-                </p>
+        <div class="step-item" id="step-2">
+            <span class="step-num">2</span>
+            <div><strong>Look?</strong><small>Stijl van het design</small></div>
+            <div class="choice-chips">
+                <button type="button" class="chip" onclick="selectChoice(2, 'Modern/Clean', event)">Modern</button>
+                <button type="button" class="chip" onclick="selectChoice(2, 'Futuristisch/Dark', event)">Futuristisch</button>
+                <button type="button" class="chip" onclick="selectChoice(2, 'Speels/Kleurrijk', event)">Kleurrijk</button>
             </div>
+        </div>
 
-            <div id="chat-container" class="tt-guide-container">
-                <div id="chat-window"></div>
-                <div class="tt-guide-input-row">
-                    <input type="text" id="user-query" onkeydown="handleKeyPress(event)" placeholder="Typ hier...">
-                    <button onclick="askGemini()" class="send-icon-btn" aria-label="Verstuur bericht">➤</button>
-                </div>
+        <div class="step-item" id="step-3">
+    <span class="step-num">3</span>
+    <div><strong>Grootte?</strong><small>Aantal pagina's</small></div>
+    <div class="choice-chips">
+        <select id="page-select" class="step-dropdown empire-style" onchange="verwerkPaginaKeuze(this)">
+            <option value="0" disabled selected>Kies aantal...</option>
+            <option value="99">1 Pagina</option>
+            <option value="198">2 Pagina's</option>
+            <option value="297">3 Pagina's</option>
+            <option value="396">4 Pagina's</option>
+            <option value="495">5 Pagina's</option>
+            <option value="594">6 Pagina's</option>
+            <option value="693">7 Pagina's</option>
+            <option value="792">8 Pagina's</option>
+            <option value="891">9 Pagina's</option>
+            <option value="990">10 Pagina's</option>
+        </select>
+    </div>
+</div>
+
+        <div class="step-item" id="step-4">
+            <span class="step-num">4</span>
+            <div><strong>Vulling?</strong><small>Content creatie</small></div>
+            <div class="choice-chips">
+                <button type="button" class="chip" onclick="selectChoice(4, 'AI-Content', event)">AI Content</button>
+                <button type="button" class="chip" onclick="selectChoice(4, 'Eigen Content', event)">Eigen Tekst</button>
             </div>
-        </section>
+        </div>
 
+        <div class="step-item" id="step-5">
+            <span class="step-num">5</span>
+            <div><strong>Tools?</strong><small>Extra functies</small></div>
+            <div class="choice-chips">
+                <button type="button" class="chip" onclick="selectChoice(5, 'Boeking-Systeem', event)">Boekingen</button>
+                <button type="button" class="chip" onclick="selectChoice(5, 'Contact-Focus', event)">Contact</button>
+                <button type="button" class="chip" onclick="selectChoice(5, 'Socials', event)">Socials</button>
+            </div>
+        </div>
+
+        <div class="step-item" id="step-6">
+            <span class="step-num">6</span>
+            <div><strong>Online!</strong><small>Beheer & Domein</small></div>
+            <div class="choice-chips">
+                <button type="button" class="chip" onclick="selectChoice(6, 'All-in Beheer', event)">All-in</button>
+                <button type="button" class="chip" onclick="selectChoice(6, 'Zelf Beheren', event)">Zelf</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="klant-bescherming-box">
+        <p class="bescherming-tekst">
+            <span class="shield-icon">🛡️</span>
+            <strong>KLANTBESCHERMING:</strong> De reserveringsfee van <strong>€50,-</strong> wordt bij aanvang voldaan en <strong>volledig verrekend</strong> met de definitieve eindfactuur van uw gekozen pakket.
+        </p>
+    </div>
+
+    <div id="chat-container" class="tt-guide-container">
+        <div id="chat-window"></div>
+        <div class="tt-guide-input-row">
+            <input type="text" id="user-query" onkeydown="handleKeyPress(event)" placeholder="Typ hier...">
+            <button onclick="askGemini()" class="send-icon-btn" aria-label="Verstuur bericht">➤</button>
+        </div>
+    </div>
+
+    <div id="experience-review" class="review-wrapper">
+        <h3 class="review-title">Wat geef jij deze ervaring?</h3>
+        <div class="star-rating" id="rating-stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        <p id="stat-update-msg" class="stat-msg">> TT-Guide systeem status: Hoe was uw interactie met dit platform?...</p>
+    </div>
+</section>
         <section id="pakketten" class="packages-section">
             <h2 class="section-title">KIES UW STRATEGIE</h2>
             <div class="packages-grid">
@@ -149,6 +214,21 @@
                         <li>Maandelijkse analyse</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <section id="over-ons" class="over-ons-section">
+            <div class="over-ons-container">
+                <h2 class="section-title">Wie is TT-digitalDesign?</h2>
+                <p class="over-ons-subtitle">Persoonlijke aanpak in Webdevelopment &amp; Automatisering.</p>
+                <p class="over-ons-text">Ik ben Devlin, een gedreven developer die verder kijkt dan alleen de code. Ik geloof dat een website meer is dan een digitaal visitekaartje; het is het uitwerken van een visie. Het helpen van mensen met een visie vind ik een prachtig begrip om gezamenlijk tot resultaat te komen.</p>
+
+                <div class="over-ons-belofte-box hero-glow">
+                    <p class="over-ons-belofte-title">De Belofte</p>
+                    <p class="over-ons-belofte-text">Geen vage processen of lange wachttijden. Bij mij krijg je binnen 24 uur contact, snelheid, en de mogelijkheid om elke dag met het proces mee te kijken. Ik denk met je mee om jouw visie om te zetten in een werkende oplossing.</p>
+                </div>
+
+                <a href="#ai-intro" class="over-ons-cta">Volg de stappen bij de TT-Guide voor uw start naar uw Digitaal Empire</a>
             </div>
         </section>
 

@@ -1,3 +1,16 @@
+// section // 0. HERO TITLE WAVE ANIMATIE
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.innerHTML = text.split('').map((char, i) =>
+            char === ' '
+                ? `<span class="wave-letter wave-space" style="animation-delay:${i * 0.07}s">&nbsp;</span>`
+                : `<span class="wave-letter" style="animation-delay:${i * 0.07}s">${char}</span>`
+        ).join('');
+    }
+});
+
 // section // 1. CANVAS MOTOR (Sterrenhemel)
 if (window.emailjs) {
     window.emailjs.init('WmdbKABruq6DF33lp');
@@ -53,7 +66,7 @@ function autoScrollToInfo() {
     const infoSectie = document.getElementById('ai-intro');
     if (infoSectie) {
         // Verander -20 naar bijvoorbeeld -120 voor meer ruimte bovenin
-        const yOffset = -120; 
+        const yOffset = -120;
         const y = infoSectie.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
         window.scrollTo({
@@ -92,13 +105,14 @@ const stapPrompts = {
     6: 'Vertel me meer over de Finish: Domein, Mail & Beheer'
 };
 
+// // DE OFFICIELE EMPIRE PRIJSLIJST // //
 const PRIJSLIJST = {
     bouw: {
-        onePager: 299,
-        extraPagina: 95,
-        logoOntwerp: 75,
+        onePager: 399,          // Was 299
+        extraPagina: 99,        // Was 95
+        logoOntwerp: 99,        // Was 75
         seoTurbo: 149,
-        privacyCookie: 39
+        privacyCookie: 49       // Aangepast (was 39)
     },
     animatie: {
         scrollAnimaties: 99,
@@ -106,33 +120,61 @@ const PRIJSLIJST = {
         lottieMaatwerk: 195
     },
     functies: {
-        whatsappKnop: 49,
+        whatsappKnop: 65,       // Was 49
         socialFeed: 65,
-        reviewSysteem: 85,
-        afsprakenPlanner: 125,
-        betaalModule: 149,
-        emailSetup: 45
+        reviewSysteem: 125,     // Was 85
+        afsprakenPlanner: 149,  // Was 125
+        betaalModule: 199,      // Was 149
+        emailSetup: 85          // Was 45
     },
     ai: {
-        installatie: 599,
+        installatie: 799,       // Was 599 (incl. 1500 woorden)
         extraGeheugen: 75,
-        prijsIndicator: 249
+        prijsIndicator: 299     // Was 249
+    },
+    automatisering: {
+        emailAuto: 175,         // Nieuw
+        factuurKoppeling: 249,  // Nieuw
+        crmSysteem: 199         // Nieuw
     },
     service: {
         onderhoudMaand: 19.95,
-        adhocUpdate: 125,
-        crashRecovery: 499
+        adhocUpdate: 150,       // Verhoogd (was 125)
+        crashRecovery: 599      // Verhoogd (was 499)
     }
 };
 
+// // DE OFFICIELE EMPIRE PRIJS CONFIGURATIE (Excl. BTW) // //
 const TT_CONFIG = {
     prices: {
-        onePager: 299, extraPagina: 95, logo: 75, seo: 149, cookies: 39,
-        animatie: 99, interactie: 149, lottie: 195,
-        whatsapp: 49, insta: 65, reviews: 85, planner: 125, betaal: 149, email: 45,
-        ai: 599, aiExtra: 75, aiCalc: 249
+        // Stap 1 & 2: De Basis & Pagina's
+        onePager: 399,          // Jouw nieuwe prijs
+        extraPagina: 99,        // Was 95, nu 99
+        logo: 99,               // Was 75, nu 99
+        
+        // Stap 4 & 5: Conversie & Knoppen
+        whatsapp: 65,           // Contact Button (was 49)
+        betaal: 199,            // Betaal Knop (was 149)
+        reviews: 125,           // Review Systeem (was 85)
+        planner: 149,           // Afspraken Planner (was 125)
+        
+        // Stap 6: AI Power (De hersenen)
+        ai: 799,                // AI Installatie (was 599)
+        aiCalc: 299,            // AI Prijs-Indicator (was 249)
+        aiExtra: 75,            // Per 1000 woorden extra geheugen
+        
+        // Nieuw: Automatisering & Support
+        emailAuto: 175,         // E-mail Automatisering (bevestigingen)
+        factuurKoppeling: 249,  // Automatische PDF facturen
+        crmSysteem: 199,        // Lead systeem (Google Sheets)
+        emailSetup: 85,         // Zakelijke e-mail (info@...)
+        onderhoud: 19.95        // Maandelijks (p/m)
     },
-    colors: { primary: '#00ffcc' }
+    colors: { primary: '#00ffcc' },
+    // Mentor Tip: centrale prijsresolver voor key-based opties.
+    getPrice(key) {
+        return this.prices[key] || 0;
+    }
 };
 
 const keuzes = {
@@ -149,6 +191,284 @@ const keuzes = {
 };
 
 let supportData = { email: '', vraag: '', stap: 0 };
+let gemaakteKeuzes = {};
+let currentTotal = 399;
+let selectedOptions = {
+    stap1: 399
+};
+let aiWinkelmandje = [];
+let systeemConfiguratieContext = '';
+
+const STAP_PRIJS_MAP = {
+    1: {
+        'Website': 699,
+        'Webshop': 999,
+        'Digitale Kaart': 399
+    },
+    2: {
+        'Modern/Clean': 0,
+        'Futuristisch/Dark': 99,
+        'Speels/Kleurrijk': 49
+    },
+    3: {
+        "1 Pagina's": 0,
+        "2 Pagina's": 95,
+        "3 Pagina's": 190,
+        "4 Pagina's": 285,
+        "5 Pagina's": 380,
+        "6 Pagina's": 475,
+        "7 Pagina's": 570,
+        "8 Pagina's": 665,
+        "9 Pagina's": 760,
+        "10 Pagina's": 855
+    },
+    4: {
+        'AI-Content': 149,
+        'Eigen Content': 0
+    },
+    5: {
+        'Boeking-Systeem': 125,
+        'Contact-Focus': 49,
+        'Socials': 65
+    },
+    6: {
+        'All-in Beheer': 149,
+        'Zelf Beheren': 0
+    }
+};
+
+function resolveChoicePrice(stapNummer, keuzeWaarde, explicietePrijs) {
+    if (typeof explicietePrijs === 'number' && Number.isFinite(explicietePrijs)) {
+        return explicietePrijs;
+    }
+
+    const keyPrijs = TT_CONFIG.getPrice(keuzeWaarde);
+    if (keyPrijs > 0) {
+        return keyPrijs;
+    }
+
+    return STAP_PRIJS_MAP[stapNummer]?.[keuzeWaarde] ?? 0;
+}
+
+function getKeuzeNaam(keuze) {
+    if (keuze && typeof keuze === 'object') {
+        return keuze.naam || '';
+    }
+    return keuze || '';
+}
+
+function getAiWinkelmandTotaal() {
+    return aiWinkelmandje.reduce((acc, curr) => acc + (curr.prijs || 0), 0);
+}
+
+function updatePrijsUI(stapNummer) {
+    const totaalEmpire = currentTotal + getAiWinkelmandTotaal();
+    const priceElement = document.getElementById('livePrice');
+    if (priceElement) {
+        priceElement.innerText = `€ ${totaalEmpire.toFixed(2)}`;
+    }
+
+    const progressFill = document.getElementById('progressBar');
+    if (progressFill) {
+        const percentage = (Math.min(6, Math.max(1, stapNummer)) / 6) * 100;
+        progressFill.style.width = `${percentage}%`;
+    }
+}
+
+function berekenTotaalEmpire(stapNummer = (keuzes.stap || 1)) {
+    updatePrijsUI(stapNummer);
+    return currentTotal + getAiWinkelmandTotaal();
+}
+
+function renderAiMessage(text) {
+    return renderMessage(text, 'bot');
+}
+
+function renderChatButton(label, onClick) {
+    const chatWindow = document.getElementById('chat-window');
+    if (!chatWindow) return;
+
+    const row = document.createElement('div');
+    row.className = 'message bot-message bot-bericht';
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = label;
+    button.className = 'chip';
+    button.style.width = '100%';
+    button.addEventListener('click', onClick);
+
+    row.appendChild(button);
+    chatWindow.appendChild(row);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+// // DE AI-WERKNEMER WINKELMAND LOGICA // //
+function toggleAiModule(sleutel, naam, prijs) {
+    const modulePrijs = typeof prijs === 'number' ? prijs : (TT_CONFIG.prices[sleutel] || 0);
+    const index = aiWinkelmandje.findIndex((item) => item.sleutel === sleutel);
+
+    if (index > -1) {
+        aiWinkelmandje.splice(index, 1);
+        console.log(`${naam} verwijderd.`);
+    } else {
+        aiWinkelmandje.push({ sleutel, naam, prijs: modulePrijs });
+        console.log(`${naam} toegevoegd.`);
+    }
+
+    berekenTotaalEmpire();
+    verstuurConfiguratieNaarAI();
+}
+
+function updateLiveBerekening() {
+    berekenTotaalEmpire();
+}
+
+// // DE CHAT-INTERFACE VOOR DE UPGRADES // //
+function toonUpgradeOpties() {
+    renderAiMessage('Selecteer de krachten die uw AI-werknemer moet bezitten (u kunt er meerdere kiezen):');
+
+    const opties = [
+        { sleutel: 'ai', naam: 'Hersenkracht', prijs: 799 },
+        { sleutel: 'planner', naam: 'Agenda Beheer', prijs: 149 },
+        { sleutel: 'emailAuto', naam: 'Mail-Manager', prijs: 175 },
+        { sleutel: 'factuurKoppeling', naam: 'Admin-Assistent', prijs: 249 },
+        { sleutel: 'crmSysteem', naam: 'Lead-Logger', prijs: 199 }
+    ];
+
+    opties.forEach((optie) => {
+        renderChatButton(`${optie.naam} (+€${optie.prijs})`, () => {
+            toggleAiModule(optie.sleutel, optie.naam, optie.prijs);
+        });
+    });
+
+    renderChatButton('✅ BEVESTIG MIJN CONFIGURATIE', stuurEindOverzicht);
+}
+
+// // DE 5 VRAGEN TRIGGEREN // //
+function toonAiUpgradeMenu() {
+    renderAiMessage('Selecteer de krachten voor uw AI-werknemer (meerdere keuzes mogelijk):');
+
+    const upgrades = [
+        { sleutel: 'ai', naam: 'Hersen-capaciteit', prijs: 799 },
+        { sleutel: 'planner', naam: 'Agenda-Beheer', prijs: 149 },
+        { sleutel: 'emailAuto', naam: 'Mail-Assistent', prijs: 175 },
+        { sleutel: 'factuurKoppeling', naam: 'Factuur-Voorbereiding', prijs: 249 },
+        { sleutel: 'crmSysteem', naam: 'Data-Manager', prijs: 199 }
+    ];
+
+    upgrades.forEach((optie) => {
+        renderChatButton(`${optie.naam} (+€${optie.prijs})`, () => {
+            toggleAiModule(optie.sleutel, optie.naam);
+            renderAiMessage(`Systeem-update: ${optie.naam} toegevoegd.`);
+        });
+    });
+
+    renderChatButton('✅ BEVESTIG IMPERIUM', stuurEindOverzicht);
+}
+
+function showChatOptions(opties) {
+    if (!Array.isArray(opties)) return;
+
+    opties.forEach((optie) => {
+        if (!optie?.tekst) return;
+        renderChatButton(optie.tekst, () => {
+            const actie = typeof optie.action === 'function' ? optie.action : window[optie.action];
+            if (typeof actie === 'function') {
+                actie();
+            } else {
+                console.warn(`Actie niet gevonden: ${String(optie.action)}`);
+            }
+        });
+    });
+}
+
+// // DE OVERGANG NAAR DE AI-WERKNEMER // //
+function toonResultaatEnVraagAI() {
+    const basisInvestering = typeof window.totaalPrijs === 'number' ? window.totaalPrijs : currentTotal;
+
+    const introTekst = `// SYSTEEM: Blauwdruk gegenereerd\nBasis Website Indicatie: €${basisInvestering},-\n\nUw digitale basis staat als een huis. Terwijl ik de laatste details verwerk... heeft u nog interesse in een paar korte vragen over de AI-installaties? Dit zijn de turbo-upgrades voor uw bedrijfsvoering.`;
+
+    renderAiMessage(introTekst);
+
+    showChatOptions([
+        { tekst: 'JA, leg uit', action: 'toonAiUpgradeMenu' },
+        { tekst: 'NEE, bereken totaal', action: 'stuurEindOverzicht' }
+    ]);
+}
+
+// // HET DEFINITIEVE OVERZICHT // //
+function stuurEindOverzicht() {
+    const basisPrijs = Object.values(gemaakteKeuzes).reduce((acc, curr) => acc + ((curr && curr.prijs) || 0), 0);
+    const aiTotaal = aiWinkelmandje.reduce((acc, curr) => acc + curr.prijs, 0);
+    const eindTotaal = basisPrijs + aiTotaal;
+
+    let bericht = 'Uw Imperium is samengesteld! Hier is het overzicht:\n\n';
+    bericht += `* Basis Website: €${basisPrijs.toFixed(2)}\n`;
+
+    if (aiWinkelmandje.length > 0) {
+        bericht += '* AI-Upgrades:\n';
+        aiWinkelmandje.forEach((item) => {
+            bericht += `  - ${item.naam}: €${item.prijs.toFixed(2)}\n`;
+        });
+    }
+
+    bericht += `\n**Totale Investering: €${eindTotaal.toFixed(2)} (Excl. BTW)**\n\n`;
+    bericht += 'Zullen we de intake inplannen om uw 1.500 woorden bedrijfslogica vast te leggen?';
+
+    renderAiMessage(bericht);
+}
+
+// section // DE BRIDGE TUSSEN STAPPEN EN AI-BREIN
+function verstuurConfiguratieNaarAI() {
+    const stapNamen = {
+        1: 'Type',
+        2: 'Look',
+        3: 'Grootte',
+        4: 'Vulling',
+        5: 'Tools',
+        6: 'Online'
+    };
+
+    let samenvatting = 'De klant heeft de volgende keuzes gemaakt in de TT-Guide:\n';
+
+    Object.keys(gemaakteKeuzes).forEach((stap) => {
+        const keuzeData = gemaakteKeuzes[stap];
+        if (!keuzeData) return;
+
+        const stapNummer = Number(stap);
+        const stapLabel = stapNamen[stapNummer] || `Stap ${stap}`;
+        const keuzeNaam = getKeuzeNaam(keuzeData);
+        const stapPrijs = (typeof keuzeData === 'object' ? keuzeData.prijs : selectedOptions[`stap${stap}`]) || 0;
+        samenvatting += `- ${stapLabel}: ${keuzeNaam} (€${stapPrijs.toFixed(2)})\n`;
+    });
+
+    if (aiWinkelmandje.length > 0) {
+        samenvatting += '\nAI-Upgrades:\n';
+        aiWinkelmandje.forEach((item) => {
+            samenvatting += `- ${item.naam} (€${item.prijs.toFixed(2)})\n`;
+        });
+    }
+
+    samenvatting += `\nHet totaalbedrag is: €${(currentTotal + getAiWinkelmandTotaal()).toFixed(2)} excl. BTW.`;
+    systeemConfiguratieContext = samenvatting;
+
+    // Gebruik externe AI-hook als die bestaat, anders alleen interne context verrijken.
+    if (window.aiChat && typeof window.aiChat.sendMessageAsSystem === 'function') {
+        window.aiChat.sendMessageAsSystem(samenvatting);
+    }
+
+    console.log('TT-Guide configuratie is gesynchroniseerd met AI-context.');
+}
+
+function syncKeuzesMetStappen() {
+    keuzes.type = getKeuzeNaam(gemaakteKeuzes[1]) || keuzes.type;
+    keuzes.stijl = getKeuzeNaam(gemaakteKeuzes[2]) || keuzes.stijl;
+    keuzes.pagina = getKeuzeNaam(gemaakteKeuzes[3]) || keuzes.pagina;
+    keuzes.content = getKeuzeNaam(gemaakteKeuzes[4]) || keuzes.content;
+    keuzes.tools = getKeuzeNaam(gemaakteKeuzes[5]) || keuzes.tools;
+    keuzes.finish = getKeuzeNaam(gemaakteKeuzes[6]) || keuzes.finish;
+}
 
 const CookieManager = {
     set(name, value, days) {
@@ -191,11 +511,11 @@ function showCookieBanner() {
         return;
     }
 
-        banner.style.display = 'block';
-        banner.style.bottom = '-300px';
-        window.setTimeout(() => {
-            banner.style.bottom = '30px';
-        }, 250);
+    banner.style.display = 'block';
+    banner.style.bottom = '-300px';
+    window.setTimeout(() => {
+        banner.style.bottom = '30px';
+    }, 250);
 }
 
 function acceptCookies() {
@@ -307,6 +627,59 @@ function initializeAnnouncementText() {
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('#primary-nav-links a');
+let maximaalOntgrendeldeStap = 1;
+
+function isMobieleStapFlow() {
+    return window.innerWidth < 768;
+}
+
+function updateStapVoortgang(stapNummer) {
+    const currentEl = document.getElementById('steps-current');
+    const progressFill = document.getElementById('steps-progress-fill');
+    const veiligeStap = Math.min(6, Math.max(1, Number(stapNummer) || 1));
+
+    if (currentEl) {
+        currentEl.textContent = String(veiligeStap);
+    }
+
+    if (progressFill) {
+        progressFill.style.width = `${(veiligeStap / 6) * 100}%`;
+    }
+}
+
+function updateMobieleStapFlow(stapNummer = 1) {
+    if (!isMobieleStapFlow()) return;
+
+    const actueleStap = Math.min(6, Math.max(1, Number(stapNummer) || 1));
+    const stepItems = document.querySelectorAll('.step-item');
+
+    stepItems.forEach((stepItem, index) => {
+        const stepIndex = index + 1;
+        stepItem.classList.remove('next-step', 'locked');
+
+        if (stepIndex > maximaalOntgrendeldeStap + 1) {
+            stepItem.classList.add('locked');
+        }
+
+        if (stepIndex === actueleStap + 1 && stepIndex <= maximaalOntgrendeldeStap + 1 && stepIndex <= 6) {
+            stepItem.classList.add('next-step');
+        }
+    });
+
+    updateStapVoortgang(actueleStap);
+}
+
+function initializeStapFlow() {
+    updateStapVoortgang(1);
+
+    if (isMobieleStapFlow()) {
+        const eersteStap = document.getElementById('step-1');
+        if (eersteStap && !document.querySelector('.step-item.active')) {
+            eersteStap.classList.add('active');
+        }
+        updateMobieleStapFlow(1);
+    }
+}
 
 function setMobileMenuState(isOpen) {
     if (!navMenu || !navToggle) return;
@@ -322,7 +695,29 @@ if (navMenu && navToggle) {
     });
 
     navLinks.forEach((link) => {
-        link.addEventListener('click', () => setMobileMenuState(false));
+        link.addEventListener('click', (event) => {
+            const targetId = link.getAttribute('href');
+            if (!targetId || !targetId.startsWith('#')) {
+                setMobileMenuState(false);
+                return;
+            }
+
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                event.preventDefault();
+                const announcementHeight = document.querySelector('.announcement-bar')?.offsetHeight || 0;
+                const navHeight = navMenu.offsetHeight || 0;
+                const offset = announcementHeight + navHeight + 8;
+                const targetY = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+
+                window.scrollTo({
+                    top: targetY,
+                    behavior: 'smooth'
+                });
+            }
+
+            setMobileMenuState(false);
+        });
     });
 
     window.addEventListener('resize', () => {
@@ -339,7 +734,7 @@ if (navMenu && navToggle) {
 }
 
 // section // 4. TYPING & BERICHTEN
-let typingTimer; 
+let typingTimer;
 function createChatMessage(sender) {
     const chatWindow = document.getElementById('chat-window');
     if (!chatWindow) return null;
@@ -374,10 +769,14 @@ function typeText(element, text) {
 }
 
 async function verstuurNaarGemini(bericht) {
+    const samengesteldBericht = systeemConfiguratieContext
+        ? `${systeemConfiguratieContext}\n\nKlantbericht:\n${bericht}`
+        : bericht;
+
     const response = await fetch(getGeminiEndpoint(), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: bericht })
+        body: JSON.stringify({ message: samengesteldBericht })
     });
 
     const data = await response.json();
@@ -477,7 +876,13 @@ function berekenBasisIndicatie(huidigeKeuzes) {
 
 function toonFinaleOfferte(huidigeKeuzes) {
     const basisIndicatie = berekenBasisIndicatie(huidigeKeuzes);
-    const offerteTekst = `// SYSTEEM: Blauwdruk gegenereerd voor ${huidigeKeuzes.type}\n\nBasis Website Indicatie: ${basisIndicatie}\n\nUw digitale basis staat als een huis. Maar wilt u een stap verder?\nU kunt deze website upgraden met een "AI-Werknemer" Installatie.\n\nWat doet deze werknemer voor u?\n* Onthoudt 1.500 specifieke feiten over uw bedrijf (door u aangeleverd).\n* Plant zelfstandig afspraken in met uw klanten.\n* Bereidt uw facturatie voor (klaar voor copy-paste).\n\nInvestering in uw nieuwe werknemer:\n- Optie A: €599,- eenmalig + €20,- p/m (Altijd scherp en up-to-date).\n- Optie B: €899,- eenmalig (Zonder maandelijkse ondersteuning).\n\nExtra geheugen nodig? Voor €199,- voegen we 1.000 extra woorden aan kennis toe.\n\nU behoudt altijd de eindcontrole en geeft goedkeuring voor elke afspraak en factuur.\nZal ik kijken of er nog plek is in uw team voor deze installatie?`;
+    // // DE NIEUWE EMPIRE FLOW (KORT & KRACHTIG) // //
+const offerteTekst = `// SYSTEEM: Blauwdruk gegenereerd voor ${huidigeKeuzes.type}\n\nBasis Website Indicatie: ${basisIndicatie}\n\nUw digitale basis staat als een huis. Maar wilt u de turbo aanzetten?\nIk kan een "AI-Werknemer" voor u installeren die 24/7 uw zaak beheert, afspraken plant en uw administratie voorbereidt.\n\nZal ik de mogelijkheden van deze AI-installatie aan u laten zien?`;
+
+// // DE BUTTONS DIE EROP VOLGEN // //
+// Zorg dat na deze tekst twee buttons verschijnen in je chat:
+// Button 1: "JA, leg uit" -> Triggeert toonAiUpgradeMenu()
+// Button 2: "NEE, bereken totaal" -> Triggeert stuurEindOverzicht()
 
     return renderMessage(offerteTekst, 'bot');
 }
@@ -600,7 +1005,83 @@ async function askGemini(userText) {
     }
 }
 
+function selectChoice(stapNummer, waarde, prijsOfEvent, evt) {
+    const huidigeStap = document.getElementById(`step-${stapNummer}`);
+    if (!huidigeStap) return;
+
+    const explicietePrijs = typeof prijsOfEvent === 'number' ? prijsOfEvent : undefined;
+    const eventRef = (typeof prijsOfEvent === 'object' && prijsOfEvent !== null) ? prijsOfEvent : (evt || window.event);
+    const clickTarget = eventRef?.target;
+
+    // Visuele feedback voor chip-selectie.
+    if (clickTarget?.classList?.contains('chip')) {
+        huidigeStap.querySelectorAll('.chip').forEach((chip) => chip.classList.remove('selected'));
+        clickTarget.classList.add('selected');
+    }
+
+    const keuzePrijs = resolveChoicePrice(stapNummer, waarde, explicietePrijs);
+    gemaakteKeuzes[stapNummer] = { naam: waarde, prijs: keuzePrijs };
+    selectedOptions[`stap${stapNummer}`] = keuzePrijs;
+    currentTotal = Object.values(selectedOptions).reduce((a, b) => a + b, 0);
+
+    syncKeuzesMetStappen();
+    updatePrijsUI(stapNummer);
+    verstuurConfiguratieNaarAI();
+
+    const inputVeld = document.getElementById('user-query');
+    if (inputVeld) {
+        const resultaat = Object.values(gemaakteKeuzes)
+            .map((item) => getKeuzeNaam(item))
+            .filter((v) => v !== '')
+            .join(' | ');
+        inputVeld.value = resultaat ? `Blauwdruk Aanvraag: ${resultaat}` : '';
+    }
+
+    window.setTimeout(() => {
+        gaNaarVolgende(stapNummer);
+    }, 500);
+}
+
+function verwerkPaginaKeuze(selectElement) {
+    if (!selectElement) return;
+
+    const geselecteerdeOptie = selectElement.options[selectElement.selectedIndex];
+    const paginaLabel = geselecteerdeOptie?.textContent?.trim() || '';
+    const paginaPrijs = Number(selectElement.value);
+
+    if (!paginaLabel || !Number.isFinite(paginaPrijs) || paginaPrijs <= 0) {
+        return;
+    }
+
+    selectChoice(3, paginaLabel, paginaPrijs);
+}
+
+function gaNaarVolgende(huidigeStapNummer) {
+    const volgendeStap = huidigeStapNummer + 1;
+    const volgendeEl = document.getElementById(`step-${volgendeStap}`);
+
+    if (volgendeEl) {
+        activeerStap(volgendeStap);
+        updateStapVoortgang(volgendeStap);
+        return;
+    }
+
+    if (huidigeStapNummer === 6) {
+        const chatSection = document.getElementById('chat-container');
+        if (chatSection) {
+            chatSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.setTimeout(() => {
+                document.getElementById('user-query')?.focus();
+            }, 800);
+        }
+    }
+}
+
 function activeerStap(stapNummer) {
+    if (isMobieleStapFlow() && stapNummer > maximaalOntgrendeldeStap + 1) {
+        return;
+    }
+
     keuzes.stap = stapNummer;
     keuzes.wachtOpAutomatisering = false;
     keuzes.wachtOpAutomatiseringDetails = false;
@@ -616,6 +1097,20 @@ function activeerStap(stapNummer) {
 
     if (activeStep) {
         activeStep.classList.add('active');
+    }
+
+    if (stapNummer > maximaalOntgrendeldeStap) {
+        maximaalOntgrendeldeStap = stapNummer;
+    }
+
+    if (isMobieleStapFlow()) {
+        if (activeStep) {
+            activeStep.classList.add('slide-in-step');
+            window.setTimeout(() => activeStep.classList.remove('slide-in-step'), 260);
+        }
+        updateMobieleStapFlow(stapNummer);
+    } else {
+        updateStapVoortgang(stapNummer);
     }
 
     if (inputField) {
@@ -672,6 +1167,17 @@ function startSupportFlow() {
 
 window.askGemini = askGemini;
 window.activeerStap = activeerStap;
+window.selectChoice = selectChoice;
+window.verwerkPaginaKeuze = verwerkPaginaKeuze;
+window.verstuurConfiguratieNaarAI = verstuurConfiguratieNaarAI;
+window.toggleAiModule = toggleAiModule;
+window.toonUpgradeOpties = toonUpgradeOpties;
+window.toonAiUpgradeMenu = toonAiUpgradeMenu;
+window.toonResultaatEnVraagAI = toonResultaatEnVraagAI;
+window.showChatOptions = showChatOptions;
+window.stuurEindOverzicht = stuurEindOverzicht;
+window.berekenTotaalEmpire = berekenTotaalEmpire;
+window.updateLiveBerekening = updateLiveBerekening;
 window.handleKeyPress = handleKeyPress;
 window.startTechSupport = startTechSupport;
 window.startSupportFlow = startSupportFlow;
@@ -680,12 +1186,56 @@ window.closeCookieBanner = closeCookieBanner;
 window.checkCookies = checkCookies;
 window.showCookieBanner = showCookieBanner;
 
+function initializeReviewStars() {
+    const stars = document.querySelectorAll('.star');
+    const statusMessage = document.getElementById('stat-update-msg');
+
+    if (!stars.length || !statusMessage) {
+        return;
+    }
+
+    stars.forEach((star) => {
+        star.addEventListener('click', function () {
+            const value = Number(this.getAttribute('data-value'));
+
+            stars.forEach((currentStar) => {
+                const currentValue = Number(currentStar.getAttribute('data-value'));
+                currentStar.classList.toggle('selected', currentValue <= value);
+            });
+
+            statusMessage.innerText = `> SYSTEEM UPDATE: Ervaring opgeslagen als ${value}/5. Impact verwerkt.`;
+        });
+    });
+}
+
 // section // 7. DE ACTIVATIE (Timing)
 window.addEventListener('DOMContentLoaded', () => {
     checkCookies();
+    initializeReviewStars();
+    initializeStapFlow();
+    updatePrijsUI(1);
+});
+
+window.addEventListener('resize', () => {
+    if (!isMobieleStapFlow()) {
+        document.querySelectorAll('.step-item').forEach((stepItem) => {
+            stepItem.classList.remove('locked', 'next-step', 'slide-in-step');
+        });
+        return;
+    }
+
+    const actieveStap = document.querySelector('.step-item.active');
+    const actieveNummer = actieveStap ? Number(actieveStap.id.replace('step-', '')) : 1;
+    updateMobieleStapFlow(actieveNummer);
 });
 
 window.addEventListener('load', () => {
+    const heroLogo = document.querySelector('.hero-logo-main');
+    if (heroLogo) {
+        heroLogo.style.animationPlayState = 'running';
+        console.log('Systeem check: Hero logo dimmer wordt geactiveerd.');
+    }
+
     initializeAnnouncementText();
     // Na 4 seconden scrollen naar de titel
     setTimeout(autoScrollToInfo, 4000);
