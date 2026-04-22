@@ -62,18 +62,183 @@ if (starContainer) {
 }
 
 // section // 2. DE PERFECTE AUTO-SCROLL (FIXED)
+
+// // MENTOR NOTE: Deze variabele houdt bij of we mogen scrollen //
+let isStepPlanActive = false;
+
 function autoScrollToInfo() {
+
     const infoSectie = document.getElementById('ai-intro');
+
     if (infoSectie) {
+
         // Verander -20 naar bijvoorbeeld -120 voor meer ruimte bovenin
+
         const yOffset = -120;
+
         const y = infoSectie.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
+
+
         window.scrollTo({
+
             top: y,
+
             behavior: 'smooth'
+
         });
+
     }
+
+}
+
+function openStepPlan() {
+    isStepPlanActive = true; // Nu staat het stappenplan aan
+    const overlay = document.getElementById('config-overlay') || document.getElementById('overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('scan-active');
+    }
+}
+
+function closeStepPlan() {
+    isStepPlanActive = false; // Plan is klaar, scrollen mag weer
+    const overlay = document.getElementById('config-overlay') || document.getElementById('overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('scan-active');
+    }
+}
+
+// // STAP 6 AFRONDEN //
+function stapZesKlaar(summaryData = null) {
+    // 1. Sluit de overlay visueel
+    const overlay = document.getElementById('config-overlay') || document.getElementById('overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('scan-active');
+    }
+
+    // 2. Zet de blokkade uit
+    isStepPlanActive = false;
+
+    // 3. Stuur het laatste bericht naar de chat
+    // Omdat de blokkade nu UIT staat, zal de browser direct omlaag scrollen naar dit bericht.
+    if (summaryData) {
+        const modulesText = summaryData.modules.length > 0
+            ? summaryData.modules.join(', ')
+            : 'Geen extra AI-modules geselecteerd';
+
+        const bericht = [
+            `Empire Scan compleet voor ${summaryData.naam || 'uw project'}.`,
+            `Branche: ${summaryData.brancheLabel}`,
+            `Pagina's: ${summaryData.pages} (${summaryData.pagesExtra} extra)`,
+            `Design Stijl: ${summaryData.style}`,
+            `AI Modules: ${modulesText}`,
+            `Eindprijs Indicatie: €${summaryData.total.toFixed(2)} excl. BTW.`,
+            'Wilt u dat ik direct de aanbetaling van €50 voorbereid zodat we uw projectslot vastzetten?'
+        ].join('\n');
+
+        sendAiMessage(bericht);
+        return;
+    }
+
+    sendAiMessage('Uw blauwdruk is compleet. Zal ik de AI-installaties voorbereiden?');
+}
+
+const EMPIRE_SCAN_PRICES = {
+    basis: 399,
+    extraPagina: 99,
+    modules: {
+        ai_chat: 799,
+        ai_ag: 149,
+        ai_mail: 175,
+        ai_fact: 249,
+        ai_data: 199,
+        seo: 99
+    }
+};
+
+function formatEmpirePrice(value) {
+    return `€${value.toFixed(2)}`;
+}
+
+function berekenEmpireScanVanForm(form) {
+    const pages = Number(form.elements.pages?.value || 1);
+    const safePages = Number.isFinite(pages) ? Math.min(10, Math.max(1, pages)) : 1;
+    const extraPaginaPrijs = (safePages - 1) * EMPIRE_SCAN_PRICES.extraPagina;
+
+    let modulesTotaal = 0;
+    Object.entries(EMPIRE_SCAN_PRICES.modules).forEach(([key, bedrag]) => {
+        if (form.elements[key]?.checked) {
+            modulesTotaal += bedrag;
+        }
+    });
+
+    return EMPIRE_SCAN_PRICES.basis + extraPaginaPrijs + modulesTotaal;
+}
+
+function updateEmpireScanPrijs() {
+    const form = document.getElementById('empire-scan-form');
+    const liveTotal = document.getElementById('scan-live-total');
+    const pageOutput = document.getElementById('scan-pages-output');
+    if (!form || !liveTotal) return;
+
+    const pages = Number(form.elements.pages?.value || 1);
+    if (pageOutput) {
+        pageOutput.value = String(pages);
+        pageOutput.textContent = String(pages);
+    }
+
+    const total = berekenEmpireScanVanForm(form);
+    liveTotal.textContent = `Live Indicatie: ${formatEmpirePrice(total)},-`;
+}
+
+function getSelectedEmpireModules(form) {
+    const labels = {
+        ai_chat: 'AI Hersen-capaciteit',
+        ai_ag: 'AI Agenda Beheer',
+        ai_mail: 'AI Mail Assistent',
+        ai_fact: 'AI Factuur Systeem',
+        ai_data: 'AI Data Manager',
+        seo: 'SEO Optimalisatie'
+    };
+
+    return Object.keys(labels).filter((key) => form.elements[key]?.checked).map((key) => labels[key]);
+}
+
+function initializeEmpireScan() {
+    const form = document.getElementById('empire-scan-form');
+    if (!form) return;
+
+    form.addEventListener('input', updateEmpireScanPrijs);
+    form.addEventListener('change', updateEmpireScanPrijs);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const pages = Number(form.elements.pages?.value || 1);
+        const branchSelect = form.elements.branche;
+        const branchLabel = branchSelect?.options?.[branchSelect.selectedIndex]?.text || 'Onbekende branche';
+        const summaryData = {
+            naam: String(form.elements.naam?.value || '').trim(),
+            brancheLabel: branchLabel,
+            pages: pages,
+            pagesExtra: Math.max(0, pages - 1),
+            style: String(form.elements.style?.value || 'Niet gespecificeerd'),
+            modules: getSelectedEmpireModules(form),
+            total: berekenEmpireScanVanForm(form)
+        };
+
+        stapZesKlaar(summaryData);
+        form.reset();
+        updateEmpireScanPrijs();
+    });
+
+    updateEmpireScanPrijs();
 }
 
 // section // 3. AI-GUIDE ARCHITECT FLOW
@@ -490,6 +655,10 @@ function renderMessage(text, sender = 'bot') {
     return aiGuide.displayMessage(text, sender);
 }
 
+function sendAiMessage(text) {
+    return renderMessage(text, 'bot');
+}
+
 function checkCookies() {
     const banner = document.getElementById('cookie-banner');
     if (!banner) {
@@ -745,7 +914,11 @@ function createChatMessage(sender) {
         messageElement.className = `message ${sender}-message`;
     }
     chatWindow.appendChild(messageElement);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    // // MENTOR FIX: Alleen scrollen als het stappenplan NIET open is //
+    const lastMessage = chatWindow.lastElementChild;
+    if (!isStepPlanActive && lastMessage) {
+        lastMessage.scrollIntoView({ behavior: 'smooth' });
+    }
     return messageElement;
 }
 
@@ -759,7 +932,9 @@ function typeText(element, text) {
                 element.textContent += text.charAt(index);
                 index++;
                 const chatWindow = document.getElementById('chat-window');
-                if (chatWindow) chatWindow.scrollTop = chatWindow.scrollHeight;
+                if (chatWindow && !isStepPlanActive) {
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                }
             } else {
                 clearInterval(typingTimer);
                 resolve();
@@ -1068,7 +1243,7 @@ function gaNaarVolgende(huidigeStapNummer) {
 
     if (huidigeStapNummer === 6) {
         const chatSection = document.getElementById('chat-container');
-        if (chatSection) {
+        if (chatSection && !isStepPlanActive) {
             chatSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             window.setTimeout(() => {
                 document.getElementById('user-query')?.focus();
@@ -1145,7 +1320,7 @@ function startSupportFlow() {
     const inputField = document.getElementById('user-query');
     const chatContainer = document.getElementById('chat-container');
 
-    if (chatContainer) {
+    if (chatContainer && !isStepPlanActive) {
         chatContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         autoScrollToInfo();
@@ -1181,6 +1356,9 @@ window.updateLiveBerekening = updateLiveBerekening;
 window.handleKeyPress = handleKeyPress;
 window.startTechSupport = startTechSupport;
 window.startSupportFlow = startSupportFlow;
+window.openStepPlan = openStepPlan;
+window.closeStepPlan = closeStepPlan;
+window.stapZesKlaar = stapZesKlaar;
 window.acceptCookies = acceptCookies;
 window.closeCookieBanner = closeCookieBanner;
 window.checkCookies = checkCookies;
@@ -1214,6 +1392,7 @@ window.addEventListener('DOMContentLoaded', () => {
     initializeReviewStars();
     initializeStapFlow();
     updatePrijsUI(1);
+    initializeEmpireScan();
 });
 
 window.addEventListener('resize', () => {

@@ -451,6 +451,220 @@ main {
     letter-spacing: 0.2px;
 }
 
+.empire-scan-launch {
+    width: min(100%, 780px);
+    margin: 10px auto 30px;
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 255, 153, 0.4);
+    background: linear-gradient(160deg, rgba(8, 10, 12, 0.9) 0%, rgba(5, 20, 14, 0.86) 100%);
+    box-shadow: inset 0 0 0 1px rgba(0, 255, 153, 0.15), 0 20px 44px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+.empire-scan-launch-title {
+    margin: 0;
+    color: #00ff99;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.empire-scan-launch-copy {
+    margin: 12px 0 16px;
+    color: rgba(230, 241, 255, 0.9);
+    line-height: 1.5;
+}
+
+.empire-open-btn,
+.scan-submit-btn,
+.scan-close {
+    border: 1px solid rgba(0, 255, 153, 0.65);
+    color: #dffef0;
+    background: linear-gradient(180deg, rgba(0, 255, 153, 0.12) 0%, rgba(0, 255, 153, 0.04) 100%);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.empire-open-btn {
+    min-height: 52px;
+    padding: 12px 26px;
+    border-radius: 14px;
+    font-size: 0.98rem;
+}
+
+.empire-open-btn:hover,
+.scan-submit-btn:hover,
+.scan-close:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    background: linear-gradient(180deg, rgba(0, 255, 153, 0.2) 0%, rgba(0, 255, 153, 0.08) 100%);
+}
+
+.scan-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 14px;
+}
+
+.scan-overlay-panel {
+    width: min(820px, 100%);
+    max-height: min(90vh, 900px);
+    border: 1px solid rgba(0, 255, 153, 0.55);
+    border-radius: 20px;
+    background: radial-gradient(circle at top right, rgba(0, 255, 153, 0.12), rgba(8, 10, 12, 0.96) 32%, rgba(0, 0, 0, 0.97) 70%);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.58), 0 0 36px rgba(0, 255, 153, 0.2);
+    overflow: hidden;
+}
+
+.scan-overlay-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid rgba(0, 255, 153, 0.2);
+}
+
+.scan-overlay-header h2 {
+    margin: 0;
+    font-size: clamp(1rem, 1.3vw + 0.7rem, 1.4rem);
+    color: #00ff99;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.scan-close {
+    min-width: 42px;
+    min-height: 42px;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.scan-live-total {
+    margin: 12px 16px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 153, 0.45);
+    background: rgba(0, 255, 153, 0.1);
+    color: #00ff99;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.scan-steps-scroll {
+    max-height: calc(min(90vh, 900px) - 136px);
+    overflow-y: auto;
+    padding: 0 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.step-card {
+    border: 1px solid rgba(0, 255, 153, 0.22);
+    border-radius: 14px;
+    padding: 14px;
+    background: rgba(8, 16, 12, 0.75);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.step-card label {
+    color: #dbffef;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.step-card select,
+.step-card input[type='text'],
+.step-card input[type='email'] {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgba(0, 255, 153, 0.5);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.84);
+    color: #00ff99;
+    padding: 10px 12px;
+    font-size: 0.98rem;
+    box-sizing: border-box;
+}
+
+.range-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-row input[type='range'] {
+    width: 100%;
+    accent-color: #00ff99;
+    min-height: 40px;
+}
+
+.range-row output {
+    min-width: 48px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 800;
+    color: #00ff99;
+    border: 1px solid rgba(0, 255, 153, 0.4);
+    border-radius: 10px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.check-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 56px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 153, 0.35);
+    background: rgba(0, 0, 0, 0.6);
+    color: #e8fff5;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.check-pill input[type='checkbox'] {
+    width: 22px;
+    height: 22px;
+    accent-color: #00ff99;
+    flex: 0 0 auto;
+}
+
+.check-pill:has(input[type='checkbox']:checked) {
+    border-color: #00ff99;
+    background: rgba(0, 255, 153, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.25);
+}
+
+.scan-submit-btn {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+body.scan-active {
+    overflow: hidden;
+}
+
 .steps-mobile-progress {
     display: none;
 }
@@ -1604,6 +1818,32 @@ footer,
     .site-footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .scan-overlay {
+        padding: 8px;
+    }
+
+    .scan-overlay-panel {
+        max-height: 94vh;
+        border-radius: 14px;
+    }
+
+    .scan-overlay-header {
+        padding: 12px;
+    }
+
+    .scan-steps-scroll {
+        max-height: calc(94vh - 128px);
+        padding: 0 12px 12px;
+    }
+
+    .step-card {
+        padding: 12px;
+    }
+
+    .check-pill {
+        font-size: 0.95rem;
     }
 }
 

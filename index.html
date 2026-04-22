@@ -68,81 +68,106 @@
     <p class="price-callout">Projecten starten vanaf <strong>€299,-</strong></p>
 
     <p class="steps-mobile-instruction">Volg de onderstaande stappen voor de beste ervaring bij het creëren van uw visie.</p>
-    
-    <div class="steps-mobile-progress" aria-live="polite">
-        <span class="steps-mobile-progress-label">Voortgang: Stap <strong id="steps-current">1</strong> van 6</span>
-        <div class="steps-mobile-progress-track" aria-hidden="true">
-            <span class="steps-mobile-progress-fill" id="steps-progress-fill"></span>
-        </div>
+    <div class="empire-scan-launch hero-glow">
+        <p class="empire-scan-launch-title">Empire Scan 1-10</p>
+        <p class="empire-scan-launch-copy">Krijg binnen 30 seconden een live prijsindicatie op basis van branche, pagina's en AI-modules.</p>
+        <button type="button" id="open-empire-scan" class="empire-open-btn" onclick="openStepPlan()">Start Empire Scan</button>
     </div>
 
-    <div class="steps-container-main" id="steps-slider">
-        <div class="step-item active" id="step-1">
-            <span class="step-num">1</span>
-            <div><strong>Type?</strong><small>Kies uw platform</small></div>
-            <div class="choice-chips">
-                <button type="button" class="chip" onclick="selectChoice(1, 'Website', event)">Website</button>
-                <button type="button" class="chip" onclick="selectChoice(1, 'Webshop', event)">Webshop</button>
-                <button type="button" class="chip" onclick="selectChoice(1, 'Digitale Kaart', event)">Kaart</button>
+    <div id="config-overlay" class="scan-overlay" aria-hidden="true">
+        <div class="scan-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="empire-scan-title">
+            <div class="scan-overlay-header">
+                <h2 id="empire-scan-title">T.T-DESIGN EMPIRE SCAN</h2>
+                <button type="button" class="scan-close" onclick="closeStepPlan()" aria-label="Sluit Empire Scan">X</button>
             </div>
-        </div>
 
-        <div class="step-item" id="step-2">
-            <span class="step-num">2</span>
-            <div><strong>Look?</strong><small>Stijl van het design</small></div>
-            <div class="choice-chips">
-                <button type="button" class="chip" onclick="selectChoice(2, 'Modern/Clean', event)">Modern</button>
-                <button type="button" class="chip" onclick="selectChoice(2, 'Futuristisch/Dark', event)">Futuristisch</button>
-                <button type="button" class="chip" onclick="selectChoice(2, 'Speels/Kleurrijk', event)">Kleurrijk</button>
-            </div>
-        </div>
+            <div class="scan-live-total" id="scan-live-total">Live Indicatie: €399,-</div>
 
-        <div class="step-item" id="step-3">
-    <span class="step-num">3</span>
-    <div><strong>Grootte?</strong><small>Aantal pagina's</small></div>
-    <div class="choice-chips">
-        <select id="page-select" class="step-dropdown empire-style" onchange="verwerkPaginaKeuze(this)">
-            <option value="0" disabled selected>Kies aantal...</option>
-            <option value="99">1 Pagina</option>
-            <option value="198">2 Pagina's</option>
-            <option value="297">3 Pagina's</option>
-            <option value="396">4 Pagina's</option>
-            <option value="495">5 Pagina's</option>
-            <option value="594">6 Pagina's</option>
-            <option value="693">7 Pagina's</option>
-            <option value="792">8 Pagina's</option>
-            <option value="891">9 Pagina's</option>
-            <option value="990">10 Pagina's</option>
-        </select>
-    </div>
-</div>
+            <form id="empire-scan-form" class="scan-steps-scroll">
+                <div class="step-card">
+                    <label for="scan-branche">1. In welke sector bouwt u uw Imperium?</label>
+                    <select name="branche" id="scan-branche" required>
+                        <optgroup label="Vakmensen & Bouw">
+                            <option value="hovenier">Hovenier / Stratenmaker</option>
+                            <option value="schilder">Schildersbedrijf / Stucadoor</option>
+                            <option value="installateur">Loodgieter / Elektricien</option>
+                            <option value="bouw">Aannemer / Renovatie</option>
+                        </optgroup>
+                        <optgroup label="Dienstverlening">
+                            <option value="kapper">Kapperszaak / Beauty Salon</option>
+                            <option value="horeca">Horeca / Restaurant</option>
+                            <option value="coach">Consultancy / Coaching</option>
+                            <option value="schoonmaak">Schoonmaakbedrijf</option>
+                        </optgroup>
+                        <optgroup label="Handel">
+                            <option value="webshop">E-commerce / Webshop</option>
+                            <option value="detailhandel">Lokale Winkel</option>
+                            <option value="groothandel">Groothandel B2B</option>
+                            <option value="import">Import / Export</option>
+                        </optgroup>
+                        <optgroup label="Zakelijke Services">
+                            <option value="makelaar">Makelaar</option>
+                            <option value="juridisch">Juridisch Advies</option>
+                            <option value="fysio">Fysiotherapie Praktijk</option>
+                            <option value="anders">Anders...</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-        <div class="step-item" id="step-4">
-            <span class="step-num">4</span>
-            <div><strong>Vulling?</strong><small>Content creatie</small></div>
-            <div class="choice-chips">
-                <button type="button" class="chip" onclick="selectChoice(4, 'AI-Content', event)">AI Content</button>
-                <button type="button" class="chip" onclick="selectChoice(4, 'Eigen Content', event)">Eigen Tekst</button>
-            </div>
-        </div>
+                <div class="step-card">
+                    <label for="scan-pages">2. Aantal pagina's (+€99 per extra pagina)</label>
+                    <div class="range-row">
+                        <input id="scan-pages" type="range" name="pages" min="1" max="10" value="1">
+                        <output id="scan-pages-output" for="scan-pages">1</output>
+                    </div>
+                </div>
 
-        <div class="step-item" id="step-5">
-            <span class="step-num">5</span>
-            <div><strong>Tools?</strong><small>Extra functies</small></div>
-            <div class="choice-chips">
-                <button type="button" class="chip" onclick="selectChoice(5, 'Boeking-Systeem', event)">Boekingen</button>
-                <button type="button" class="chip" onclick="selectChoice(5, 'Contact-Focus', event)">Contact</button>
-                <button type="button" class="chip" onclick="selectChoice(5, 'Socials', event)">Socials</button>
-            </div>
-        </div>
+                <div class="step-card">
+                    <label>3. AI Klantenservice (Chatbot)</label>
+                    <label class="check-pill"><input type="checkbox" name="ai_chat" value="799"> AI-Hersen-capaciteit installeren (+€799)</label>
+                </div>
 
-        <div class="step-item" id="step-6">
-            <span class="step-num">6</span>
-            <div><strong>Online!</strong><small>Beheer & Domein</small></div>
-            <div class="choice-chips">
-                <button type="button" class="chip" onclick="selectChoice(6, 'All-in Beheer', event)">All-in</button>
-                <button type="button" class="chip" onclick="selectChoice(6, 'Zelf Beheren', event)">Zelf</button>
-            </div>
+                <div class="step-card">
+                    <label>4. AI Agenda Beheer</label>
+                    <label class="check-pill"><input type="checkbox" name="ai_ag" value="149"> Agenda-Beheer koppelen (+€149)</label>
+                </div>
+
+                <div class="step-card">
+                    <label>5. AI Mail Assistent</label>
+                    <label class="check-pill"><input type="checkbox" name="ai_mail" value="175"> Persoonlijke Mail-Assistent (+€175)</label>
+                </div>
+
+                <div class="step-card">
+                    <label>6. AI Factuur Systeem</label>
+                    <label class="check-pill"><input type="checkbox" name="ai_fact" value="249"> Factuur-Voorbereiding (+€249)</label>
+                </div>
+
+                <div class="step-card">
+                    <label>7. AI Data Manager</label>
+                    <label class="check-pill"><input type="checkbox" name="ai_data" value="199"> CRM Data-Manager (+€199)</label>
+                </div>
+
+                <div class="step-card">
+                    <label for="scan-style">8. Design Stijl</label>
+                    <select id="scan-style" name="style">
+                        <option value="Modern & Strak">Modern & Strak</option>
+                        <option value="Matrix / Future">Matrix / Future</option>
+                    </select>
+                </div>
+
+                <div class="step-card">
+                    <label>9. Zoekmachines (SEO)</label>
+                    <label class="check-pill"><input type="checkbox" name="seo" value="99"> Google Optimalisatie (+€99)</label>
+                </div>
+
+                <div class="step-card">
+                    <label>10. Uw Gegevens</label>
+                    <input type="text" name="naam" placeholder="Naam" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <button type="submit" class="scan-submit-btn">Scan Afronden & Naar TT-Guide</button>
+            </form>
         </div>
     </div>
 
