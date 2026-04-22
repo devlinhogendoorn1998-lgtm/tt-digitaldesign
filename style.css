@@ -264,6 +264,19 @@ main {
     width: 0.45em;
 }
 
+.hero-subtitle {
+    margin: 12px 0 0;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    background: linear-gradient(180deg, #ffffff 0%, var(--tt-glow) 60%, var(--tt-blue) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 14px rgba(0, 242, 255, 0.2);
+}
+
 @keyframes seaWave {
     0%   { transform: translateY(0px);   filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.3)); }
     25%  { transform: translateY(-10px); filter: drop-shadow(0 2px 10px rgba(100, 255, 218, 0.7)); }
@@ -1414,6 +1427,48 @@ footer,
     animation: blink 1.5s infinite;
 }
 
+.seo-regions {
+    max-width: 1100px;
+    margin: 36px auto 0;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 204, 0.25);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.seo-regions h3 {
+    margin: 0 0 14px;
+    color: #00ffcc;
+    font-size: 1.1rem;
+    letter-spacing: 0.4px;
+}
+
+.region-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.province {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 204, 0.18);
+    background: rgba(0, 0, 0, 0.28);
+}
+
+.province h4 {
+    margin: 0 0 6px;
+    color: #dffef6;
+    font-size: 0.95rem;
+}
+
+.province p {
+    margin: 0;
+    color: #98b0aa;
+    font-size: 0.86rem;
+    line-height: 1.55;
+}
+
 .site-footer-bottom {
     max-width: 1100px;
     margin: 40px auto 0;
@@ -1818,6 +1873,14 @@ footer,
     .site-footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .seo-regions {
+        padding: 14px;
+    }
+
+    .region-grid {
+        grid-template-columns: 1fr;
     }
 
     .scan-overlay {

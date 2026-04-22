@@ -66,30 +66,16 @@ if (starContainer) {
 // // MENTOR NOTE: Deze variabele houdt bij of we mogen scrollen //
 let isStepPlanActive = false;
 
-function autoScrollToInfo() {
+function autoScrollToMainTitle() {
+    const targetHeader = document.querySelector('#ai-intro .main-title');
+    if (!targetHeader) return;
 
-    const infoSectie = document.getElementById('ai-intro');
+    const announcementHeight = document.querySelector('.announcement-bar')?.offsetHeight || 0;
+    const navHeight = document.getElementById('nav-menu')?.offsetHeight || 0;
+    const offset = announcementHeight + navHeight + 12;
+    const y = targetHeader.getBoundingClientRect().top + window.pageYOffset - offset;
 
-    if (infoSectie) {
-
-        // Verander -20 naar bijvoorbeeld -120 voor meer ruimte bovenin
-
-        const yOffset = -120;
-
-        const y = infoSectie.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-
-
-        window.scrollTo({
-
-            top: y,
-
-            behavior: 'smooth'
-
-        });
-
-    }
-
+    window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
 function openStepPlan() {
@@ -915,9 +901,8 @@ function createChatMessage(sender) {
     }
     chatWindow.appendChild(messageElement);
     // // MENTOR FIX: Alleen scrollen als het stappenplan NIET open is //
-    const lastMessage = chatWindow.lastElementChild;
-    if (!isStepPlanActive && lastMessage) {
-        lastMessage.scrollIntoView({ behavior: 'smooth' });
+    if (!isStepPlanActive) {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
     }
     return messageElement;
 }
@@ -1322,8 +1307,6 @@ function startSupportFlow() {
 
     if (chatContainer && !isStepPlanActive) {
         chatContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        autoScrollToInfo();
     }
 
     keuzes.stap = 0;
@@ -1416,8 +1399,7 @@ window.addEventListener('load', () => {
     }
 
     initializeAnnouncementText();
-    // Na 4 seconden scrollen naar de titel
-    setTimeout(autoScrollToInfo, 4000);
+    setTimeout(autoScrollToMainTitle, 3600);
     // Na 5.5 seconden begint de AI te praten
     setTimeout(() => aiGuide.startGesprek(), 5500);
 });
