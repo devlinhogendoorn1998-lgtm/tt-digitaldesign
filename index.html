@@ -6,6 +6,9 @@
     <title>TT-Digital | DigitalDesign</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
@@ -29,9 +32,9 @@
             </button>
 
             <div class="nav-links" id="primary-nav-links">
-                <a href="#ai-intro" class="nav-btn">AI GUIDE</a>
-                <a href="#over-ons" class="nav-link-simple">Over Ons</a>
-                <a href="#pakketten" class="nav-link-simple">Pakketten</a>
+                <a href="index.html" class="nav-btn">Home</a>
+                <a href="#projecten" class="nav-link-simple">Projecten</a>
+                <a href="beheer.html" class="nav-link-simple">Beheer</a>
                 <a href="#contact" class="nav-btn-highlight">Contact</a>
             </div>
         </div>
@@ -71,7 +74,7 @@
 <section id="ai-intro" class="offer-section">
     <h1 class="main-title">ONTWERP UW DIGITALE TOEKOMST</h1>
 
-    <p class="price-callout">Projecten starten vanaf <strong>€299,-</strong></p>
+    <p class="price-callout">Projecten starten vanaf <strong>€399,-</strong></p>
 
     <p class="steps-mobile-instruction">Volg de onderstaande stappen voor de beste ervaring bij het creëren van uw visie.</p>
     <div class="empire-scan-launch hero-glow">
@@ -210,6 +213,11 @@
             <button onclick="askGemini()" class="send-icon-btn" aria-label="Verstuur bericht">➤</button>
         </div>
     </div>
+    <div class="tt-btn-container">
+    <a href="index.html#contact" class="tt-btn btn-pay">
+        <i class="fas fa-credit-card"></i> Activeer Beheer Pakket
+    </a>
+</div>
 
     <div id="experience-review" class="review-wrapper">
         <h3 class="review-title">Wat geef jij deze ervaring?</h3>
@@ -224,18 +232,18 @@
     </div>
 </section>
         <section id="pakketten" class="packages-section">
-            <h2 class="section-title">KIES UW STRATEGIE</h2>
+              <h2 class="section-title" style="text-align:center; margin-bottom:32px; margin-top:0;">KIES UW STRATEGIE</h2>
             <div class="packages-grid">
                 <div class="package-card">
                     <div class="badge">STARTER</div>
                     <h3>The Digital Card</h3>
-                    <p class="price">Vanaf <span>€299</span></p>
+                    <p class="price">Vanaf <span>€399</span></p>
                     <ul class="features">
+                        <li>1 Pagina</li>
+                        <li></li>
                         <li>Digitale visitekaart</li>
-                        <li>3 Standaard pagina keuzes</li>
                         <li>Custom kleuren & logo</li>
-                        <li>Contactpunt integratie</li>
-                        <li>1 Jaar groei-ondersteuning</li>
+                        <li>Contactpunt integratie Standaard Mail verbinding</li>
                     </ul>
                 </div>
 
@@ -268,8 +276,8 @@
         </section>
 
         <section id="over-ons" class="over-ons-section">
-            <div class="over-ons-container">
-                <h2 class="section-title">Wie is TT-digitalDesign?</h2>
+            <div class="over-ons-container" style="text-align:center;">
+                <h2 class="section-title" style="text-align:center;">Wie is TT-digitalDesign?</h2>
                 <p class="over-ons-subtitle">Persoonlijke aanpak in Webdevelopment &amp; Automatisering.</p>
                 <p class="over-ons-text">Ik ben Devlin, een gedreven developer die verder kijkt dan alleen de code. Ik geloof dat een website meer is dan een digitaal visitekaartje; het is het uitwerken van een visie. Het helpen van mensen met een visie vind ik een prachtig begrip om gezamenlijk tot resultaat te komen.</p>
 
@@ -277,8 +285,9 @@
                     <p class="over-ons-belofte-title">De Belofte</p>
                     <p class="over-ons-belofte-text">Geen vage processen of lange wachttijden. Bij mij krijg je binnen 24 uur contact, snelheid, en de mogelijkheid om elke dag met het proces mee te kijken. Ik denk met je mee om jouw visie om te zetten in een werkende oplossing.</p>
                 </div>
+                
 
-                <a href="#ai-intro" class="over-ons-cta">Volg de stappen bij de TT-Guide voor uw start naar uw Digitaal Empire</a>
+                            <a href="#ai-intro" class="over-ons-cta">Volg de stappen bij de TT-Guide voor uw start naar uw Digitaal Empire</a>
             </div>
         </section>
 

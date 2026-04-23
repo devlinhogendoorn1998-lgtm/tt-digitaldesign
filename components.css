@@ -1,0 +1,324 @@
+.tt-btn.btn-pay {
+    font-size: 1.18rem;
+    font-weight: 900;
+    padding: 18px 38px 18px 28px;
+    border-radius: 16px;
+    border: 2.5px solid var(--tt-blue);
+    background: linear-gradient(90deg, #00f2ff 0%, #64ffda 100%);
+    color: #03121b;
+    box-shadow: 0 0 32px 0 rgba(0,242,255,0.25), 0 0 0 2px rgba(100,255,218,0.12);
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 12px rgba(255,255,255,0.12);
+    transition: all 0.18s cubic-bezier(.4,1.3,.6,1);
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    gap: 12px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tt-btn.btn-pay i {
+    font-size: 1.25em;
+    margin-right: 10px;
+    color: #03121b;
+    filter: drop-shadow(0 0 6px #64ffda);
+}
+
+.tt-btn.btn-pay:hover, .tt-btn.btn-pay:focus {
+    background: linear-gradient(90deg, #64ffda 0%, #00f2ff 100%);
+    color: #000;
+    box-shadow: 0 0 48px 0 #00f2ff, 0 0 0 3px #64ffda;
+    filter: brightness(1.13) saturate(1.2);
+    border-color: #64ffda;
+    text-shadow: 0 2px 18px #fff;
+    outline: 2.5px solid #00f2ff;
+}
+
+.tt-btn.btn-pay:active {
+    filter: brightness(0.98) saturate(1.3);
+    box-shadow: 0 0 18px 0 #00f2ff;
+    border-color: #00f2ff;
+}
+/* --- PROMINENT BEHEER BUTTON --- */
+.tt-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 38px 0 0 0;
+    z-index: 2;
+}
+.nav-btn,
+.nav-btn-highlight,
+.nav-link-simple {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-btn,
+.nav-btn-highlight {
+    padding: 10px 18px;
+    border: 1px solid var(--tt-glow);
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.18);
+}
+
+.nav-btn:hover,
+.nav-btn-highlight:hover {
+    background: var(--tt-blue);
+    color: #000;
+    box-shadow: 0 0 25px var(--tt-blue), 0 0 45px var(--tt-blue);
+}
+.empire-open-btn,
+.scan-submit-btn,
+.scan-close {
+    border: 1px solid rgba(0, 255, 153, 0.65);
+    color: #dffef0;
+    background: linear-gradient(180deg, rgba(0, 255, 153, 0.12) 0%, rgba(0, 255, 153, 0.04) 100%);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.empire-open-btn {
+    min-height: 52px;
+    padding: 12px 26px;
+    border-radius: 14px;
+    font-size: 0.98rem;
+}
+
+.empire-open-btn:hover,
+.scan-submit-btn:hover,
+.scan-close:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    background: linear-gradient(180deg, rgba(0, 255, 153, 0.2) 0%, rgba(0, 255, 153, 0.08) 100%);
+}
+.step-card {
+    border: 1px solid rgba(0, 255, 153, 0.22);
+    border-radius: 14px;
+    padding: 14px;
+    background: rgba(8, 16, 12, 0.75);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.step-card label {
+    color: #dbffef;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.step-card select,
+.step-card input[type='text'],
+.step-card input[type='email'] {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgba(0, 255, 153, 0.5);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.84);
+    color: #00ff99;
+    padding: 10px 12px;
+    font-size: 0.98rem;
+    box-sizing: border-box;
+}
+.scan-submit-btn {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+.send-icon-btn {
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tt-glow);
+    color: #0a192f;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+}
+
+.send-icon-btn:hover {
+    transform: scale(1.08);
+    background: #fff;
+    box-shadow: 0 0 25px rgba(100, 255, 218, 0.45);
+}
+.package-card {
+    width: min(100%, 320px);
+    padding: 38px 28px;
+    border-radius: 18px;
+    background: rgba(17, 34, 64, 0.42);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--tt-glow);
+    box-shadow: 0 14px 34px rgba(100, 255, 218, 0.1);
+}
+
+.package-card.featured {
+    border-color: var(--tt-blue);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.12);
+}
+.nav-btn,
+    .nav-btn-highlight,
+    .nav-link-simple {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    #cookie-banner {
+    position: fixed;
+    bottom: -250px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(420px, calc(100vw - 24px));
+    background: rgba(10, 10, 10, 0.98);
+    border: 2px solid #00ffcc;
+    padding: 25px;
+    border-radius: 20px;
+    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10000;
+    color: white;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.cookie-banner-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cookie-banner-title {
+    margin: 0;
+    color: #00ffcc;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.cookie-banner-text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+.cookie-banner-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.cookie-btn {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.cookie-btn:hover {
+    transform: translateY(-1px);
+}
+
+.cookie-btn-accept {
+    background: #00ffcc;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    color: #0a0a0a;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.cookie-btn-decline {
+    background: transparent;
+    border: 1px solid #444;
+    color: #aaa;
+    width: 80%;
+    padding: 8px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 700px) {
+    #cookie-banner {
+        width: calc(100vw - 24px);
+        bottom: -320px;
+        padding: 18px;
+    }
+
+    .cookie-banner-actions {
+        justify-content: center;
+    }
+
+    .cookie-btn {
+        width: 100%;
+    }
+
+    .cookie-btn-decline {
+        width: 100%;
+    }
+}
+.step-card {
+        padding: 12px;
+    }
+    .intro-text,
+.prijs-box,
+.beheer-card {
+    border: 1px solid rgba(100, 255, 218, 0.18);
+    background: linear-gradient(160deg, rgba(8, 10, 14, 0.86) 0%, rgba(8, 20, 16, 0.72) 100%);
+    border-radius: 16px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+}
+.beheer-card {
+    padding: 20px;
+}
+
+.beheer-card i {
+    color: var(--tt-glow);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.beheer-card h3 {
+    margin: 0 0 8px;
+}
+
+
+.intro-text p,
+.btw-tekst,
+.voorwaarden-lijst li {
+    color: var(--muted);
+}
+.btn {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(100, 255, 218, 0.4);
+    text-decoration: none;
+    font-weight: 700;
+    color: #03121b;
+    background: linear-gradient(90deg, var(--tt-glow), var(--tt-blue));
+}
+
+.btn:hover {
+    filter: brightness(1.08);
+}
