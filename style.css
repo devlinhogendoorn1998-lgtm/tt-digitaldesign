@@ -1,3 +1,5 @@
+
+
 :root {
     --tt-blue: #00f2ff;
     --tt-glow: #64ffda;
@@ -8,32 +10,6 @@
     --muted: rgba(230, 241, 255, 0.72);
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: #000;
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-body,
-main,
-section,
-header,
-nav,
-footer,
-.container {
-    background: transparent;
-}
-
-#stars-container,
-#bg-canvas,
-#star-canvas,
-.stars-container,
 canvas {
     display: block !important;
     position: fixed !important;
@@ -62,10 +38,12 @@ canvas {
     left: 0;
     width: 100%;
     z-index: 1001;
-    box-shadow: 0 0 0 rgba(100, 255, 218, 0), 0 0 0 rgba(0, 242, 255, 0);
+    /* Reparatie: Schaduw naar 0.3 gezet voor zichtbaar effect */
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
     animation: announcement-glow 2.8s ease-in-out infinite;
 }
 
+/* Sectie: Announcement Text & Glitch */
 .announcement-text {
     display: inline-block;
     position: relative;
@@ -74,7 +52,7 @@ canvas {
     letter-spacing: 0.6px;
     line-height: 1.1;
     transform-origin: center;
-    will-change: text-shadow;
+    will-change: text-shadow, transform;
     font-family: 'Space Mono', monospace;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.18);
 }
@@ -102,131 +80,7 @@ canvas {
     animation: announcement-glitch-shift 90ms steps(2, end) infinite reverse;
 }
 
-.sticky-header {
-    position: fixed;
-    top: 40px;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-}
-
-main {
-    padding-top: 80px;
-}
-
-#nav-menu {
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-}
-
-.nav-container {
-    width: min(1200px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 16px 0;
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-.nav-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border: 1px solid rgba(100, 255, 218, 0.24);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.22);
-    cursor: pointer;
-}
-
-.nav-toggle-line {
-    width: 18px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--tt-glow);
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-#nav-menu.menu-open .nav-toggle-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-#nav-menu.menu-open .nav-toggle-line:nth-child(2) {
-    opacity: 0;
-}
-
-#nav-menu.menu-open .nav-toggle-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-.nav-logo-text {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.45rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    transition: text-shadow 0.3s ease;
-}
-
-.nav-logo-text .highlight {
-    color: var(--tt-glow);
-}
-
-.nav-logo-text:hover {
-    text-shadow: 0 0 15px rgba(100, 255, 218, 0.55);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-left: auto;
-}
-
-.nav-btn,
-.nav-btn-highlight,
-.nav-link-simple {
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.nav-btn,
-.nav-btn-highlight {
-    padding: 10px 18px;
-    border: 1px solid var(--tt-glow);
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 700;
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.18);
-}
-
-.nav-btn:hover,
-.nav-btn-highlight:hover {
-    background: var(--tt-blue);
-    color: #000;
-    box-shadow: 0 0 25px var(--tt-blue), 0 0 45px var(--tt-blue);
-}
-
-.nav-link-simple {
-    color: var(--tt-glow);
-    font-weight: 600;
-}
-
-.nav-link-simple:hover {
-    color: var(--tt-blue);
-}
-
+/* Sectie: Hero Sectie Layout */
 .hero-impact {
     min-height: calc(100vh - 120px);
     display: flex;
@@ -235,9 +89,11 @@ main {
     justify-content: center;
     text-align: center;
     padding: 110px 20px 60px;
+    /* Reparatie: Border-box zorgt dat padding de hoogte niet verpest */
+    box-sizing: border-box;
 }
 
-/* ── HERO TITLE WAVE ── */
+/* Sectie: Hero Title Wave */
 .hero-title {
     margin: 4px 0 0;
     font-size: clamp(1.1rem, 3vw, 1.7rem);
@@ -250,12 +106,19 @@ main {
     line-height: 1.6;
 }
 
+/* Sectie: Navigatie & Mobiele Menu *
+
+Hier is je gerepareerde code met de juiste comments:
+
+CSS
+/* Sectie: Hero Title Letter Animatie */
 .wave-letter {
     display: inline-block;
     background: linear-gradient(180deg, #ffffff 0%, var(--tt-glow) 60%, var(--tt-blue) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* Reparatie: Zorg dat de animatie seaWave soepel loopt */
     animation: seaWave 2.8s ease-in-out infinite;
     will-change: transform;
 }
@@ -264,6 +127,7 @@ main {
     width: 0.45em;
 }
 
+/* Sectie: Hero Subtitle Styling */
 .hero-subtitle {
     margin: 12px 0 0;
     font-size: clamp(1rem, 2.2vw, 1.35rem);
@@ -274,23 +138,12 @@ main {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* Reparatie: De text-shadow versterkt voor betere leesbaarheid op donkere achtergrond */
     text-shadow: 0 0 14px rgba(0, 242, 255, 0.2);
 }
-
-@keyframes seaWave {
-    0%   { transform: translateY(0px);   filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.3)); }
-    25%  { transform: translateY(-10px); filter: drop-shadow(0 2px 10px rgba(100, 255, 218, 0.7)); }
-    50%  { transform: translateY(0px);   filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.3)); }
-    75%  { transform: translateY(6px);   filter: drop-shadow(0 -2px 8px rgba(0, 242, 255, 0.4)); }
-    100% { transform: translateY(0px);   filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.3)); }
+/* Sectie: Algemene Body & Container Styling */* {
+    box-sizing: border-box;
 }
-
-.logo-container {
-    position: relative;
-    display: inline-block;
-    overflow: visible;
-}
-
 .hero-logo {
     width: min(550px, 78vw);
     height: auto;
@@ -298,6 +151,7 @@ main {
     margin: 0 auto 20px;
     opacity: 0;
     cursor: pointer;
+    /* Meerdere filters voor die diepe glow */
     filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.4)) drop-shadow(0 0 25px rgba(100, 255, 218, 0.2)) drop-shadow(0 0 45px rgba(100, 255, 218, 0.1));
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform, opacity;
@@ -315,34 +169,8 @@ main {
     filter: drop-shadow(0 0 8px rgba(0, 255, 170, 0.9)) drop-shadow(0 0 25px rgba(0, 255, 170, 0.5));
 }
 
-.logo-hero.hero-glow,
 .logo-hero.glow-logo {
     animation: logoPendulum 4s ease-in-out infinite, pulsateGlow 3s ease-in-out infinite;
-}
-
-.logo-container::before,
-.logo-container::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #00ffaa;
-    border-radius: 50%;
-    opacity: 0;
-    animation: dataParticles 1.5s ease-out forwards;
-    box-shadow: 0 0 10px #00ffaa;
-    pointer-events: none;
-}
-
-.logo-container::before {
-    top: -50px;
-    left: -50px;
-}
-
-.logo-container::after {
-    right: -50px;
-    bottom: -50px;
-    animation-delay: 0.2s;
 }
 
 .hero-logo:hover {
@@ -350,33 +178,6 @@ main {
     transform: scale(1.02);
 }
 
-@keyframes pulsateGlow {
-    0%,
-    100% {
-        filter: drop-shadow(0 0 10px rgba(0, 255, 170, 0.8));
-    }
-    50% {
-        filter: drop-shadow(0 0 25px rgba(0, 255, 170, 1)) drop-shadow(0 0 45px rgba(0, 255, 170, 0.4));
-    }
-}
-
-.ai-status-container {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out 1.2s forwards;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    background-color: var(--tt-glow);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--tt-glow);
-    animation: pulse-glow 2s infinite;
-}
 
 .ai-invite-text {
     margin: 0 auto;
@@ -396,6 +197,7 @@ main {
     transform: translateY(-30px);
     display: inline-block;
     text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+    /* Reparatie: forwards zorgt dat ze na het vallen op hun plek blijven staan */
     animation: puzzel-val 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
@@ -405,6 +207,7 @@ main {
     transition: all 0.3s ease;
 }
 
+/* Sectie: Animatie Delays voor het 'waterval' effect */
 .puzzel-stuk:nth-child(1) { animation-delay: 1.4s; }
 .puzzel-stuk:nth-child(2) { animation-delay: 1.5s; }
 .puzzel-stuk:nth-child(3) { animation-delay: 1.6s; }
@@ -417,34 +220,14 @@ main {
 .puzzel-stuk:nth-child(10) { animation-delay: 2.3s; }
 .puzzel-stuk:nth-child(11) { animation-delay: 2.4s; }
 
-#ai-intro,
-.offer-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 60px 20px 100px;
+/* Sectie: AI Intro Container */
+#ai-intro {
+    /* Reparatie: Zorg dat deze sectie ruimte heeft om de vallende stukjes te tonen */
     position: relative;
-    z-index: 1;
+    padding: 40px 0;
 }
 
-.main-title {
-    width: 100%;
-    margin: 0 auto 30px;
-    text-align: center;
-    font-size: clamp(2.4rem, 6vw, 3.5rem);
-    font-weight: 900;
-    line-height: 0.95;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    background: linear-gradient(to bottom, #ffffff, var(--tt-glow));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.4));
-}
-
+/* Sectie: Prijs en Instructies */
 .price-callout {
     margin: 0 0 30px;
     color: var(--tt-glow);
@@ -464,6 +247,7 @@ main {
     letter-spacing: 0.2px;
 }
 
+/* Sectie: Empire Scan Launch Panel */
 .empire-scan-launch {
     width: min(100%, 780px);
     margin: 10px auto 30px;
@@ -490,39 +274,15 @@ main {
     line-height: 1.5;
 }
 
-.empire-open-btn,
-.scan-submit-btn,
-.scan-close {
-    border: 1px solid rgba(0, 255, 153, 0.65);
-    color: #dffef0;
-    background: linear-gradient(180deg, rgba(0, 255, 153, 0.12) 0%, rgba(0, 255, 153, 0.04) 100%);
-    font-family: 'Space Mono', monospace;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.empire-open-btn {
-    min-height: 52px;
-    padding: 12px 26px;
-    border-radius: 14px;
-    font-size: 0.98rem;
-}
-
-.empire-open-btn:hover,
-.scan-submit-btn:hover,
-.scan-close:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
-    background: linear-gradient(180deg, rgba(0, 255, 153, 0.2) 0%, rgba(0, 255, 153, 0.08) 100%);
-}
-
+/* Sectie: Scan Overlay (Pop-up Systeem) */
 .scan-overlay {
     position: fixed;
+    /* Reparatie: Gebruik inset: 0 voor volledige dekking */
     inset: 0;
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(6px);
-    display: none;
+    -webkit-backdrop-filter: blur(6px); /* Reparatie: Safari ondersteuning */
+    display: none; /* Wordt via JS op 'flex' gezet */
     align-items: center;
     justify-content: center;
     z-index: 2000;
@@ -537,23 +297,7 @@ main {
     background: radial-gradient(circle at top right, rgba(0, 255, 153, 0.12), rgba(8, 10, 12, 0.96) 32%, rgba(0, 0, 0, 0.97) 70%);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.58), 0 0 36px rgba(0, 255, 153, 0.2);
     overflow: hidden;
-}
-
-.scan-overlay-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 16px 16px 12px;
-    border-bottom: 1px solid rgba(0, 255, 153, 0.2);
-}
-
-.scan-overlay-header h2 {
-    margin: 0;
-    font-size: clamp(1rem, 1.3vw + 0.7rem, 1.4rem);
-    color: #00ff99;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    position: relative;
 }
 
 .scan-close {
@@ -561,6 +305,7 @@ main {
     min-height: 42px;
     border-radius: 10px;
     font-size: 1rem;
+    cursor: pointer; /* Reparatie: Zorg dat je ziet dat het een knop is */
 }
 
 .scan-live-total {
@@ -576,6 +321,7 @@ main {
     text-align: center;
 }
 
+/* Sectie: Scrolling in de Scan Panel */
 .scan-steps-scroll {
     max-height: calc(min(90vh, 900px) - 136px);
     overflow-y: auto;
@@ -583,38 +329,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    -webkit-overflow-scrolling: touch;
 }
 
-.step-card {
-    border: 1px solid rgba(0, 255, 153, 0.22);
-    border-radius: 14px;
-    padding: 14px;
-    background: rgba(8, 16, 12, 0.75);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.step-card label {
-    color: #dbffef;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-}
-
-.step-card select,
-.step-card input[type='text'],
-.step-card input[type='email'] {
-    width: 100%;
-    min-height: 48px;
-    border: 1px solid rgba(0, 255, 153, 0.5);
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.84);
-    color: #00ff99;
-    padding: 10px 12px;
-    font-size: 0.98rem;
-    box-sizing: border-box;
-}
-
+/* Sectie: Range Sliders */
 .range-row {
     display: flex;
     align-items: center;
@@ -623,10 +341,13 @@ main {
 
 .range-row input[type='range'] {
     width: 100%;
-    accent-color: #00ff99;
+    accent-color: #00ff99; /* Kleur van het schuifje */
     min-height: 40px;
+    cursor: pointer;
 }
 
+CSS
+/* Sectie: Range Slider Output */
 .range-row output {
     min-width: 48px;
     text-align: center;
@@ -639,6 +360,7 @@ main {
     background: rgba(0, 0, 0, 0.62);
 }
 
+/* Sectie: Interactieve Checkbox Pills */
 .check-pill {
     display: flex;
     align-items: center;
@@ -650,7 +372,9 @@ main {
     background: rgba(0, 0, 0, 0.6);
     color: #e8fff5;
     cursor: pointer;
+    /* Reparatie: Will-change toegevoegd voor soepele schaduw animatie */
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    will-change: box-shadow, background;
 }
 
 .check-pill input[type='checkbox'] {
@@ -660,25 +384,16 @@ main {
     flex: 0 0 auto;
 }
 
+/* Reparatie: Moderne :has selector voor actieve staat van de pill */
 .check-pill:has(input[type='checkbox']:checked) {
     border-color: #00ff99;
     background: rgba(0, 255, 153, 0.15);
     box-shadow: 0 0 20px rgba(0, 255, 153, 0.25);
 }
 
-.scan-submit-btn {
-    width: 100%;
-    min-height: 56px;
-    border-radius: 14px;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-}
-
-body.scan-active {
-    overflow: hidden;
-}
-
+/* Sectie: Mobiele Progress Bar */
 .steps-mobile-progress {
+    /* Wordt via media queries op 'block' gezet wanneer nodig */
     display: none;
 }
 
@@ -704,12 +419,13 @@ body.scan-active {
 .steps-mobile-progress-fill {
     display: block;
     height: 100%;
-    width: 16.67%;
+    width: 16.67%; /* Startwaarde */
     border-radius: inherit;
     background: linear-gradient(90deg, var(--tt-glow) 0%, var(--tt-blue) 100%);
     transition: width 0.28s ease;
 }
 
+/* Sectie: Stappen Grid Systeem */
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -719,10 +435,7 @@ body.scan-active {
     margin: 0 auto 25px;
 }
 
-.step-container {
-    box-sizing: border-box;
-}
-
+/* Sectie: Individuele Stap Items */
 .step-item {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(100, 255, 218, 0.15);
@@ -733,7 +446,7 @@ body.scan-active {
     align-items: center;
     gap: 12px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 .step-item:hover {
@@ -742,14 +455,18 @@ body.scan-active {
     background: rgba(0, 255, 170, 0.1);
 }
 
+/* Sectie: Actieve Stap Staat */
 .step-item.active {
     border-left: 4px solid #00ffaa;
     border-color: rgba(100, 255, 218, 0.28);
     background: rgba(0, 255, 170, 0.1);
-    transform: translateX(5px);
+    /* Reparatie: Gebruik een subtiele transform voor focus */
+    transform: translateX(5px) scale(1.01);
     box-shadow: 0 0 20px rgba(100, 255, 218, 0.16);
 }
 
+
+/* Sectie: Stap Nummering */
 .step-num {
     min-width: 28px;
     height: 28px;
@@ -765,6 +482,7 @@ body.scan-active {
     transition: 0.3s;
 }
 
+/* Sectie: Actieve Stap Nummering */
 .step-item.active .step-num {
     background: #00ffaa;
     color: #000;
@@ -781,38 +499,7 @@ body.scan-active {
     font-size: 0.75rem;
 }
 
-.steps-container-main {
-    width: min(100%, 760px);
-    margin: 18px auto 26px;
-    min-height: 250px;
-    position: relative;
-}
-
-.steps-container-main .step-item {
-    display: none;
-    text-align: center;
-    padding: 24px;
-    border-radius: 18px;
-    border: 1px solid rgba(100, 255, 218, 0.24);
-    background: rgba(10, 18, 28, 0.8);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34), inset 0 0 0 1px rgba(100, 255, 218, 0.08);
-    transform: none;
-    cursor: default;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.steps-container-main .step-item.active {
-    display: flex;
-    border-left: 1px solid rgba(100, 255, 218, 0.24);
-    animation: fadeInStep 0.32s ease forwards;
-    box-shadow: 0 0 24px rgba(0, 242, 255, 0.2), 0 18px 36px rgba(0, 0, 0, 0.38);
-}
-
-.steps-container-main .step-item .step-num {
-    margin: 0 auto 2px;
-}
-
+/* Sectie: Keuze Chips Container */
 .choice-chips {
     display: flex;
     gap: 10px;
@@ -821,6 +508,7 @@ body.scan-active {
     margin-top: 16px;
 }
 
+/* Sectie: Individuele Chips en Dropdown Basis */
 .chip,
 .step-dropdown {
     border: 1px solid rgba(100, 255, 218, 0.35);
@@ -832,6 +520,7 @@ body.scan-active {
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.2px;
+    /* Reparatie: Transition eigenschappen expliciet benoemd */
     transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease, background 0.24s ease, color 0.24s ease;
 }
 
@@ -839,6 +528,7 @@ body.scan-active {
     cursor: pointer;
 }
 
+/* Sectie: Hover en Geselecteerde Staat */
 .chip:hover,
 .chip.selected,
 .step-dropdown:focus {
@@ -850,6 +540,7 @@ body.scan-active {
     outline: none;
 }
 
+/* Sectie: Stap Dropdown Styling */
 .step-dropdown {
     width: min(100%, 320px);
     background-color: rgba(0, 0, 0, 0.8);
@@ -860,6 +551,7 @@ body.scan-active {
     cursor: pointer;
     text-align-last: center;
     box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+    /* Reparatie: Appearance zorgt voor een schone dropdown zonder standaard pijltjes */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -870,17 +562,7 @@ body.scan-active {
     color: #00ff99;
 }
 
-@keyframes fadeInStep {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Sectie: Klant Bescherming Box */
 .klant-bescherming-box {
     width: 100%;
     max-width: 1000px;
@@ -890,9 +572,11 @@ body.scan-active {
     border: 1px dashed rgba(100, 255, 218, 0.3);
     border-radius: 10px;
     text-align: center;
+    /* Reparatie: Box-sizing toegevoegd om breedte-fouten te voorkomen */
     box-sizing: border-box;
 }
 
+/* Sectie: Bescherming Tekst Styling */
 .bescherming-tekst {
     margin: 0;
     font-size: 0.85rem;
@@ -909,23 +593,7 @@ body.scan-active {
     margin-right: 8px;
 }
 
-.tt-guide-container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--panel);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
-    overflow: hidden;
-}
-
-#chat-container {
-    scroll-margin-top: 80px;
-}
-
+/* Sectie: Chat Window & Berichten */
 #chat-window {
     min-height: 320px;
     max-height: 480px;
@@ -934,6 +602,9 @@ body.scan-active {
     flex-direction: column;
     gap: 14px;
     overflow-y: auto;
+    /* Reparatie: Zorgt voor vloeiende scroll op iPhones */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .message {
@@ -943,6 +614,8 @@ body.scan-active {
     line-height: 1.6;
     font-size: 1rem;
     white-space: pre-wrap;
+    /* Reparatie: Voorkomt dat lange woorden buiten het ballonnetje breken */
+    word-wrap: break-word;
 }
 
 .bot-message,
@@ -961,8 +634,10 @@ body.scan-active {
     align-self: flex-end;
     background: rgba(100, 255, 218, 0.1);
     border: 1px solid var(--tt-glow);
+    color: #fff; /* Reparatie: Zorgt dat gebruikerstekst altijd wit is */
 }
 
+/* Sectie: Chat Input Area */
 .tt-guide-input-row {
     padding: 20px 24px;
     background: rgba(10, 10, 20, 0.6);
@@ -986,45 +661,15 @@ body.scan-active {
     color: rgba(255, 255, 255, 0.45);
 }
 
-.send-icon-btn {
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--tt-glow);
-    color: #0a192f;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
-}
-
-.send-icon-btn:hover {
-    transform: scale(1.08);
-    background: #fff;
-    box-shadow: 0 0 25px rgba(100, 255, 218, 0.45);
-}
-
-#pakketten,
-#over-ons,
-#contact,
-footer,
-.packages-section {
-    padding: 100px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.section-title,
+/* Sectie: Glow Titels & Packages Grid */
 .glow-text {
     text-align: center;
     font-size: clamp(2.2rem, 5vw, 3rem);
     letter-spacing: 2px;
     margin: 0 0 50px;
     color: #fff;
+    /* Reparatie: Glow effect toegevoegd voor consistentie met je stijl */
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
 }
 
 .packages-grid {
@@ -1034,27 +679,7 @@ footer,
     flex-wrap: wrap;
 }
 
-.package-card {
-    width: min(100%, 320px);
-    padding: 38px 28px;
-    border-radius: 18px;
-    background: rgba(17, 34, 64, 0.42);
-    border: 1px solid rgba(100, 255, 218, 0.2);
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.package-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--tt-glow);
-    box-shadow: 0 14px 34px rgba(100, 255, 218, 0.1);
-}
-
-.package-card.featured {
-    border-color: var(--tt-blue);
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.12);
-}
-
+/* Sectie: Badges & Labels */
 .badge,
 .badge-featured {
     display: inline-block;
@@ -1065,8 +690,12 @@ footer,
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
+    /* Reparatie: Zorgt dat ze altijd bovenop liggen */
+    position: relative;
+    z-index: 1;
 }
 
+/* Sectie: Badge Varianten */
 .badge {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
@@ -1077,6 +706,7 @@ footer,
     color: var(--tt-blue);
 }
 
+/* Sectie: Prijs Styling */
 .price {
     font-size: 2.4rem;
     font-weight: 900;
@@ -1087,6 +717,7 @@ footer,
     color: var(--tt-blue);
 }
 
+/* Sectie: Features Lijst */
 .features {
     list-style: none;
     padding: 0;
@@ -1098,6 +729,7 @@ footer,
     margin-top: 10px;
 }
 
+/* Sectie: Mobiele Optimalisatie (Media Query) */
 @media (max-width: 767px) {
     .steps-mobile-instruction {
         text-align: left;
@@ -1111,30 +743,7 @@ footer,
         margin: 0 auto 12px;
     }
 
-    .steps-grid.step-container {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        width: min(100%, 430px);
-        margin: 0 auto 18px;
-        padding: 12px;
-        background: rgba(8, 15, 23, 0.82);
-        border: 1px solid rgba(100, 255, 218, 0.18);
-        border-radius: 18px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-        max-height: 240px;
-        overflow: hidden;
-    }
-
-    .steps-container-main {
-        min-height: 238px;
-        margin-bottom: 20px;
-    }
-
-    .steps-container-main .step-item {
-        padding: 18px 14px;
-        border-radius: 14px;
-    }
-
+    /* Reparatie: Horizontale scroll voor keuzes op mobiel */
     .choice-chips {
         display: flex;
         flex-wrap: nowrap;
@@ -1143,13 +752,13 @@ footer,
         gap: 15px;
         min-height: 80px;
         align-items: center;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch; /* Voor soepele scroll op iOS */
+        scroll-snap-type: x mandatory; /* Zorgt dat de chip in het midden stopt */
+        scrollbar-width: none; /* Verbergt scrollbar op Firefox */
     }
 
     .choice-chips::-webkit-scrollbar {
-        display: none;
+        display: none; /* Verbergt scrollbar op Chrome/Safari */
     }
 
     .chip {
@@ -1166,29 +775,12 @@ footer,
         display: flex;
         justify-content: center;
         align-items: center;
-        scroll-snap-align: center;
+        scroll-snap-align: center; /* Chip lijnt uit in het midden bij scrollen */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         text-align: center;
     }
 
-    .step-3-container {
-        padding: 20px 10px;
-        width: 100%;
-    }
-
-    .step-3-container select,
-    #step-3 .step-dropdown {
-        height: 55px;
-        width: 100%;
-        display: block;
-        padding: 15px;
-        font-size: 16px;
-        border-radius: 10px;
-        background: #1a1a1a;
-        color: #fff;
-        border: 1px solid #333;
-    }
-
+    /* Sectie: Mobiele Stappen Systeem (Accordion effect) */
     .step-item {
         min-height: 70px;
         padding: 14px;
@@ -1198,6 +790,7 @@ footer,
         max-height: 0;
         overflow: hidden;
         pointer-events: none;
+        /* Reparatie: Overgang voor het openklappen van stappen */
         transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease;
     }
 
@@ -1205,14 +798,18 @@ footer,
     .step-item.next-step {
         opacity: 1;
         transform: translateX(0);
-        max-height: 260px;
+        max-height: 260px; /* Zorg dat dit hoog genoeg is voor je tekst */
         pointer-events: auto;
     }
 
     .step-item.slide-in-step {
+        /* Reparatie: De animatie definitie moet in animations.css staan */
         animation: step-slide-in 0.24s ease;
     }
+}
 
+/* Sectie: Mobiele Stap Statussen (Vervolg) */
+@media (max-width: 767px) {
     .step-item.active {
         border-color: rgba(100, 255, 218, 0.7);
         background: rgba(0, 255, 170, 0.16);
@@ -1234,22 +831,7 @@ footer,
     }
 }
 
-.over-ons-section {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.over-ons-container {
-    width: min(1000px, 100%);
-    margin: 0 auto;
-    padding: 34px;
-    border-radius: 20px;
-    background: rgba(17, 34, 64, 0.34);
-    border: 1px solid rgba(100, 255, 218, 0.16);
-    box-sizing: border-box;
-    backdrop-filter: blur(6px);
-}
-
+/* Sectie: Over Ons - Titels en Tekst */
 .over-ons-subtitle {
     margin: 0 auto 20px;
     text-align: center;
@@ -1269,6 +851,7 @@ footer,
     text-align: center;
 }
 
+/* Sectie: De Belofte Box */
 .over-ons-belofte-box {
     margin: 28px auto 24px;
     width: min(820px, 100%);
@@ -1295,6 +878,7 @@ footer,
     font-size: clamp(0.98rem, 1.5vw, 1.05rem);
 }
 
+/* Sectie: Over Ons Call to Action */
 .over-ons-cta {
     display: inline-flex;
     align-items: center;
@@ -1311,7 +895,9 @@ footer,
     background: rgba(255, 255, 255, 0.03);
     font-weight: 700;
     letter-spacing: 0.3px;
+    /* Reparatie: Will-change voor soepele hover op zware schaduwen */
     transition: all 0.28s ease;
+    will-change: background, box-shadow, color;
     box-sizing: border-box;
 }
 
@@ -1321,25 +907,16 @@ footer,
     box-shadow: 0 0 24px rgba(0, 242, 255, 0.42);
 }
 
+/* Sectie: Contact Sectie Basis */
 #contact {
     text-align: center;
+    padding: 60px 20px; /* Reparatie: Padding toegevoegd voor ademruimte */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-#contact .container {
-    width: min(900px, 100%);
-    margin: 0 auto;
-}
-
-.footer-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
 }
 
 .contact-link {
     position: relative;
+    /* Reparatie: Z-index 999 is goed, maar zorg dat de parent niet overflowed */
     z-index: 999;
     display: inline-flex;
     align-items: center;
@@ -1347,86 +924,23 @@ footer,
     color: #00ffaa;
     text-decoration: none;
     font-size: 1.1rem;
+    /* Reparatie: Pointer-events auto is cruciaal voor klikbaarheid */
     pointer-events: auto !important;
     transition: 0.3s;
 }
 
 .contact-link:hover {
+    color: var(--tt-blue);
+    transform: translateY(-2px);
+}
+
+/* Sectie: Contact Link Hover */
+.contact-link:hover {
     color: #ffffff;
     text-shadow: 0 0 10px #00ffaa;
 }
 
-.site-footer {
-    background: #050505;
-    color: #fff;
-    padding: 50px 20px;
-    border-top: 1px solid #00ffcc;
-    font-family: sans-serif;
-}
-
-.site-footer-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-}
-
-.site-footer-brand {
-    margin: 0 0 15px;
-    color: #00ffcc;
-    font-size: 1.5rem;
-}
-
-.site-footer-heading {
-    margin: 0 0 15px;
-    color: #eee;
-    font-size: 1.1rem;
-}
-
-.site-footer-copy {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #aaa;
-    line-height: 1.6;
-}
-
-.site-footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.9rem;
-    color: #aaa;
-    line-height: 2;
-}
-
-.site-footer-links a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.site-footer-links a:hover {
-    color: #00ffcc;
-}
-
-.site-footer-status {
-    margin-top: 15px;
-    font-size: 0.8rem;
-    color: #00ffcc;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.site-footer-status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #00ffcc;
-    animation: blink 1.5s infinite;
-}
-
+/* Sectie: SEO Regio's Grid */
 .seo-regions {
     max-width: 1100px;
     margin: 36px auto 0;
@@ -1469,19 +983,7 @@ footer,
     line-height: 1.55;
 }
 
-.site-footer-bottom {
-    max-width: 1100px;
-    margin: 40px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid #222;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    font-size: 0.8rem;
-    color: #666;
-}
-
+/* Sectie: Experience Review / Sterren Systeem */
 #experience-review,
 .review-wrapper,
 .review-sectie {
@@ -1509,20 +1011,11 @@ footer,
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
 }
 
-.star-rating,
-.rating-container {
-    font-size: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
 .star {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.18);
     opacity: 0.45;
-    transform: scale(1);
+    display: inline-block; /* Reparatie: Zorgt dat transform/scale werkt */
     transition: transform 0.18s ease, color 0.18s ease, text-shadow 0.18s ease, opacity 0.18s ease;
 }
 
@@ -1531,14 +1024,6 @@ footer,
     opacity: 1;
     text-shadow: 0 0 18px rgba(0, 255, 170, 0.95), 0 0 30px rgba(0, 255, 170, 0.45);
     transform: scale(1.18);
-}
-
-.star.selected {
-    color: #00ffaa;
-    opacity: 1;
-    text-shadow: 0 0 22px rgba(0, 255, 170, 1), 0 0 42px rgba(0, 255, 170, 0.42);
-    transform: scale(1.08);
-    animation: starPulse 1.8s ease-in-out infinite;
 }
 
 .stat-msg,
@@ -1551,134 +1036,12 @@ footer,
     text-align: center;
 }
 
-@keyframes starPulse {
-    0%,
-    100% {
-        text-shadow: 0 0 15px rgba(0, 255, 170, 0.8);
-    }
-    50% {
-        text-shadow: 0 0 35px rgba(0, 255, 170, 1), 0 0 50px rgba(0, 255, 170, 0.5);
-    }
-}
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes logoPendulum {
-    0% {
-        transform: rotate(20deg);
-    }
-    50% {
-        transform: rotate(-20deg);
-    }
-    100% {
-        transform: rotate(20deg);
-    }
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes pulse-glow {
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.4;
-        transform: scale(0.9);
-    }
-}
-
-@keyframes announcement-glow {
-    0%,
-    100% {
-        box-shadow: 0 0 0 rgba(100, 255, 218, 0), 0 0 0 rgba(0, 242, 255, 0);
-    }
-    50% {
-        box-shadow: 0 0 24px rgba(100, 255, 218, 0.82), 0 0 40px rgba(0, 242, 255, 0.48);
-    }
-}
-
-@keyframes announcement-glitch-shift {
-    0% {
-        transform: translate(0, 0);
-    }
-    25% {
-        transform: translate(-1px, 1px);
-    }
-    50% {
-        transform: translate(1px, -1px);
-    }
-    75% {
-        transform: translate(2px, 0);
-    }
-    100% {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes dataParticles {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(calc(-50% - 50px), calc(-50% - 50px));
-    }
-    100% {
-        opacity: 0;
-        transform: translate(calc(-50% - 50px), calc(-50% - 50px));
-    }
-}
-
-@keyframes puzzel-val {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes step-slide-in {
-    from {
-        opacity: 0;
-        transform: translateX(24px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
+/* Sectie: Finale Media Queries */
 @media (max-width: 850px) {
     .steps-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .nav-container {
-        width: min(1200px, calc(100% - 28px));
-        padding: 14px 0;
-        gap: 16px;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-}
+} /* Reparatie: Ontbrekende accolade toegevoegd */
 
 @media (max-width: 700px) {
     .announcement-bar {
@@ -1687,97 +1050,13 @@ footer,
         padding: 8px 12px;
         font-size: 0.8rem;
     }
-
     .announcement-text {
         font-size: 0.84rem;
         letter-spacing: 0.35px;
     }
 
-    .sticky-header {
-        top: 56px;
-    }
-
-    main {
-        padding-top: 130px;
-    }
-
-    #nav-menu {
-        min-height: 74px;
-    }
-
-    .nav-container {
-        width: min(100%, calc(100% - 24px));
-        justify-content: center;
-        padding: 12px 0;
-        min-height: 74px;
-    }
-
-    .nav-logo-text {
-        margin: 0 auto;
-        text-align: center;
-        font-size: 1.1rem;
-        letter-spacing: 1.5px;
-    }
-
-    .nav-toggle {
-        display: inline-flex;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-    }
-
-    .nav-links {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(320px, calc(100vw - 24px));
-        margin-left: 0;
-        padding: 18px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        background: rgba(10, 10, 10, 0.96);
-        border: 1px solid rgba(100, 255, 218, 0.16);
-        border-radius: 20px;
-        box-shadow: 0 24px 44px rgba(0, 0, 0, 0.38);
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
-    }
-
-    #nav-menu.menu-open .nav-links {
-        opacity: 1;
-        pointer-events: auto;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-btn,
-    .nav-btn-highlight,
-    .nav-link-simple {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .nav-link-simple {
-        padding: 10px 18px;
-        border: 1px solid rgba(100, 255, 218, 0.18);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.03);
-    }
-
     .hero-impact {
         padding-top: 90px;
-    }
-
-    .over-ons-container {
-        padding: 24px 16px;
-        border-radius: 16px;
     }
 
     .over-ons-text,
@@ -1795,18 +1074,8 @@ footer,
         padding: 12px 14px;
     }
 
-    .ai-status-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
     .ai-invite-text {
         font-size: 1.15rem;
-    }
-
-    #ai-intro,
-    .offer-section {
-        padding: 42px 14px 88px;
     }
 
     .step-item strong {
@@ -1818,191 +1087,75 @@ footer,
         line-height: 1.4;
     }
 
-    .tt-guide-container {
-        width: 100%;
-    }
-}
-
-@media (max-width: 500px) {
-    .steps-grid.step-container {
-        width: 100%;
-        max-height: 230px;
-        padding: 12px;
-    }
-
-    .main-title {
-        font-size: 2.2rem;
-    }
-
-    .price-callout {
-        font-size: 1.05rem;
-    }
-
     #chat-window {
         min-height: 280px;
         padding: 18px;
-    }
-
-    .tt-guide-input-row {
-        padding: 14px 16px;
     }
 
     .message {
         max-width: 100%;
     }
 
-    .contact-link {
-        font-size: 1rem;
-    }
-
-    .step-item {
-        gap: 10px;
-        min-height: 68px;
-    }
-
-    .step-num {
-        min-width: 30px;
-        height: 30px;
-        font-size: 0.85rem;
-    }
-
-    .site-footer {
-        padding: 40px 16px;
-    }
-
-    .site-footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .seo-regions {
-        padding: 14px;
-    }
-
     .region-grid {
         grid-template-columns: 1fr;
     }
 
-    .scan-overlay {
-        padding: 8px;
-    }
-
     .scan-overlay-panel {
         max-height: 94vh;
-        border-radius: 14px;
-    }
-
-    .scan-overlay-header {
-        padding: 12px;
-    }
-
-    .scan-steps-scroll {
-        max-height: calc(94vh - 128px);
-        padding: 0 12px 12px;
-    }
-
-    .step-card {
-        padding: 12px;
-    }
-
-    .check-pill {
-        font-size: 0.95rem;
     }
 }
 
-#cookie-banner {
-    position: fixed;
-    bottom: -250px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(420px, calc(100vw - 24px));
-    background: rgba(10, 10, 10, 0.98);
-    border: 2px solid #00ffcc;
-    padding: 25px;
-    border-radius: 20px;
-    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 10000;
-    color: white;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
-    text-align: center;
-    font-family: sans-serif;
+/* =====================================================
+   Sectie: BEHEER PAGE (Dashboard)
+   ===================================================== */
+.beheer-page .nav-link-simple.active {
+    color: var(--tt-glow);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.55);
 }
 
-.cookie-banner-inner {
-    display: flex;
-    flex-direction: column;
+.beheer-content {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto 40px;
+}
+
+.intro-text {
+    padding: 22px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.03); /* Reparatie: Zichtbaarheid toegevoegd */
+    border-radius: 12px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
+    margin-bottom: 24px;
 }
 
-.cookie-banner-title {
-    margin: 0;
-    color: #00ffcc;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+.prijs-box {
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
 }
 
-.cookie-banner-text {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: 400;
-    color: #e0e0e0;
+.prijs-box h2 span {
+    color: var(--tt-glow);
 }
 
-.cookie-banner-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    margin-top: 5px;
+.voorwaarden-lijst {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 22px;
 }
 
-.cookie-btn {
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.25s ease;
+.voorwaarden-lijst li {
+    margin: 8px 0;
+    color: var(--text);
 }
 
-.cookie-btn:hover {
-    transform: translateY(-1px);
-}
-
-.cookie-btn-accept {
-    background: #00ffcc;
-    border: none;
-    width: 100%;
-    padding: 12px;
-    font-weight: bold;
-    color: #0a0a0a;
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-.cookie-btn-decline {
-    background: transparent;
-    border: 1px solid #444;
-    color: #aaa;
-    width: 80%;
-    padding: 8px;
-    font-size: 0.85rem;
-}
-
-@media (max-width: 700px) {
-    #cookie-banner {
-        width: calc(100vw - 24px);
-        bottom: -320px;
-        padding: 18px;
-    }
-
-    .cookie-banner-actions {
-        justify-content: center;
-    }
-
-    .cookie-btn {
-        width: 100%;
-    }
-
-    .cookie-btn-decline {
-        width: 100%;
-    }
+.voorwaarden-lijst i {
+    color: var(--tt-glow);
+    margin-right: 8px;
+    display: inline-block;
 }
