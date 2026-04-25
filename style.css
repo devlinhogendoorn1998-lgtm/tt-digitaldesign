@@ -1,3 +1,100 @@
+.beheer-card i {
+    color: var(--tt-blue);
+    font-size: 2.1rem;
+    margin-bottom: 10px;
+    display: block;
+}
+.pricing-card {
+    background: var(--panel);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,255,204,0.10);
+    padding: 38px 28px 28px 28px;
+    max-width: 370px;
+    margin: 32px auto 24px auto;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.pricing-card:hover {
+    box-shadow: 0 12px 48px 0 rgba(0,255,204,0.18);
+    transform: translateY(-4px) scale(1.025);
+}
+.pricing-card .card-title {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.pricing-card h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--tt-blue);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+.pricing-card .price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--tt-glow);
+    margin-bottom: 10px;
+    display: block;
+}
+.pricing-card .price span {
+    font-size: 1.1rem;
+    color: var(--tt-blue);
+    font-weight: 700;
+}
+.pricing-card .features {
+    margin: 0 0 18px 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 1.05rem;
+    text-align: left;
+}
+.pricing-card .features li {
+    margin-bottom: 8px;
+    padding-left: 0.5em;
+    position: relative;
+}
+.pricing-card .features li::before {
+    content: '\2022';
+    color: var(--tt-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.pricing-card .cta-button {
+    background: linear-gradient(90deg, var(--tt-blue), var(--tt-glow));
+    color: #0a192f;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    margin: 18px 0 8px 0;
+    box-shadow: 0 2px 12px rgba(0,255,204,0.10);
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    display: inline-block;
+}
+.pricing-card .cta-button:hover {
+    background: linear-gradient(90deg, var(--tt-glow), var(--tt-blue));
+    color: #000;
+    box-shadow: 0 4px 24px rgba(0,255,204,0.18);
+}
+.pricing-card .no-hidden-costs {
+    color: var(--tt-glow);
+    font-size: 0.98rem;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
 
 
 :root {
