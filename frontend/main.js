@@ -1,3 +1,6 @@
+// API URL automatisch kiezen (lokaal of productie)
+const API_URL = window.location.hostname === "localhost" ? "http://localhost:3000/chat" : "https://tt-digitaldesign.onrender.com/chat";
+
 // Hamburger Menu: open/close + klik buiten sluit (ook desktop)
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
@@ -67,7 +70,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             window.chatHistory.push({ role: "user", content: message });
 
             try {
-                const response = await fetch('http://localhost:3000/chat', {
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ history: window.chatHistory }),
@@ -175,7 +178,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             chatHistory.push({ role: "user", content: message });
 
             try {
-                const response = await fetch('http://localhost:3000/chat', {
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ history: chatHistory }),
