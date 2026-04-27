@@ -1,0 +1,733 @@
+@media (max-width: 700px) {
+  body {
+    padding: 0 0 24px 0;
+    font-size: 1.01rem;
+  }
+  .hero-section h1, .hero-section h2 {
+    font-size: 1.18rem;
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 0 4vw;
+  }
+  .hero-logo {
+    max-width: 80vw;
+    height: auto;
+    margin: 0 auto 12px auto;
+    display: block;
+  }
+  .sub-text, .price-tag {
+    font-size: 1.01rem;
+    text-align: center;
+    margin: 0 0 8px 0;
+    padding: 0 4vw;
+  }
+  .fee-disclaimer.glass {
+    max-width: 96vw;
+    padding: 14px 8px;
+    font-size: 0.98rem;
+  }
+  .strategie-cards-row {
+    flex-direction: column;
+    gap: 18px;
+    max-width: 98vw;
+    align-items: center;
+    margin: 0 auto 18px auto;
+  }
+  .strategie-card, .pricing-card {
+    min-width: 0;
+    max-width: 98vw;
+    padding: 18px 6vw 18px 6vw;
+    border-radius: 16px;
+  }
+  .pricing-card {
+    padding: 18px 6vw 18px 6vw;
+  }
+  .card-title {
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+  }
+  .price {
+    font-size: 1.38rem;
+    margin: 10px 0 4px 0;
+  }
+  .btn-main, .btn-license, .btn-support, .btn-manage {
+    font-size: 1.01rem;
+    padding: 12px 0;
+    width: 100%;
+    max-width: 98vw;
+    margin: 10px 0 0 0;
+    border-radius: 40px;
+    box-sizing: border-box;
+    display: block;
+  }
+  .dropdown-toggle {
+    font-size: 1.01rem;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 40px;
+    margin-bottom: 0;
+  }
+  .card-features-dropdown {
+    padding: 10px 4vw 10px 4vw;
+    font-size: 0.98rem;
+  }
+  #tt-guide {
+    max-width: 99vw;
+    min-height: 220px;
+    margin: 12px auto 12px auto;
+    padding: 0 2vw;
+  }
+  #tt-guide .guide-header {
+    margin-bottom: 10px;
+    padding: 0 2vw;
+  }
+  #tt-guide .ai-interaction-zone {
+    gap: 10px;
+    padding: 0 2vw;
+  }
+  #tt-guide #chat-window, #tt-guide .chat-input-wrapper {
+    max-width: 99vw;
+    padding: 0 2vw;
+  }
+  .footer-main.glass, .location-grid.glass {
+    max-width: 99vw;
+    padding: 10px 2vw;
+    font-size: 0.98rem;
+  }
+  .footer-main h4, .location-grid h4 {
+    font-size: 1.01rem;
+  }
+  .provinces {
+    columns: 1 !important;
+    font-size: 0.98rem;
+    padding: 0 2vw;
+  }
+}
+/* Hero titels: opvallende gradient en golf/wave animatie */
+.hero-section h1 span, .hero-section h2 span {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 2.1rem;
+  background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px #00f2ff88);
+  animation: waveText 2.2s infinite;
+  animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+}
+
+
+/* Basis styling voor de letters */
+ .hero-section h1 span, 
+.hero-section h2 span
+    {opacity: 3;}
+
+
+    
+@keyframes revealLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Dynamisch: geef elke letter een andere delay */
+.hero-section h1 span:nth-child(1) { animation-delay: 0s; }
+.hero-section h1 span:nth-child(2) { animation-delay: 0.06s; }
+.hero-section h1 span:nth-child(3) { animation-delay: 0.12s; }
+.hero-section h1 span:nth-child(4) { animation-delay: 0.18s; }
+.hero-section h1 span:nth-child(5) { animation-delay: 0.24s; }
+.hero-section h1 span:nth-child(6) { animation-delay: 0.30s; }
+.hero-section h1 span:nth-child(7) { animation-delay: 0.36s; }
+.hero-section h1 span:nth-child(8) { animation-delay: 0.42s; }
+.hero-section h1 span:nth-child(9) { animation-delay: 0.48s; }
+.hero-section h1 span:nth-child(10) { animation-delay: 0.54s; }
+.hero-section h1 span:nth-child(11) { animation-delay: 0.60s; }
+.hero-section h1 span:nth-child(12) { animation-delay: 0.66s; }
+.hero-section h1 span:nth-child(13) { animation-delay: 0.72s; }
+.hero-section h1 span:nth-child(14) { animation-delay: 0.78s; }
+.hero-section h1 span:nth-child(15) { animation-delay: 0.84s; }
+.hero-section h1 span:nth-child(16) { animation-delay: 0.90s; }
+.hero-section h1 span:nth-child(17) { animation-delay: 0.96s; }
+.hero-section h1 span:nth-child(18) { animation-delay: 1.02s; }
+.hero-section h1 span:nth-child(19) { animation-delay: 1.08s; }
+.hero-section h1 span:nth-child(20) { animation-delay: 1.14s; }
+.hero-section h1 span:nth-child(21) { animation-delay: 1.20s; }
+.hero-section h1 span:nth-child(22) { animation-delay: 1.26s; }
+.hero-section h1 span:nth-child(23) { animation-delay: 1.32s; }
+.hero-section h1 span:nth-child(24) { animation-delay: 1.38s; }
+.hero-section h1 span:nth-child(25) { animation-delay: 1.44s; }
+.hero-section h1 span:nth-child(26) { animation-delay: 1.50s; }
+.hero-section h1 span:nth-child(27) { animation-delay: 1.56s; }
+.hero-section h1 span:nth-child(28) { animation-delay: 1.62s; }
+.hero-section h1 span:nth-child(29) { animation-delay: 1.68s; }
+.hero-section h1 span:nth-child(30) { animation-delay: 1.74s; }
+.hero-section h1 span:nth-child(31) { animation-delay: 1.80s; }
+.hero-section h1 span:nth-child(32) { animation-delay: 1.86s; }
+.hero-section h1 span:nth-child(33) { animation-delay: 1.92s; }
+.hero-section h1 span:nth-child(34) { animation-delay: 1.98s; }
+.hero-section h1 span:nth-child(35) { animation-delay: 2.04s; }
+.hero-section h1 span:nth-child(36) { animation-delay: 2.10s; }
+.hero-section h1 span:nth-child(37) { animation-delay: 2.16s; }
+.hero-section h1 span:nth-child(38) { animation-delay: 2.22s; }
+.hero-section h1 span:nth-child(39) { animation-delay: 2.28s; }
+.hero-section h1 span:nth-child(40) { animation-delay: 2.34s; }
+.hero-section h1 span:nth-child(41) { animation-delay: 2.40s; }
+.hero-section h1 span:nth-child(42) { animation-delay: 2.46s; }
+.hero-section h1 span:nth-child(43) { animation-delay: 2.52s; }
+.hero-section h1 span:nth-child(44) { animation-delay: 2.58s; }
+.hero-section h1 span:nth-child(45) { animation-delay: 2.64s; }
+.hero-section h1 span:nth-child(46) { animation-delay: 2.70s; }
+.hero-section h1 span:nth-child(47) { animation-delay: 2.76s; }
+.hero-section h1 span:nth-child(48) { animation-delay: 2.82s; }
+.hero-section h1 span:nth-child(49) { animation-delay: 2.88s; }
+.hero-section h1 span:nth-child(50) { animation-delay: 2.94s; }
+
+.hero-section h2 span:nth-child(1) { animation-delay: 0s; }
+.hero-section h2 span:nth-child(2) { animation-delay: 0.06s; }
+.hero-section h2 span:nth-child(3) { animation-delay: 0.12s; }
+.hero-section h2 span:nth-child(4) { animation-delay: 0.18s; }
+.hero-section h2 span:nth-child(5) { animation-delay: 0.24s; }
+.hero-section h2 span:nth-child(6) { animation-delay: 0.30s; }
+.hero-section h2 span:nth-child(7) { animation-delay: 0.36s; }
+.hero-section h2 span:nth-child(8) { animation-delay: 0.42s; }
+.hero-section h2 span:nth-child(9) { animation-delay: 0.48s; }
+.hero-section h2 span:nth-child(10) { animation-delay: 0.54s; }
+.hero-section h2 span:nth-child(11) { animation-delay: 0.60s; }
+.hero-section h2 span:nth-child(12) { animation-delay: 0.66s; }
+.hero-section h2 span:nth-child(13) { animation-delay: 0.72s; }
+.hero-section h2 span:nth-child(14) { animation-delay: 0.78s; }
+.hero-section h2 span:nth-child(15) { animation-delay: 0.84s; }
+.hero-section h2 span:nth-child(16) { animation-delay: 0.90s; }
+.hero-section h2 span:nth-child(17) { animation-delay: 0.96s; }
+.hero-section h2 span:nth-child(18) { animation-delay: 1.02s; }
+.hero-section h2 span:nth-child(19) { animation-delay: 1.08s; }
+.hero-section h2 span:nth-child(20) { animation-delay: 1.14s; }
+.hero-section h2 span:nth-child(21) { animation-delay: 1.20s; }
+.hero-section h2 span:nth-child(22) { animation-delay: 1.26s; }
+.hero-section h2 span:nth-child(23) { animation-delay: 1.32s; }
+.hero-section h2 span:nth-child(24) { animation-delay: 1.38s; }
+.hero-section h2 span:nth-child(25) { animation-delay: 1.44s; }
+.hero-section h2 span:nth-child(26) { animation-delay: 1.50s; }
+.hero-section h2 span:nth-child(27) { animation-delay: 1.56s; }
+.hero-section h2 span:nth-child(28) { animation-delay: 1.62s; }
+.hero-section h2 span:nth-child(29) { animation-delay: 1.68s; }
+.hero-section h2 span:nth-child(30) { animation-delay: 1.74s; }
+.hero-section h2 span:nth-child(31) { animation-delay: 1.80s; }
+.hero-section h2 span:nth-child(32) { animation-delay: 1.86s; }
+.hero-section h2 span:nth-child(33) { animation-delay: 1.92s; }
+.hero-section h2 span:nth-child(34) { animation-delay: 1.98s; }
+.hero-section h2 span:nth-child(35) { animation-delay: 2.04s; }
+.hero-section h2 span:nth-child(36) { animation-delay: 2.10s; }
+.hero-section h2 span:nth-child(37) { animation-delay: 2.16s; }
+.hero-section h2 span:nth-child(38) { animation-delay: 2.22s; }
+.hero-section h2 span:nth-child(39) { animation-delay: 2.28s; }
+.hero-section h2 span:nth-child(40) { animation-delay: 2.34s; }
+.hero-section h2 span:nth-child(41) { animation-delay: 2.40s; }
+.hero-section h2 span:nth-child(42) { animation-delay: 2.46s; }
+.hero-section h2 span:nth-child(43) { animation-delay: 2.52s; }
+.hero-section h2 span:nth-child(44) { animation-delay: 2.58s; }
+.hero-section h2 span:nth-child(45) { animation-delay: 2.64s; }
+.hero-section h2 span:nth-child(46) { animation-delay: 2.70s; }
+.hero-section h2 span:nth-child(47) { animation-delay: 2.76s; }
+.hero-section h2 span:nth-child(48) { animation-delay: 2.82s; }
+.hero-section h2 span:nth-child(49) { animation-delay: 2.88s; }
+.hero-section h2 span:nth-child(50) { animation-delay: 2.94s; }
+/* Hero logo: dansende, ademende glow */
+.hero-logo {
+  animation: logoDance 2.8s cubic-bezier(0.4,0,0.2,1) infinite alternate, logoGlowBreath 3.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 32px #00f2ff) drop-shadow(0 0 8px #fff);
+}
+
+@keyframes logoDance {
+  0% { transform: scale(1) rotate(-7deg) translateY(0); }
+  10% { transform: scale(1.04) rotate(-3deg) translateY(-4px); }
+  25% { transform: scale(1.08) rotate(4deg) translateY(4px); }
+  50% { transform: scale(1.12) rotate(-2deg) translateY(-2px); }
+  75% { transform: scale(1.08) rotate(2deg) translateY(2px); }
+  90% { transform: scale(1.04) rotate(-3deg) translateY(-4px); }
+  100% { transform: scale(1) rotate(7deg) translateY(0); }
+}
+
+@keyframes logoGlowBreath {
+  0% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+  40% { filter: drop-shadow(0 0 48px #00f2ff) drop-shadow(0 0 16px #fff); }
+  60% { filter: drop-shadow(0 0 64px #00f2ff) drop-shadow(0 0 24px #fff); }
+  100% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+}
+
+/* Hero titels: wave animatie */
+.hero-section h1, .hero-section h2 {
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  font-size: 2.1rem;
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  z-index: 10;
+}
+
+.hero-section h1 span, .hero-section h2 span {
+  display: inline-block;
+  animation: waveText 2.2s infinite;
+  animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes waveText {
+  0%, 100% { transform: translateY(0); }
+  10% { transform: translateY(-8px); }
+  20% { transform: translateY(-16px); }
+  30% { transform: translateY(-8px); }
+  40% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+  60% { transform: translateY(16px); }
+  70% { transform: translateY(8px); }
+  80% { transform: translateY(0); }
+}
+/* TT-Guide volledig centreren */
+#tt-guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  width: 100%;
+  max-width: 600px;
+  margin: 48px auto 48px auto;
+  text-align: center;
+  z-index: 10;
+}
+
+#tt-guide .guide-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+#tt-guide .ai-interaction-zone {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+#tt-guide #chat-window {
+  margin: 0 auto 12px auto;
+  width: 100%;
+  max-width: 480px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#tt-guide .chat-input-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 700px) {
+  #tt-guide {
+    max-width: 98vw;
+    min-height: 320px;
+    margin: 24px auto 24px auto;
+  }
+  #tt-guide #chat-window, #tt-guide .chat-input-wrapper {
+    max-width: 98vw;
+  }
+}
+
+@keyframes logoGlowBreath {
+  0% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+  40% { filter: drop-shadow(0 0 48px #00f2ff) drop-shadow(0 0 16px #fff); }
+  60% { filter: drop-shadow(0 0 64px #00f2ff) drop-shadow(0 0 24px #fff); }
+  100% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+}
+/* Dropdown features in pricing cards */
+.card-features-dropdown {
+  background: rgba(0,242,255,0.07);
+  border-radius: 18px;
+  margin: 18px 0 0 0;
+  padding: 18px 10px 10px 10px;
+  box-shadow: 0 2px 16px 0 rgba(0,242,255,0.10);
+  border: 1px solid rgba(0,242,255,0.13);
+  animation: dropdownFadeIn 0.3s;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-toggle {
+  margin-bottom: 0;
+  margin-top: 18px;
+  font-size: 1.01rem;
+  background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:focus {
+  background: linear-gradient(90deg, #ffd700 0%, #00f2ff 100%);
+  color: #000;
+  transform: translateY(-2px) scale(1.04);
+}
+/* Zorg dat alle belangrijke knoppen dezelfde stijl krijgen */
+.btn-license,
+.btn-manage,
+.btn-support {
+  color-scheme: btn-main;
+  background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-size: 1.08rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 0 rgba(0,242,255,0.13);
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.btn-license:hover, .btn-manage:hover, .btn-support:hover,
+.btn-license:focus, .btn-manage:focus, .btn-support:focus {
+  background: linear-gradient(90deg, #ffd700 0%, #00f2ff 100%);
+  color: #000;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 32px 0 rgba(0,242,255,0.22);
+}
+/* Universele button style voor alle .btn-main knoppen */
+.btn-main {
+  background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-size: 1.08rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 0 rgba(0,242,255,0.13);
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.btn-main:hover, .btn-main:focus {
+  background: linear-gradient(90deg, #ffd700 0%, #00f2ff 100%);
+  color: #000;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 32px 0 rgba(0,242,255,0.22);
+}
+
+/* Optioneel: Zorg dat .btn-main in .card-btn extra breed is */
+.card-btn {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 0 auto;
+  display: block;
+}
+
+@keyframes waveText {
+    0%   { transform: translateY(0) rotate(0deg); }
+    10%  { transform: translateY(-6px) rotate(-2deg); }
+    20%  { transform: translateY(-12px) rotate(-3deg); }
+    30%  { transform: translateY(-6px) rotate(-2deg); }
+    40%  { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(6px) rotate(2deg); }
+    60%  { transform: translateY(12px) rotate(3deg); }
+    70%  { transform: translateY(6px) rotate(2deg); }
+    80%  { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+/* Hero logo animatie en glow */
+
+
+@keyframes swingLogo {
+    0% { transform: rotate(-7deg) translateY(0); }
+    20% { transform: rotate(-3deg) translateY(-4px); }
+    50% { transform: rotate(4deg) translateY(4px); }
+    80% { transform: rotate(-2deg) translateY(-2px); }
+    100% { transform: rotate(7deg) translateY(0); }
+}
+
+@keyframes logoGlow {
+    0% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+    50% { filter: drop-shadow(0 0 48px #00f2ff) drop-shadow(0 0 16px #fff); }
+    100% { filter: drop-shadow(0 0 8px #00f2ff) drop-shadow(0 0 2px #fff); }
+}
+/* 1. Reset: Zorgt dat elke browser de site hetzelfde start */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. De Body: Hier bepalen we dat alles gecentreerd moet worden */
+body {
+    background-color: black; /* De basis is zwart voor de sterren */
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    
+    /* Deze 3 regels zorgen dat alle secties onder elkaar in het midden staan */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* 3. Het Sterren-Canvas: Dit MOET op de achtergrond blijven zweven */
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Dit zet de sterren ACHTER je tekst */
+    pointer-events: none; /* Zorgt dat je door de sterren heen kunt klikken */
+}
+
+/* 4. De Glass-morphism: De unieke ervaring met blur */
+.glass {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 1;
+}
+
+/* 5. Smooth scrolling: Voor een premium gevoel bij het navigeren */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Verwijder strategie/pricing cards CSS */
+/* (Alles wat met .strategie-cards-row, .strategie-card, .pricing-card.glass te maken heeft is verwijderd) */
+
+/* Strategie/pricing cards netjes naast elkaar, gelijke grootte, kleuren in CSS */
+.strategie-cards-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 48px auto;
+}
+
+.strategie-card {
+  flex: 1 1 0;
+  min-width: 320px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pricing-card {
+  width: 100%;
+  min-width: 320px;
+  max-width: 420px;
+  padding: 48px 32px 38px 32px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1.5px solid #00f2ff33;
+  background: rgba(0,242,255,0.07);
+  box-shadow: 0 4px 32px 0 rgba(0,242,255,0.13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.card-title {
+  color: #00f2ff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.price {
+  font-size: 2.2rem;
+  margin: 18px 0 8px 0;
+  color: #ffd700;
+  font-weight: 700;
+}
+.price-sub {
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+.card-divider {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  margin: 18px 0 18px 0;
+  width: 100%;
+}
+.card-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  color: rgba(255,255,255,0.85);
+  line-height: 2.1;
+  font-size: 1.01rem;
+  margin-bottom: 18px;
+}
+.feature-number {
+  color: #00f2ff;
+  font-weight: bold;
+  margin-right: 6px;
+}
+.aanbevolen-label {
+  background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 7px 22px;
+  font-size: 1.08rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+@media (max-width: 1200px) {
+  .strategie-cards-row {
+    gap: 24px;
+    max-width: 98vw;
+  }
+  .strategie-card, .pricing-card {
+    max-width: 340px;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 1050px) {
+  .strategie-cards-row {
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+  .strategie-card, .pricing-card {
+    max-width: 98vw;
+  }
+}
+/* 1. De Fundering: Zorg dat de basis zwart is zodat stars.js zichtbaar is */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000 !important; /* Essentieel voor je sterren */
+    overflow-x: hidden;
+}
+
+/* 2. Het Canvas: Je sterren-veld uit stars.js */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Staat ACHTER alle tekst en knoppen */
+    pointer-events: none; /* Je kunt door het canvas heen klikken op knoppen */
+    background: transparent !important;
+}
+
+/* 3. Transparantie: Maak alle containers tussen de sterren en de tekst doorzichtig */
+/* 1. De Basis: Moet pikzwart zijn zodat de sterren uit stars.js knallen */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000 !important; 
+    overflow-x: hidden;
+}
+
+/* 2. Jouw Specifieke Canvas Target */
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Dit zet je stars.js ACHTER je content */
+    pointer-events: none; /* Je kunt door de sterren heen op knoppen klikken */
+    display: block;
+}
+
+/* 3. De Glasplaat: Maak alle tussenlagen 100% transparant */
+main, 
+section, 
+header,
+.hero-section, 
+.content-wrapper,
+div[class*="container"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 4. De Content: Zorg dat je logo en teksten de baas zijn */
+.hero-logo, 
+.hero-section h1, 
+.hero-section h2, 
+.hero-section p {
+  position: relative;
+  background: transparent !important;
+  z-index: 10 !important; /* Zorgt dat tekst ALTIJD bovenop ligt */
+}
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: -1;
+    background-color: #000; /* Dit zorgt voor het zwart */
+    display: block;
+}
+section {
+    background: transparent !important;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03); /* Licht doorzichtig */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,107 @@
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* De hoofdcontainer van de footer met blur effect */
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: left;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-brand, .footer-nav, .footer-support {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-brand h4, .footer-nav h4, .footer-support h4 {
+    color: #00f2ff; /* Accent kleur voor koppen */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 10px;
+}
+
+.footer-nav ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #ffffff;
+}
+
+/* De status indicator met de pulse stip */
+.status-indicator {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #28a745;
+}
+
+/* Provincie grid */
+.location-grid {
+    margin: 40px auto;
+    max-width: 1100px;
+    text-align: left;
+}
+
+.provinces {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 15px;
+}
+
+.prov strong {
+    color: #ffffff;
+    display: block;
+}
+
+/* Copyright onderaan */
+.copyright {
+    margin-top: 50px;
+    font-size: 0.75rem;
+    opacity: 0.4;
+    letter-spacing: 1px;
+}
+
+/* Mobielvriendelijkheid */
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .status-indicator {
+        justify-content: center;
+    }
+}

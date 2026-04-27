@@ -1,0 +1,251 @@
+/* TT-Guide sectie: AI glass look & feel */
+#tt-guide.glass {
+    background: rgba(0, 242, 255, 0.06) !important;
+    border: 1.5px solid rgba(0,242,255,0.13) !important;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.13);
+    padding: 48px 32px 40px 32px;
+    margin: 80px auto 80px auto;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#tt-guide .guide-content {
+    position: relative;
+    z-index: 2;
+}
+
+#tt-guide h3 {
+    color: #00f2ff;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 0 0 18px #00f2ff44;
+}
+
+#tt-guide p {
+    color: #e0e0e0;
+    font-size: 1.08rem;
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+#tt-guide .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    margin: 32px 0 18px 0;
+}
+
+/* De algemene licentie knop styling */
+.btn-license {
+    min-width: 220px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    box-shadow: 0 2px 12px 0 rgba(0,242,255,0.10);
+    transition: box-shadow 0.2s, transform 0.2s;
+    background: transparent;
+    color: #ffd700; /* Goud om aandacht te trekken */
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    padding: 13px 28px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-license:hover {
+    box-shadow: 0 6px 24px 0 rgba(0,242,255,0.18);
+    transform: scale(1.04);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+#tt-guide .guide-footer-note {
+    color: #b0eaff;
+    font-size: 0.98rem;
+    margin-top: 18px;
+    opacity: 0.85;
+}
+
+#tt-guide .highlight-link {
+    color: #ffd700;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+#tt-guide .highlight-link:hover {
+    color: #00f2ff;
+}
+
+/* Over-ons sectie: modern, zacht en één geheel */
+#over-ons.glass {
+    background: rgba(0, 242, 255, 0.04) !important;
+    border: 1.5px solid rgba(0,242,255,0.10) !important;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
+    padding: 48px 32px 40px 32px;
+    margin: 80px auto 80px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+#over-ons .bio {
+    margin-bottom: 32px;
+}
+
+#over-ons h3 {
+    color: #00f2ff;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+#over-ons h4 {
+    color: #ffd700;
+    font-size: 1.15rem;
+    margin: 18px 0 10px 0;
+    font-weight: 600;
+}
+
+#over-ons p, #over-ons .cta-text {
+    color: #e0e0e0;
+    font-size: 1.08rem;
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+#over-ons .cta-text {
+    color: #00f2ff;
+    font-weight: 600;
+    margin-top: 18px;
+}
+
+#over-ons .btn-support {
+    background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 38px;
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-top: 18px;
+    box-shadow: 0 2px 12px 0 rgba(0,242,255,0.10);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+#over-ons .btn-support:hover {
+    box-shadow: 0 6px 24px 0 rgba(0,242,255,0.18);
+    transform: scale(1.04);
+}
+
+/* Responsive instellingen */
+@media (max-width: 900px) {
+    #tt-guide.glass, #over-ons.glass {
+        padding: 28px 6vw 24px 6vw;
+        margin: 40px 20px;
+    }
+    
+    #tt-guide .action-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Algemene Sectie Instellingen - Maakt de rest nóg transparanter */
+/* Hero Sectie - Vult nu het volledige eerste scherm */
+#home {
+    height: 100vh; /* 100% van de schermhoogte */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Zet de tekst exact in het verticale midden */
+    align-items: center;
+    margin-top: 0; /* Haal de margin-top weg, we gebruiken nu de vh */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 10;
+}
+    /* De rest van de secties pas tonen bij scrollen */
+    .glass, .steps-section, #strategie-section {
+        margin-top: 100px; /* Ruimte tussen de 'schermen' */
+        margin-bottom: 100px;
+    }
+/* Call to Action Knop */
+.btn-main { 
+    border-radius: 50px;
+    font-weight: 500;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-main:hover {
+    background: rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Over Ons & Bio */
+.bio {
+    opacity: 0.8;
+    color: #e0e0e0;
+    line-height: 2;
+}
+
+.cta-text {
+    color: #00f2ff;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+/*
+ * DE STERREN-KIEK FIX
+ */
+
+/* 1. Zorg dat de algemene main en body transparent zijn */
+main, body {
+    background: transparent !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* 2. Zorg dat je secties geen dichte kleur hebben */
+section {
+    background-color: transparent !important;
+    background: none !important;
+}
+
+/* 3. Pas je glass-effect aan zodat het niet te donker is */
+.glass {
+    background: rgba(255, 255, 255, 0.03) !important; /* Heel licht doorzichtig */
+    backdrop-filter: blur(10px); /* Dit maakt het mooi */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 4. Voor de zekerheid: als je een zwarte overlay hebt */
+.licentie-overlay {
+    background: rgba(0, 0, 0, 0.8) !important; /* Houd dit voor popups */
+}
+* Forceer alle grote blokken naar transparant */
+#home, 
+#tt-guide, 
+#projecten, 
+#over-ons, 
+#management-portal, 
+footer, 
+nav {
+    background: transparent !important;
+    background-color: rgba(0,0,0,0) !important;
+}
+
+/* Zorg dat de sterren-canvas echt helemaal achteraan staat */
+#starCanvas {
+    z-index: -1 !important;
+}

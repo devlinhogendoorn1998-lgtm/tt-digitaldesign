@@ -1,0 +1,9 @@
+# Beveiliging: Verberg de API keys
+.env
+
+# Verberg mapjes van de server (als je Node.js gebruikt)
+node_modules/
+
+# Verberg tijdelijke bestanden
+.DS_Store
+Thumbs.db
