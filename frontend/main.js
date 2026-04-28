@@ -154,3 +154,26 @@ document.addEventListener('keypress', (e) => {
         window.handleSendMessage();
     }
 });
+// Privacy Modal Toggle - Empire Protocol
+window.togglePrivacyModal = function() {
+    const modal = document.getElementById('privacy-modal');
+    if (!modal) return;
+
+    // Check of hij al open staat
+    const isActive = modal.classList.contains('active');
+
+    if (!isActive) {
+        modal.classList.add('active');
+        modal.style.display = 'flex'; // Zorg dat hij zichtbaar wordt
+        document.body.style.overflow = 'hidden'; // Stop scrollen op achtergrond
+        
+        // Sluiten als je op de donkere achtergrond klikt
+        modal.onclick = function(e) {
+            if (e.target === modal) togglePrivacyModal();
+        };
+    } else {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Weer kunnen scrollen
+    }
+};

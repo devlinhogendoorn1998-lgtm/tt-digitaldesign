@@ -1,3 +1,37 @@
+.ttd-modal {
+    display: none; /* Standaard onzichtbaar */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.ttd-modal.active {
+    display: flex;
+}
+
+.ttd-modal-content {
+    background: rgba(20, 24, 32, 0.95);
+    border: 1px solid #00f2ff;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+}
+@keyframes modalIn {
+  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@media (max-width: 600px) {
+  .ttd-modal-content {
+    padding: 18px 6vw 14px 6vw;
+    max-width: 98vw;
+  }
+}
 /* --- 1. RESET & BASIS --- */
 * {
     margin: 0;

@@ -126,7 +126,7 @@
 
                 <div class="chat-input-wrapper">
                     <input type="text" id="user-input" placeholder="Stel uw vraag...">
-                    <button onclick="handleSendMessage()" class="btn-main">Verstuur</button>
+                    <button onclick="handleSendMessage()" class="btn-main">send</button>
                 </div>
             </div>
 
@@ -279,9 +279,33 @@
             <button class="btn-support">Tech Support</button>
         </section>
     </main>
+    <section id="privacy-section" class="glass" style="margin-top: 40px; padding: 20px;">
+    <h4><i class="fas fa-shield-alt"></i> Privacy Protocol</h4>
+    <p style="font-size: 0.85rem; color: #aaa;">
+        Uw data is de brandstof van uw Empire, niet ons handelsproduct. 
+        Wij bewaren gegevens uitsluitend voor projectrealisatie. 
+                <a href="#" onclick="togglePrivacyModal(); return false;" style="color: #00f2ff;">Lees het volledige protocol.</a>
+    </p>
+</section>
+
+<div id="privacy-modal" class="ttd-modal">
+    <div class="ttd-modal-content" style="max-width: 540px;" onclick="event.stopPropagation();">
+        <button class="ttd-modal-close" onclick="togglePrivacyModal()" style="position:absolute;top:12px;right:18px;font-size:2rem;background:none;border:none;color:#00f2ff;cursor:pointer;">&times;</button>
+        <h2 style="margin-bottom: 18px;">🛡️ Het TT-Privacy Protocol</h2>
+        <p style="font-size:1.05rem; color:#fff; margin-bottom: 18px;">Bij TT-DigitalDesign bouwen we digitale ecosystemen. Wij hanteren een <strong>Zero-Risk Policy</strong> als het gaat om uw privacy.</p>
+        <ul style="color:#00f2ff; margin-bottom: 18px; text-align: left; line-height: 1.6;">
+            <li><strong>Data met een Doel:</strong> Alleen wat nodig is voor uw project.</li>
+            <li><strong>Geen Handel, Alleen Bouw:</strong> Wij verkopen nooit gegevens aan derden.</li>
+            <li><strong>AI-Veiligheid:</strong> Versleutelde gesprekken, uitsluitend voor uw configuratie.</li>
+            <li><strong>Recht op Vergetelheid:</strong> U bepaalt wanneer data gewist wordt.</li>
+            <li><strong>De TT-Garantie:</strong> Ondoordringbare beveiliging.</li>
+        </ul>
+        <p style="color:#aaa; font-size:0.95rem;">Uw vertrouwen is onze hoogste prioriteit.</p>
+    </div>
+</div>
 
     <footer>
-        <div class="footer-main glass">
+        <div class="footer-grid glass">
             <div class="footer-brand">
                 <h4>TT-DigitalDesign</h4>
                 <p>Wij bouwen de volgende generatie websites. Geen standaard templates, maar AI-gedreven maatwerk voor ondernemers die voorop willen lopen.</p>
@@ -298,26 +322,26 @@
             </div>
             <div class="footer-support">
                 <h4>Support</h4>
-                <p>Tech support nodig of vragen? Stuur een mail via de AI Guide.</p>
+                <p>Tech support nodig of vragen? Druk OP de Tech support Knop Tarief €75,-. </p>
             </div>
-        </div>
-        <div class="location-grid glass">
-            <h4>Onze Diensten zijn beschikbaar in:</h4>
-            <ul class="provinces" style="columns:2; max-width: 700px; margin: 0 auto; padding: 0; list-style: none;">
-                <li><strong>Drenthe:</strong> Assen, Emmen, Hoogeveen, Meppel</li>
-                <li><strong>Flevoland:</strong> Almere, Lelystad, Dronten, Emmeloord</li>
-                <li><strong>Friesland:</strong> Leeuwarden, Drachten, Sneek, Heerenveen</li>
-                <li><strong>Gelderland:</strong> Arnhem, Nijmegen, Apeldoorn, Ede</li>
-                <li><strong>Groningen:</strong> Groningen, Delfzijl, Veendam, Winschoten</li>
-                <li><strong>Limburg:</strong> Maastricht, Venlo, Sittard-Geleen, Roermond</li>
-                <li><strong>Noord-Brabant:</strong> Eindhoven, Tilburg, Breda, Den Bosch</li>
-                <li><strong>Noord-Holland:</strong> Amsterdam, Haarlem, Alkmaar, Hilversum</li>
-                <li><strong>Overijssel:</strong> Enschede, Zwolle, Deventer, Almelo</li>
-                <li><strong>Utrecht:</strong> Utrecht, Amersfoort, Zeist, Nieuwegein</li>
-                <li><strong>Zeeland:</strong> Middelburg, Vlissingen, Goes, Terneuzen</li>
-                <li><strong>Zuid-Holland:</strong> Rotterdam, Den Haag, Leiden, Dordrecht</li>
-            </ul>
-            <p style="margin-top: 12px; color: #ffd700; font-size: 0.98rem;">En alle overige plaatsen in Nederland.</p>
+            <div class="footer-locations">
+                <h4>Onze Diensten zijn beschikbaar in:</h4>
+                <div class="locations-grid">
+                                        <div><strong>Drenthe:</strong><br>Assen, Emmen, Hoogeveen, Meppel</div>
+                                        <div><strong>Flevoland:</strong><br>Almere, Lelystad, Dronten, Emmeloord</div>
+                                        <div><strong>Friesland:</strong><br>Leeuwarden, Drachten, Sneek, Heerenveen</div>
+                                        <div><strong>Gelderland:</strong><br>Arnhem, Nijmegen, Apeldoorn, Ede</div>
+                                        <div><strong>Groningen:</strong><br>Groningen, Delfzijl, Veendam, Winschoten</div>
+                                        <div><strong>Limburg:</strong><br>Maastricht, Venlo, Sittard-Geleen, Roermond</div>
+                                        <div><strong>Noord-Brabant:</strong><br>Eindhoven, Tilburg, Breda, Den Bosch</div>
+                                        <div><strong>Noord-Holland:</strong><br>Amsterdam, Haarlem, Alkmaar, Hilversum</div>
+                                        <div><strong>Overijssel:</strong><br>Enschede, Zwolle, Deventer, Almelo</div>
+                                        <div><strong>Utrecht:</strong><br>Utrecht, Amersfoort, Zeist, Nieuwegein</div>
+                                        <div><strong>Zeeland:</strong><br>Middelburg, Vlissingen, Goes, Terneuzen</div>
+                                        <div><strong>Zuid-Holland:</strong><br>Rotterdam, Den Haag, Leiden, Dordrecht</div>
+                </div>
+                <p class="footer-all-nl">En alle overige plaatsen in Nederland.</p>
+            </div>
         </div>
         <p class="copyright">© 2026 TT-DigitalDesign. Built with AI.</p>
     </footer>
