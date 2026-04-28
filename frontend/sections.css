@@ -1,46 +1,211 @@
-/* TT-Guide sectie: AI glass look & feel */
+/* --- TT-Guide AI-berichten boven chatvenster --- */
+#ai-above-chat {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 18px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    z-index: 3;
+}
+#ai-above-chat > div {
+    background: rgba(0,242,255,0.13);
+    color: #fff;
+    border-radius: 14px;
+    margin: 8px 0 0 0;
+    padding: 16px 22px;
+    box-shadow: 0 2px 16px 0 rgba(0,242,255,0.10);
+    font-size: 1.08rem;
+    max-width: 700px;
+    width: 100%;
+    text-align: left;
+    word-break: break-word;
+    border-left: 4px solid #00f2ff;
+    border-right: 1px solid #ffd70044;
+    opacity: 0.97;
+}
+@media (max-width: 900px) {
+    #ai-above-chat {
+        max-width: 99vw;
+    }
+    #ai-above-chat > div {
+        max-width: 99vw;
+        padding: 12px 8px;
+        font-size: 1rem;
+    }
+}
+/* --- TT-Guide Nieuwe Styling --- */
 #tt-guide.glass {
-    background: rgba(0, 242, 255, 0.06) !important;
-    border: 1.5px solid rgba(0,242,255,0.13) !important;
-    border-radius: 28px;
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.13);
-    padding: 48px 32px 40px 32px;
-    margin: 80px auto 80px auto;
-    max-width: 900px;
+    background: rgba(0, 242, 255, 0.10);
+    border: 1.5px solid rgba(0,242,255,0.18);
+    border-radius: 32px;
+    box-shadow: 0 12px 48px 0 rgba(0,0,0,0.18);
+    padding: 72px 64px 64px 64px;
+    margin: 60px auto 60px auto;
+    max-width: 1300px;
+    min-height: 750px;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    backdrop-filter: blur(18px);
 }
 
-#tt-guide .guide-content {
-    position: relative;
-    z-index: 2;
+#tt-guide .guide-header {
+    padding: 20px 0 10px 0;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.13);
+    margin-bottom: 18px;
 }
-
-#tt-guide h3 {
+#tt-guide .guide-header h3 {
     color: #00f2ff;
     font-size: 2rem;
-    margin-bottom: 18px;
     letter-spacing: 2px;
     font-weight: 700;
     text-shadow: 0 0 18px #00f2ff44;
 }
-
-#tt-guide p {
+#tt-guide .guide-header .sub-text {
     color: #e0e0e0;
     font-size: 1.08rem;
-    margin-bottom: 12px;
-    line-height: 1.7;
+    margin-top: 8px;
+    margin-bottom: 0;
+    opacity: 0.85;
 }
 
-#tt-guide .action-buttons {
+#tt-guide .ai-interaction-zone {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 18px;
-    justify-content: center;
-    margin: 32px 0 18px 0;
+    padding: 24px 0 0 0;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    position: relative;
 }
 
+#tt-guide #chat-window {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 22px;
+    min-height: 220px;
+    max-height: 600px;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 28px 24px 28px;
+    box-shadow: 0 4px 24px 0 rgba(0,242,255,0.13);
+    scrollbar-width: thin;
+    scrollbar-color: #00f2ff #101820;
+}
+#tt-guide #chat-window::-webkit-scrollbar {
+    width: 8px;
+    background: #101820;
+    border-radius: 8px;
+}
+#tt-guide #chat-window::-webkit-scrollbar-thumb {
+    background: #00f2ff;
+    border-radius: 8px;
+}
+
+#tt-guide .chat-input-wrapper {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 242, 255, 0.18);
+    width: 100%;
+    max-width: 480px;
+    align-items: center;
+    position: static;
+    margin-top: 18px;
+    z-index: 2;
+}
+#tt-guide .chat-input-wrapper input[type="text"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 12px 20px;
+    outline: none;
+    font-size: 1.08rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    caret-color: #00f2ff;
+}
+#tt-guide .chat-input-wrapper input[type="text"]::placeholder {
+    color: #b0eaff;
+    opacity: 0.7;
+}
+#tt-guide .chat-input-wrapper button {
+    background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+    color: #101820;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-size: 1.08rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px 0 rgba(0,242,255,0.10);
+    transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+#tt-guide .chat-input-wrapper button:hover {
+    background: linear-gradient(90deg, #ffd700 0%, #00f2ff 100%);
+    color: #000;
+    transform: translateY(-2px) scale(1.04);
+}
+
+#tt-guide #license-trigger-zone {
+    background: rgba(0,0,0,0.13);
+    padding: 20px 0 10px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,215,0,0.13);
+    margin-top: 18px;
+}
+#tt-guide .license-warning {
+    font-size: 0.98rem;
+    color: #ffd700;
+    margin-bottom: 12px;
+    opacity: 0.85;
+    letter-spacing: 0.5px;
+}
+#tt-guide .btn-license {
+    background: linear-gradient(90deg, #ffd700 0%, #00f2ff 100%);
+    color: #101820;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 12px 0 rgba(0,242,255,0.10);
+    transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+#tt-guide .btn-license:hover {
+    background: linear-gradient(90deg, #00f2ff 0%, #ffd700 100%);
+    color: #000;
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 1100px) {
+    #tt-guide.glass {
+        padding: 18px 2vw 18px 2vw;
+        margin: 24px auto 24px auto;
+        max-width: 99vw;
+        min-height: 400px;
+    }
+    #tt-guide #chat-window, #tt-guide .chat-input-wrapper {
+        max-width: 99vw;
+    }
+    #tt-guide #chat-window {
+        min-height: 320px;
+        max-height: 460px;
+        padding: 12px 4px 10px 4px;
+    }
+}
 /* De algemene licentie knop styling */
 .btn-license {
     min-width: 220px;
@@ -64,26 +229,6 @@
     transform: scale(1.04);
     background: rgba(255, 215, 0, 0.1);
 }
-
-#tt-guide .guide-footer-note {
-    color: #b0eaff;
-    font-size: 0.98rem;
-    margin-top: 18px;
-    opacity: 0.85;
-}
-
-#tt-guide .highlight-link {
-    color: #ffd700;
-    cursor: pointer;
-    text-decoration: underline;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-#tt-guide .highlight-link:hover {
-    color: #00f2ff;
-}
-
 /* Over-ons sectie: modern, zacht en één geheel */
 #over-ons.glass {
     background: rgba(0, 242, 255, 0.04) !important;
@@ -148,20 +293,6 @@
     box-shadow: 0 6px 24px 0 rgba(0,242,255,0.18);
     transform: scale(1.04);
 }
-
-/* Responsive instellingen */
-@media (max-width: 900px) {
-    #tt-guide.glass, #over-ons.glass {
-        padding: 28px 6vw 24px 6vw;
-        margin: 40px 20px;
-    }
-    
-    #tt-guide .action-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-}
-
 /* Algemene Sectie Instellingen - Maakt de rest nóg transparanter */
 /* Hero Sectie - Vult nu het volledige eerste scherm */
 #home {
@@ -248,4 +379,27 @@ nav {
 /* Zorg dat de sterren-canvas echt helemaal achteraan staat */
 #starCanvas {
     z-index: -1 !important;
+}
+/* --- DE NIEUWE TT-GUIDE FUNDERING --- */
+#tt-guide {
+    display: block !important; /* Altijd zichtbaar */
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10; /* Lager dan het menu */
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00f2ff;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+#chat-window {
+    min-height: 300px;
+    color: #ffffff !important; /* Forceer witte tekst */
+}
+
+/* Zorg dat de tekst in de bubbels niet zwart is */
+.ttd-guide-answer p, .user-msg-bubble p {
+    color: #ffffff !important;
+    margin: 0;
 }

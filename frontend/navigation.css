@@ -1,4 +1,4 @@
-/* --- HAMBURGER BASE (Gedeeld voor Mobiel & Desktop) --- */
+/* --- HAMBURGER KNOP --- */
 .hamburger {
     width: 44px;
     height: 44px;
@@ -8,7 +8,7 @@
     align-items: center;
     cursor: pointer;
     z-index: 4000;
-    position: fixed;
+    position: fixed; /* Staat altijd vast rechtsboven */
     right: 18px;
     top: 13px;
     background: rgba(0, 0, 0, 0.85);
@@ -21,32 +21,39 @@
     display: block;
     width: 24px;
     height: 3px;
-    margin: 3px 0; /* Zorgt voor de 3 streepjes */
-    background: #ffffff; /* Geforceerd wit voor zichtbaarheid */
+    margin: 3px 0;
+    background: #ffffff;
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- ANIMATIE NAAR KRUISJE --- */
+/* --- ANIMATIE KRUISJE --- */
 .hamburger.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
 }
-
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
 }
 
-/* --- NAV LINKS BASE --- */
+/* --- NAV LINKS BASE (Gedeeld) --- */
 .nav-links {
     list-style: none;
     display: none;
     position: fixed;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 242, 255, 0.10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(0,242,255,0.18);
+    box-shadow: 0 8px 32px 0 #00f2ff33, 0 0 0 3px #ffd70022;
     z-index: 3000;
+    width: 320px;
+    padding: 18px 0;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links.active {
@@ -57,49 +64,54 @@
 @media (max-width: 900px) {
     .nav-links {
         top: 0;
+        left: 0;
         right: 0;
-        width: 250px;
-        height: 100vh;
-        flex-direction: column;
-        padding-top: 80px;
+        width: 100vw;
+        border-radius: 0 0 22px 22px;
     }
 }
 
 /* --- DESKTOP (Vanaf 901px) --- */
 @media (min-width: 901px) {
     .hamburger {
-        right: 32px; /* Iets verder van de kant op desktop */
+        right: 32px; /* Iets meer ruimte op desktop */
     }
 
     .nav-links {
-        top: 70px;
-        right: 32px;
-        width: 320px;
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 15px;
-        transform: translateY(-20px);
+        top: 70px; /* Onder de hamburger */
+        right: 32px; /* Uitgelijnd met hamburger */
+        border-radius: 22px;
         opacity: 0;
-        transition: all 0.3s ease;
+        transform: translateY(-10px); /* Subtiele slide-in */
         pointer-events: none;
+        display: flex; /* Altijd flex, we regelen zichtbaarheid met opacity */
     }
 
     .nav-links.active {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
         pointer-events: auto;
     }
 }
 
 /* --- LINK STYLING --- */
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 15px;
-    font-weight: 600;
+.nav-links li {
+    width: 100%;
+    text-align: center;
 }
 
-.nav-links li a:hover {
+.nav-links li a {
     color: #00f2ff;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+    font-weight: 700;
+    font-size: 1.13rem;
+    transition: background 0.18s, color 0.18s;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+    background: rgba(0, 242, 255, 0.13);
+    color: #ffd700;
 }

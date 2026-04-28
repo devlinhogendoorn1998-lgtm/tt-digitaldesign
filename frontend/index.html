@@ -115,24 +115,24 @@
             </div>
         </div>
 
-        <section id="tt-guide" class="glass" style="max-width: 800px; margin: 20px auto; overflow: hidden;">
-            <div class="guide-header" style="padding: 20px; text-align: center; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+        <section id="tt-guide" class="glass">
+            <div class="guide-header">
                 <h3>TT-Guide</h3>
                 <p class="sub-text">Start hier uw digitale reis. De TT-Guide helpt u uw empire samen te stellen!!</p>
             </div>
 
-            <div class="ai-interaction-zone" style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
-                <div id="chat-window" style="height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;"></div>
+                <div class="ai-interaction-zone">
+                <div id="chat-window"></div>
 
-                <div class="chat-input-wrapper" style="display: flex; gap: 10px; background: rgba(255, 255, 255, 0.03); padding: 5px; border-radius: 50px; border: 1px solid rgba(0, 242, 255, 0.2);">
-                    <input type="text" id="user-input" placeholder="Stel uw vraag..." style="flex: 1; background: transparent; border: none; color: white; padding: 12px 20px; outline: none;">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="user-input" placeholder="Stel uw vraag...">
                     <button onclick="handleSendMessage()" class="btn-main">Verstuur</button>
                 </div>
             </div>
 
-            <div id="license-trigger-zone" style="background: rgba(0,0,0,0.3); padding: 20px; text-align: center; border-top: 1px solid rgba(255,215,0,0.2);">
-                <p style="font-size: 0.8rem; color: #ffd700; margin-bottom: 15px; opacity: 0.8;">⚠ Voor afronding is akkoord met de Gebruikslicentie vereist.</p>
-                <button class="btn-license" onclick="toggleLicentie()" style="background: #ffd700; color: #000; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;">BEKIJK & ACCEPTEER LICENTIE</button>
+            <div id="license-trigger-zone">
+                <p class="license-warning">⚠ Voor afronding is akkoord met de Gebruikslicentie vereist.</p>
+                <button class="btn-license" onclick="toggleLicentie()">BEKIJK & ACCEPTEER LICENTIE</button>
             </div>
         </section>
         <section id="google-verificatie" class="glass" style="margin: 40px auto; max-width: 850px; padding: 40px; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3); position: relative;">
@@ -166,7 +166,7 @@
     <h3 class="strategie-title">KIES UW STRATEGIE & UPGRADES</h3>
     <div class="strategie-container">
         
-        <div id="addon-menu" class="addon-sidebar" style="position: relative; left: -30px;">
+        <div id="addon-menu" class="addon-sidebar">
             <div class="pricing-card addon-card">
                 <h4 class="addon-title">EMPIRE UPGRADES</h4>
                 <ul class="addon-list" id="upgrade-list">
