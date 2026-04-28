@@ -66,7 +66,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#strategie-section">Pakketten</a></li>
                 <li><a href="projecten.html">Hosting</a></li>
-                <li><a href="#tt-guide" id="contact-nav-link">Contact</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="#tt-guide" id="contact-nav-link">Prijsindicatie</a></li>
             </ul>
         </div>
     </nav>
@@ -115,28 +116,30 @@
             </div>
         </div>
 
-        <section id="tt-guide" class="glass">
-            <div class="guide-header">
-                <h3>TT-Guide</h3>
-                <p class="sub-text">Start hier uw digitale reis. De TT-Guide helpt u uw empire samen te stellen!!</p>
-            </div>
+        <section id="tt-guide" class="glass" style="margin-top: 50px; padding: 40px;">
+    <div class="guide-header">
+        <h3 class="ttd-title-glow">TT-Guide</h3>
+        <p class="sub-text">Start hier uw digitale reis. De TT-Guide helpt u uw empire samen te stellen!!</p>
+    </div>
 
-                <div class="ai-interaction-zone">
-                <div id="chat-window"></div>
+    <div class="ai-interaction-zone">
+        <div id="chat-window" style="min-height: 200px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <div id="ai-typing-text" style="color: #00f2ff; font-family: 'Courier New', monospace; line-height: 1.5;"></div>
+        </div>
 
-                <div class="chat-input-wrapper">
-                    <input type="text" id="user-input" placeholder="Stel uw vraag...">
-                    <button onclick="handleSendMessage()" class="btn-main">send</button>
-                </div>
-            </div>
+        <div class="chat-input-wrapper" style="display: flex; gap: 10px;">
+            <input type="text" id="user-input" placeholder="Stel uw vraag aan de Guide..." style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #00f2ff; background: transparent; color: white;">
+            <button onclick="handleSendMessage()" class="btn-main" style="cursor: pointer;">SEND</button>
+        </div>
+    </div>
 
-            <div id="license-trigger-zone">
-                <p class="license-warning">⚠ Voor afronding is akkoord met de Gebruikslicentie vereist.</p>
-                <button class="btn-license" onclick="toggleLicentie()">BEKIJK & ACCEPTEER LICENTIE</button>
-            </div>
-        </section>
-        <section id="google-verificatie" class="glass" style="margin: 40px auto; max-width: 850px; padding: 40px; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3); position: relative;">
-    
+    <div id="license-trigger-zone" style="margin-top: 30px; text-align: center;">
+        <p class="license-warning" style="color: #ff4d4d; font-size: 0.9rem;">⚠ Voor afronding is akkoord met de Gebruikslicentie vereist.</p>
+        <button class="btn-license" onclick="toggleLicentie()" style="padding: 10px 20px; cursor: pointer; background: rgba(255,255,255,0.1); color: white; border: 1px solid white;">BEKIJK & ACCEPTEER LICENTIE</button>
+    </div>
+</section>
+
+<section id="google-verificatie" class="glass" style="margin: 40px auto; max-width: 850px; padding: 40px; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3); position: relative;">
     <div class="verificatie-header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" style="width: 90px; margin-bottom: 10px;">
         <h3 style="color: #fff; letter-spacing: 2px;">OFFICIËLE EMPIRE VERIFICATIE</h3>
@@ -148,11 +151,15 @@
 
     <div class="star-link-container" style="margin: 30px 0;">
         <a href="JOUW_GOOGLE_REVIEW_LINK" target="_blank" style="text-decoration: none;">
-            <div class="empire-stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <div class="empire-stars" style="margin-bottom: 10px;">
+                <span style="color: #ffd700; font-size: 1.5rem;">★</span>
+                <span style="color: #ffd700; font-size: 1.5rem;">★</span>
+                <span style="color: #ffd700; font-size: 1.5rem;">★</span>
+                <span style="color: #ffd700; font-size: 1.5rem;">★</span>
+                <span style="color: #ffd700; font-size: 1.5rem;">★</span>
             </div>
-            <div class="verifieer-btn">
-                KLIK HIER OM UW STERREN TE VERifiëren
+            <div class="verifieer-btn" style="background: linear-gradient(45deg, #ffd700, #ff8c00); color: #000; padding: 15px; font-weight: bold; border-radius: 5px; display: inline-block;">
+                KLIK HIER OM UW STERREN TE VERIFIËREN
             </div>
         </a>
     </div>
@@ -183,7 +190,7 @@
                     <li><input type="checkbox" class="upgrade-cb" value="CRM Koppeling (€199)"> CRM Koppeling <span>€199,-</span></li>
                     <li><input type="checkbox" class="upgrade-cb" value="Zakelijke E-mail (€85)"> Zakelijke E-mail <span>€85,-</span></li>
                     <li><input type="checkbox" class="upgrade-cb" value="Extra AI Geheugen (€100)"> Extra AI Geheugen <span>€100,-</span></li>
-                    <li><input type="checkbox" class="upgrade-cb" value="Cookie-melding (€40)"> Cookie-melding <span>€40,-</span></li>
+                    <li><input type="checkbox" class="upgrade-cb" value="Cookie-melding (€40)"> Cookie-melding <span>€30,-</span></li>
                 </ul>
                 <p class="addon-footer">Extra's buiten de pakketten</p>
             </div>
@@ -276,7 +283,7 @@
                 <p>Geen vage processen of lange wachttijden. Bij mij krijg je binnen 24 uur contact, snelheid, en de mogelijkheid om elke dag met het proces mee te kijken.</p>
                 <p class="cta-text">Volg de stappen bij de TT-Guide voor uw start naar uw Digitaal Empire.</p>
             </div>
-            <button class="btn-support">Tech Support</button>
+           
         </section>
     </main>
     <section id="privacy-section" class="glass" style="margin-top: 40px; padding: 20px;">
@@ -284,7 +291,7 @@
     <p style="font-size: 0.85rem; color: #aaa;">
         Uw data is de brandstof van uw Empire, niet ons handelsproduct. 
         Wij bewaren gegevens uitsluitend voor projectrealisatie. 
-                <a href="#" onclick="togglePrivacyModal(); return false;" style="color: #00f2ff;">Lees het volledige protocol.</a>
+                 
     </p>
 </section>
 
@@ -303,26 +310,28 @@
         <p style="color:#aaa; font-size:0.95rem;">Uw vertrouwen is onze hoogste prioriteit.</p>
     </div>
 </div>
+<section  class="-grid glass">
+    <section class="footer-grid glass" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 38px; align-items: flex-start; padding: 44px 28px 32px 28px; border-radius: 28px; box-shadow: 0 2px 32px #00f2ff22; margin: 60px auto 0 auto; max-width: 1100px; background: linear-gradient(120deg,rgba(0,242,255,0.10),rgba(255,255,255,0.04));">
+        <div class="footer-brand" style="padding: 0 10px;">
+            <h4 style="font-size:1.3rem; color:#00f2ff; margin-bottom:8px; letter-spacing:1px;">TT-DigitalDesign</h4>
+            <p style="color:#eafcff; font-size:1.05rem; margin-bottom:14px;">Wij bouwen de volgende generatie websites. Geen standaard templates, maar AI-gedreven maatwerk voor ondernemers die voorop willen lopen.</p>
+            <div class="status-indicator" style="margin-top:10px;"><span class="dot" style="background:#00ff99;box-shadow:0 0 8px #00ff99; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:7px;"></span> <span style="color:#baffd9;">Systems Operational</span></div>
+        </div>
+        <div class="footer-nav" style="padding: 0 10px;">
+            <h4 style="font-size:1.15rem; color:#ffd700; margin-bottom:8px; letter-spacing:1px;">Navigatie</h4>
+            <ul style="list-style:none; padding:0; margin:0;">
+                <li style="margin-bottom:8px;"><a href="#" style="color:#00f2ff; text-decoration:none; font-weight:bold;">Onze Projecten</a></li>
+                <li style="margin-bottom:8px;"><a href="#" style="color:#00f2ff; text-decoration:none; font-weight:bold;">AI Prijs Calculator</a></li>
+                <li><a href="#" style="color:#00f2ff; text-decoration:none; font-weight:bold;">Privacy Instellingen</a></li>
+            </ul>
+        </div>
+    </section>
 
-    <footer>
-        <div class="footer-grid glass">
-            <div class="footer-brand">
-                <h4>TT-DigitalDesign</h4>
-                <p>Wij bouwen de volgende generatie websites. Geen standaard templates, maar AI-gedreven maatwerk voor ondernemers die voorop willen lopen.</p>
-                <div class="status-indicator"><span class="dot"></span> Systems Operational</div>
-            </div>
-            <div class="footer-nav">
-                <h4>Navigatie</h4>
-                <ul>
-                    <li><a href="#">Onze Projecten</a></li>
-                    <li><a href="#">AI Prijs Calculator</a></li>
-                    <li><a href="#">Privacy Instellingen</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-support">
-                <h4>Support</h4>
-                <p>Tech support nodig of vragen? Druk OP de Tech support Knop Tarief €75,-. </p>
+
+
+<footer>
+        </div>
+        
             </div>
             <div class="footer-locations">
                 <h4>Onze Diensten zijn beschikbaar in:</h4>

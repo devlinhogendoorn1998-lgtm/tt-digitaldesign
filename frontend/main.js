@@ -177,3 +177,61 @@ window.togglePrivacyModal = function() {
         document.body.style.overflow = ''; // Weer kunnen scrollen
     }
 };
+// Sectie: TT-Guide Logica
+const guideBoodschap = "Ik ben TT-Guide. U wilt een indicatie van uw website? Laten we samenstellen wat u wilt!";
+const typeSnelheid = 40; // Iets sneller voor een vlottere 'AI' ervaring
+
+function ttGuideTypt(tekst, elementId) {
+    let i = 0;
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    element.innerHTML = ""; // Reset de tekst van TT-Guide
+
+    function typen() {
+        if (i < tekst.length) {
+            element.innerHTML += tekst.charAt(i);
+            i++;
+            setTimeout(typen, typeSnelheid);
+        }
+    }
+    typen();
+}
+
+// Koppelen aan je hamburger-menu link
+document.getElementById('contact-nav-link').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Menu sluiten als het open staat
+    if (typeof toggleMenu === "function") {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    }
+
+    // TT-Guide start met typen in de sectie
+    ttGuideTypt(guideBoodschap, "ai-typing-text");
+
+    // Soepele scroll naar de TT-Guide sectie
+    const target = document.getElementById('tt-guide');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+// Sectie: TT-Guide Auto-start Logica
+window.addEventListener('load', () => {
+    // Check of de URL eindigt op #tt-guide
+    if (window.location.hash === '#tt-guide') {
+        
+        // Geef de pagina heel even de tijd om te stabiliseren
+        setTimeout(() => {
+            const guideBericht = "TT-Guide herstart... Welkom terug. Ik ben de TT-Guide. Laten we uw empire samenstellen!";
+            
+            // Roep je bestaande type-functie aan
+            if (typeof ttGuideTypt === "function") {
+                ttGuideTypt(guideBericht, "ai-typing-text");
+            }
+        }, 1000); // 1 seconde vertraging voor een soepele ervaring
+    }
+});

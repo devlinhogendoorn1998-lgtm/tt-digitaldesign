@@ -12,57 +12,58 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
+    <nav style="position:fixed; top:0; left:0; width:100vw; z-index:1000; background:rgba(10,18,32,0.92); box-shadow:0 2px 18px #00f2ff11;">
+        <div class="nav-container" style="padding-top: 8px; padding-bottom: 8px;">
             <h1 class="ttd-title-glow ttd-title-center">TT-DigitalDesign</h1>
             <div class="hamburger colored" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
             <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="index.html#strategie-section">Pakketten</a></li>
                 <li><a href="projecten.html" class="active">Beheer</a></li>
-                <li><a href="#tt-guide" id="contact-nav-link">Contact</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="index.html#tt-guide" id="contact-nav-link">Prijsindicatie</a></li>
             </ul>
         </div>
     </nav>
+    <div style="height:92px;"></div>
     <canvas id="starCanvas"></canvas>
 
-    <button class="btn-main ttd-back-btn" onclick="window.history.back()">&larr; Terug</button>
-
-    <section class="hosting-section">
-        <div class="section-header"></div>
-        <div class="hosting-container"></div>
-        <div class="hosting-header" style="text-align:center; margin-bottom: 18px; margin-top: 10px;">
-            <h2 class="hosting-title" style="margin-bottom: 8px; letter-spacing: 2px; font-size:2.3rem; background: linear-gradient(90deg,#00f2ff33,#ffd70033); border-radius: 18px; padding: 12px 18px; display:inline-block; box-shadow:0 2px 18px 0 rgba(0,242,255,0.08);">EMPIRE Hosting</h2>
+    <section class="hosting-section glass" style="padding: 44px 0 60px 0;">
+        <div class="hosting-header" style="text-align:center; margin-bottom: 28px;">
+            <h2 class="hosting-title" style="margin-bottom: 8px; letter-spacing: 2px; font-size:2.3rem; background: linear-gradient(90deg,#00f2ff33,#ffd70033); border-radius: 18px; padding: 12px 18px; display:inline-block; box-shadow:0 2px 18px 0 rgba(0,242,255,0.08);">EMPIRE Hosting & Beheer</h2>
             <p class="hosting-subtitle" style="margin: 0 auto 0 auto; max-width: 420px; font-size:1.08rem; background:rgba(0,0,0,0.13); border-radius:14px; padding:10px 22px; display:inline-block; box-shadow:0 2px 12px #00f2ff22; font-family:'Segoe UI','Arial',sans-serif;">Uw empire heeft een onverwoestbare basis nodig. Wij regelen de techniek, u de groei.</p>
             <div style="width:100%;max-width:340px;height:2px;background:linear-gradient(90deg,#00f2ff44,#ffd70044);margin:18px auto 0 auto;border-radius:2px;"></div>
         </div>
-        <div class="hosting-grid">
-            <div class="hosting-card">
-                <h3 class="h-card-title">ZELFBEHEER HOSTING</h3>
-                <div class="h-price">€29,95 <span class="h-period">p/m excl. btw</span></div>
-                <ul class="h-features">
-                    <li><strong>Onverwoestbare Snelheid:</strong> Wereldwijde CDN-dekking.</li>
-                    <li><strong>SSL Beveiliging:</strong> Uw site altijd beveiligd met een slotje.</li>
-                    <li><strong>3 Aanpassingen p/m:</strong> Wij voeren kleine wijzigingen voor u door.</li>
-                    <li><strong>99.9% Uptime:</strong> Uw empire slaapt nooit.</li>
-                    <li><strong>Rollback Support:</strong> Wij bewaren altijd een veilige backup.</li>
+        <div class="package-container" style="display: flex; gap: 32px; flex-wrap: wrap; justify-content: center;">
+            <div class="package-card glass" style="flex: 1 1 320px; min-width: 280px; max-width: 400px; padding: 28px 24px 22px 24px; border-radius: 18px; border: 1.5px solid rgba(0,242,255,0.13); box-shadow:0 2px 18px #00f2ff22; background: linear-gradient(120deg,rgba(0,242,255,0.10),rgba(255,255,255,0.04));">
+                <h3 style="font-size:1.25rem; color:#00f2ff; margin-bottom:10px; letter-spacing:1px;">Website Beheer Basis</h3>
+                <p class="price" style="font-size:1.18rem; color:#ffd700; margin-bottom:8px;">€ 29,95 <span style="color:#eafcff; font-size:1rem;">p/m (excl. btw)</span></p>
+                <ul style="margin-bottom:18px; padding-left:20px;">
+                    <li><strong>Eigendom:</strong> De website is uw eigendom.</li>
+                    <li><strong>Cloud-Hosting:</strong> Gehost op de beveiligde TT-DigitalDesign infrastructuur.</li>
+                    <li><strong>SSL-Beveiliging:</strong> Inclusief actieve HTTPS-verbinding.</li>
+                    <li><strong>Technisch Onderhoud:</strong> Wij zorgen dat de onderliggende techniek up-to-date blijft.</li>
                 </ul>
-                <a href="index.html#tt-guide" class="btn-main hosting-btn">START FUNDERING</a>
+                <div style="text-align:center; margin-top:18px;">
+                    <button class="btn-main gold-btn" style="font-size:1.08rem; padding:12px 32px; border-radius:28px; background:linear-gradient(90deg,#00f2ff,#ffd700); color:#181c1f; font-weight:bold; box-shadow:0 2px 18px #00f2ff44,0 0 12px #ffd70055; letter-spacing:1px; cursor:pointer; transition:transform 0.15s;">🚀 Basis </button>
+                </div>
             </div>
-            <div class="hosting-card featured">
-                <span class="h-label">MEEST GEKOZEN</span>
-                <h3 class="h-card-title">FULL-SERVICE EMPIRE</h3>
-                <div class="h-price">€75,00 <span class="h-period">p/m excl. btw</span></div>
-                <ul class="h-features">
-                    <li><strong>Inclusief Domeinnaam:</strong> Uw eigen .nl adres.</li>
-                    <li><strong>Zakelijke E-mail:</strong> Professionele mail (info@uwempire.nl).</li>
-                    <li><strong>4x Content Updates:</strong> Maandelijkse verandering van foto's of tekst.</li>
-                    <li><strong>Onderhoud & Security:</strong> Wij monitoren uw site 24/7.</li>
-                    <li><strong>Direct Support:</strong> Persoonlijk mailcontact bij vragen.</li>
-                    <li class="h-note">* Website blijft eigendom van TT-DigitalDesign.</li>
+            <div class="package-card glass" style="flex: 1 1 320px; min-width: 280px; max-width: 400px; padding: 28px 24px 22px 24px; border-radius: 18px; border: 1.5px solid #00c6ff; box-shadow:0 2px 18px #00f2ff33; background: linear-gradient(120deg,rgba(0,242,255,0.13),rgba(255,255,255,0.06)); position: relative;">
+                <div style="position: absolute; top: 10px; right: 18px; font-size: 0.95rem; color: #00c6ff; background:rgba(0,242,255,0.08); border-radius:8px; padding:2px 10px; letter-spacing:1px;">POPULAIR</div>
+                <h3 style="font-size:1.25rem; color:#ffd700; margin-bottom:10px; letter-spacing:1px;">Full-Service Website Lease</h3>
+                <p class="price" style="font-size:1.18rem; color:#00f2ff; margin-bottom:8px;">€ 75,00 <span style="color:#eafcff; font-size:1rem;">p/m (excl. btw)</span></p>
+                <p style="margin-bottom:8px;"><strong>Juridische vorm: Gebruiksrecht</strong></p>
+                <ul style="margin-bottom:18px; padding-left:20px;">
+                    <li><strong>Geen Bouwkosten:</strong> U betaalt uitsluitend voor de maandelijkse service.</li>
+                    <li><strong>Licentie:</strong> U heeft het exclusieve recht om de website te gebruiken.</li>
+                    <li><strong>Beheer:</strong> Inclusief hosting, SSL en kleine tekstuele wijzigingen.</li>
+                    <li><strong>Intellectueel Eigendom:</strong> De broncode blijft eigendom van TT-DigitalDesign.</li>
                 </ul>
-                <a href="index.html#tt-guide" class="btn-main gold-btn hosting-btn">VOLLEDIG ONTZORGD</a>
+                <div style="text-align:center; margin-top:18px;">
+                    <button class="btn-main gold-btn" style="font-size:1.08rem; padding:12px 32px; border-radius:28px; background:linear-gradient(90deg,#ffd700,#00f2ff); color:#181c1f; font-weight:bold; box-shadow:0 2px 18px #ffd70044,0 0 12px #00f2ff55; letter-spacing:1px; cursor:pointer; transition:transform 0.15s;">✨ Full-Service </button>
+                </div>
             </div>
         </div>
     </section>

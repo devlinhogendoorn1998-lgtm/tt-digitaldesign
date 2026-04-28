@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | TT-DigitalDesign</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="sections.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="stars.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1 class="ttd-title-glow ttd-title-center">TT-DigitalDesign</h1>
+            <div class="hamburger colored" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html#strategie-section">Pakketten</a></li>
+                <li><a href="projecten.html">Beheer</a></li>
+                <li><a href="index.html#tt-guide" id="contact-nav-link">Prijsindicatie</a></li>
+            </ul>
+        </div>
+    </nav>
+    <canvas id="starCanvas"></canvas>
+
+    <main>
+        <section class="support-section glass" style="padding: 36px 0 48px 0;">
+            <h2 class="ttd-title-glow" style="text-align:center; margin-bottom: 8px; font-size:2.1rem; letter-spacing:1.5px;">Technische Support</h2>
+            <p class="ttd-support-subtitle" style="text-align:center; max-width:440px; margin:0 auto 28px auto; font-size:1.13rem; color:#eafcff; background:rgba(0,242,255,0.08); border-radius:12px; padding:10px 18px; box-shadow:0 2px 12px #00f2ff22;">Ondersteuning voor uw website en hosting.</p>
+
+            <div class="support-card glass" style="max-width:600px; margin: 0 auto; padding: 28px 28px 18px 28px; border-radius: 18px; box-shadow: 0 2px 24px 0 rgba(0,242,255,0.10); background: linear-gradient(120deg,rgba(0,242,255,0.10),rgba(255,255,255,0.04));">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+                    <span style="font-size:1.5rem;">💶</span>
+                    <span style="font-size:1.13rem;"><strong>Uurtarief:</strong> € 75,- excl. btw per uur</span>
+                </div>
+                <div style="margin-bottom:18px; color:#ffe082; font-size:0.98rem;">
+                    <span style="font-size:1.1rem;">⏱️</span> Facturatie per kwartier (minimaal € 18,75 per aanvraag)
+                </div>
+                <div style="width:100%;height:2px;background:linear-gradient(90deg,#00f2ff44,#ffd70044);margin:18px 0 18px 0;border-radius:2px;"></div>
+
+                <h3 style="margin-bottom:8px; font-size:1.15rem; color:#00f2ff; letter-spacing:1px;">Wat valt onder support?</h3>
+                <ul style="margin-bottom:18px; padding-left:22px;">
+                    <li>🔧 Oplossen van technische fouten (bugs) in de website</li>
+                    <li>🖼️ Aanpassingen aan teksten, afbeeldingen of layout</li>
+                    <li>🌐 Vragen over webhosting, domeinnamen en SSL-certificaten</li>
+                </ul>
+
+                <h3 style="margin-bottom:8px; font-size:1.15rem; color:#ffd700; letter-spacing:1px;">Wat wij <span style="text-decoration:underline;">NIET</span> doen</h3>
+                <p style="margin-bottom:8px;">TT-DigitalDesign is een specialist in <strong>webdevelopment</strong>. Wij bieden <strong>geen</strong> ondersteuning voor algemene IT-zaken zoals:</p>
+                <ul style="margin-bottom:12px; padding-left:22px;">
+                    <li>🖥️ Microsoft Windows, Office, Outlook of Teams</li>
+                    <li>🛠️ Hardware problemen (computers, printers, routers)</li>
+                    <li>🔑 Wachtwoordherstel van externe platformen (zoals Facebook of Google)</li>
+                </ul>
+                <p style="margin-top: 18px; color:#fffbe6; font-size:0.98rem;"><em>Voor bovenstaande zaken dient u contact op te nemen met een lokale IT-specialist.</em></p>
+            </div>
+
+            <!-- Support knop -->
+            <div style="text-align:center; margin:36px 0 32px 0;">
+                <button id="show-support-btn" class="btn-main gold-btn" style="font-size:1.13rem; padding:14px 38px; border-radius:32px; box-shadow:0 2px 18px #00f2ff33; letter-spacing:1px; cursor:pointer;">📞 Web Support</button>
+            </div>
+
+            <!-- Popup voor telefoonnummer -->
+            <div id="support-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.32); z-index:9999; align-items:center; justify-content:center; flex-direction:column;">
+                <div style="background:rgba(0,32,48,0.92); border-radius:22px; box-shadow:0 4px 32px #00f2ff55; padding:38px 32px 28px 32px; min-width:280px; max-width:90vw; text-align:center; position:relative;">
+                    <button id="close-support-popup" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.5rem; color:#00f2ff; cursor:pointer;">&times;</button>
+                    <div style="font-size:2.2rem; margin-bottom:12px; color:#ffd700;">📞</div>
+                    <div style="font-size:1.18rem; color:#eafcff; margin-bottom:8px;">Bel direct voor web support:</div>
+                    <div style="font-size:1.35rem; color:#00f2ff; font-weight:bold; letter-spacing:1px;">+31 6 717444</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+// Support knop popup logica
+document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('show-support-btn');
+    var popup = document.getElementById('support-popup');
+    var closeBtn = document.getElementById('close-support-popup');
+    if(btn && popup && closeBtn) {
+        btn.onclick = function() {
+            popup.style.display = 'flex';
+            popup.style.alignItems = 'center';
+            popup.style.justifyContent = 'center';
+            popup.style.flexDirection = 'column';
+        };
+        closeBtn.onclick = function() {
+            popup.style.display = 'none';
+        };
+        popup.onclick = function(e) {
+            if(e.target === popup) popup.style.display = 'none';
+        };
+    }
+});
+</script>
+</html>
