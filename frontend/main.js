@@ -235,3 +235,60 @@ window.addEventListener('load', () => {
         }, 1000); // 1 seconde vertraging voor een soepele ervaring
     }
 });
+// // Sectie: De aanvraag versturen naar de server
+async function executeFinalStep() {
+    const userInput = document.getElementById('user-input').value;
+    const selectedPackage = "Empire Licentie"; // Of haal dit dynamisch op
+
+    console.log("Gegevens verzamelen voor server...");
+
+    try {
+        // We sturen de data naar je server.js
+        const response = await fetch('/api/verzenden', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                naam: "Klant Naam", // Haal dit uit je formulier
+                bericht: userInput,
+                pakket: selectedPackage,
+                licentieAkkoord: true
+            })
+        });
+
+        if (response.ok) {
+            console.log("Server heeft het ontvangen!");
+            window.location.href = '/betaal-pagina';
+        } else {
+            alert("Er ging iets mis bij de aanvraag.");
+        }
+    } catch (error) {
+        console.error("Fout bij verbinden met server:", error);
+    }
+}
+// // Sectie: AI Guide Logica
+function handleSendMessage() {
+    const input = document.getElementById('user-input');
+    const chat = document.getElementById('ai-typing-text');
+    const calendar = document.getElementById('calendar-wrapper');
+
+    if (input.value.trim() !== "") {
+        // 1. Toon bericht van de klant
+        chat.innerHTML += "<div><strong>U:</strong> " + input.value + "</div>";
+        
+        // 2. AI reactie die de agenda aankondigt
+        setTimeout(() => {
+            chat.innerHTML += "<div style='margin-top:10px;'><strong>Guide:</strong> Helder. Om alles direct in gang te zetten, heb ik mijn agenda hieronder voor u geopend. Kies een moment voor onze kennismaking.</div>";
+            
+            // 3. Toon de agenda op de plek waar hij staat
+            calendar.style.display = "block";
+            
+            // Scroll soepel naar de agenda
+            calendar.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 800);
+
+        // Input resetten
+        input.value = "";
+    }
+}
