@@ -140,3 +140,84 @@
     .chat-msg      { max-width: 92%; }
     .chat-bubble   { font-size: 0.88rem; }
 }
+
+/* ── Pakket kaarten ── */
+.pakket-kaart {
+    align-self: flex-start;
+    width: 100%;
+    max-width: 340px;
+    background: rgba(212,175,55,0.06);
+    border: 1px solid rgba(212,175,55,0.28);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.pakket-kaart-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37, #b8902e);
+    color: #111;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.2rem;
+    width: fit-content;
+}
+
+.pakket-kaart-naam {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
+.pakket-kaart-prijs {
+    font-size: 0.82rem;
+    color: rgba(212,175,55,0.85);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.pakket-kaart-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pakket-kaart-features li {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+}
+
+.pakket-kaart-btn {
+    display: block;
+    margin-top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(135deg, #d4af37, #b8902e);
+    color: #111;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.pakket-kaart-btn:hover  { opacity: 0.88; transform: scale(1.02); }
+.pakket-kaart-btn:active { transform: scale(0.97); }
+
+@media (max-width: 600px) {
+    .pakket-kaart { max-width: 100%; }
+}
