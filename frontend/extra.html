@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TT Digital Design | Home</title>
+    <title>TT Digital Design | Extra's &amp; Toevoegingen</title>
+    <meta name="description" content="Voeg krachtige opties toe aan uw webpakket. Extra pagina's, fotosessie, logo &amp; branding, AI-chatbot, SEO premium en meer — op maat voor uw bedrijf.">
     <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="extra.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -14,34 +18,252 @@
 
     <nav class="navbar">
         <div class="logo">TT <span>Digital Design</span></div>
-        
-        <button class="menu-btn" id="menu-btn">
+        <button class="menu-btn" id="menu-btn" aria-label="Open navigatiemenu" aria-expanded="false" aria-controls="nav-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
-
-        <ul class="nav-menu" id="nav-menu">
-            <li><a href="home.html" class="active">Home</a></li>
-            <li><a href="ai.html">AI Guide</a></li>
-            <li><a href="hosting.html">Hosting</a></li>
-            <li><a href="support.html">Support</a></li>
-        </ul>
     </nav>
 
-    <main style="padding: 4rem 5%; min-height: 80vh;">
-        <h1 style="font-size: 3rem; color: #d4af37;">Welkom bij het Empire</h1>
-        <p>Dit is je centrale hub voor digitale innovatie.</p>
+    <ul class="nav-menu" id="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ai.html">AI Guide</a></li>
+        <li><a href="hosting.html">Hosting</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="overons.html">Over Ons</a></li>
+    </ul>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Extra's &amp; <span>Toevoegingen</span></h1>
+                <p class="hero-subtitle" id="pakket-intro">
+                    Breid uw pakket uit met krachtige opties. Elk extra is een investering die zichzelf terugbetaalt.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-tag"> Op Maat</div>
+                    <div class="feature-tag"> Direct Toevoegen</div>
+                    <div class="feature-tag"> Vaste Prijs</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-orb"></div>
+            </div>
+        </section>
+
+        <!-- Geselecteerd pakket banner -->
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <div id="pakket-banner" style="display:none; background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.4); border-radius: 14px; padding: 1rem 1.5rem; margin-bottom: 0.5rem; text-align:center; color: #d4af37; font-weight: 700; letter-spacing: 0.06em; font-size: 0.9rem;">
+                ✦ Gekozen pakket: <span id="pakket-naam">—</span>
+            </div>
+        </div>
+
+        <!-- Extra opties -->
+        <section class="packages-section">
+            <div class="container">
+                <h2 class="section-title">Kies Uw <span>Uitbreidingen</span></h2>
+                <p class="extras-intro">Vul uw e-mail in en selecteer de gewenste extra's. Klik op Verstuur Aanvraag — wij nemen contact op voor de aanbetaling van €50,-.</p>
+
+                <div class="package-card extras-card">
+                    <div class="package-header">
+                        <h3>Beschikbare Extra's</h3>
+                    </div>
+
+                    <fieldset class="extras-fieldset">
+                        <legend style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Selecteer de extra opties die u wilt toevoegen aan uw pakket</legend>
+                        <ul class="extras-list">
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Extra Pagina|99">
+                                    <span class="extra-name">Extra Pagina</span>
+                                    <span class="extra-tag">Per extra pagina</span>
+                                    <span class="extra-price">€99,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Logo Ontwerp|99">
+                                    <span class="extra-name">Logo Ontwerp</span>
+                                    <span class="extra-tag">Branding</span>
+                                    <span class="extra-price">€99,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="AI Installatie|799">
+                                    <span class="extra-name">AI Installatie</span>
+                                    <span class="extra-tag">Incl. basis woorden</span>
+                                    <span class="extra-price">€799,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="AI Prijs-Indicator|299">
+                                    <span class="extra-name">AI Prijs-Indicator</span>
+                                    <span class="extra-tag">Module</span>
+                                    <span class="extra-price">€299,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Betaal Knop|199">
+                                    <span class="extra-name">Betaal Knop</span>
+                                    <span class="extra-tag">Stripe / Mollie</span>
+                                    <span class="extra-price">€199,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Contact Button|65">
+                                    <span class="extra-name">Contact Button</span>
+                                    <span class="extra-tag">WhatsApp / Bel</span>
+                                    <span class="extra-price">€65,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Review Systeem|125">
+                                    <span class="extra-name">Review Systeem</span>
+                                    <span class="extra-tag">Sociaal bewijs</span>
+                                    <span class="extra-price">€125,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Afspraken Planner|149">
+                                    <span class="extra-name">Afspraken Planner</span>
+                                    <span class="extra-tag">Conversie</span>
+                                    <span class="extra-price">€149,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="E-mail Automatisering|175">
+                                    <span class="extra-name">E-mail Automatisering</span>
+                                    <span class="extra-tag">Automatisering</span>
+                                    <span class="extra-price">€175,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Facturatie (PDF)|249">
+                                    <span class="extra-name">Facturatie (PDF)</span>
+                                    <span class="extra-tag">Automatisering</span>
+                                    <span class="extra-price">€249,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="CRM / Lead (Sheets)|199">
+                                    <span class="extra-name">CRM / Lead (Sheets)</span>
+                                    <span class="extra-tag">Automatisering</span>
+                                    <span class="extra-price">€199,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Zakelijke E-mail Setup|25">
+                                    <span class="extra-name">Zakelijke E-mail Setup</span>
+                                    <span class="extra-tag">Eenmalig</span>
+                                    <span class="extra-price">€25,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Extra AI Geheugen|100">
+                                    <span class="extra-name">Extra AI Geheugen</span>
+                                    <span class="extra-tag">Per 1000 woorden</span>
+                                    <span class="extra-price">€100,-</span>
+                                </label>
+                            </li>
+                            <li class="extra-row">
+                                <label class="extra-label">
+                                    <input type="checkbox" class="extra-check" value="Cookie-melding|20">
+                                    <span class="extra-name">Cookie-melding</span>
+                                    <span class="extra-tag">Juridisch</span>
+                                    <span class="extra-price">€20,-</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+
+                    <!-- E-mail verplicht veld -->
+                    <div class="extras-email-row">
+                        <label for="klant-email" class="extras-email-label">Uw e-mailadres <span aria-hidden="true" style="color:#d4af37;">*</span></label>
+                        <input
+                            type="email"
+                            id="klant-email"
+                            name="klant-email"
+                            class="extras-email-input"
+                            placeholder="uw@email.nl"
+                            required
+                            autocomplete="email"
+                            aria-required="true"
+                            aria-describedby="email-hint"
+                        >
+                        <p id="email-hint" style="font-size:0.74rem; color:rgba(255,255,255,0.55); margin-top:0.3rem;">Zodat wij u kunnen bereiken over uw aanvraag.</p>
+                    </div>
+
+                    <div class="extras-footer">
+                        <div class="extras-total-block">
+                            <p class="extras-total-label">Totaal geselecteerd</p>
+                            <p id="extras-total" class="extras-total-value">€0,-</p>
+                        </div>
+                        <button type="button" id="pay-btn" class="select-btn featured-btn" aria-label="Verstuur uw aanvraag met geselecteerde extra's" disabled aria-disabled="true">
+                            ✦ Verstuur Aanvraag
+                        </button>
+                    </div>
+                    <!-- Status feedback na versturen -->
+                    <div id="email-status" role="alert" aria-live="polite" style="display:none; text-align:center; padding:0.9rem 1rem; border-radius:10px; font-size:0.88rem; font-weight:600; letter-spacing:0.04em; margin-top:1rem;"></div>
+                    <p class="extras-disclaimer">Vul uw e-mailadres in om door te gaan. Extra's zijn optioneel — u kunt ook alleen uw pakket doorgeven.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <script>
-        // Logica voor het mobiele menu
-        const menuBtn = document.getElementById('menu-btn');
-        const navMenu = document.getElementById('nav-menu');
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <h2 class="footer-title">Actief door heel <span>Nederland</span></h2>
+            <div class="provincie-grid">
+                <article class="provincie-card"><p class="provincie-name">Noord-Holland</p><p class="city-list">Amsterdam, Haarlem, Alkmaar, Hilversum, Amstelveen, Hoofddorp, Purmerend, Zaandam.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Zuid-Holland</p><p class="city-list">Rotterdam, Den Haag, Leiden, Dordrecht, Zoetermeer, Delft, Schiedam, Spijkenisse.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Utrecht</p><p class="city-list">Utrecht, Amersfoort, Zeist, Nieuwegein, Veenendaal, Houten, Woerden, Soest.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Noord-Brabant</p><p class="city-list">Eindhoven, Tilburg, Breda, Den Bosch, Helmond, Roosendaal, Oss, Bergen op Zoom.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Gelderland</p><p class="city-list">Arnhem, Nijmegen, Apeldoorn, Ede, Doetinchem, Zutphen, Harderwijk, Tiel.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Overijssel</p><p class="city-list">Enschede, Zwolle, Deventer, Hengelo, Almelo, Kampen, Oldenzaal, Steenwijk.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Limburg</p><p class="city-list">Maastricht, Venlo, Sittard, Geleen, Heerlen, Roermond, Weert, Kerkrade.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Friesland</p><p class="city-list">Leeuwarden, Drachten, Sneek, Heerenveen, Harlingen, Joure, Wolvega, Franeker.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Groningen</p><p class="city-list">Groningen, Veendam, Stadskanaal, Winschoten, Delfzijl, Appingedam, Hoogezand.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Drenthe</p><p class="city-list">Assen, Emmen, Hoogeveen, Meppel, Coevorden, Beilen, Roden, Klazienaveen.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Flevoland</p><p class="city-list">Almere, Lelystad, Dronten, Emmeloord, Zeewolde, Urk, Biddinghuizen.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Zeeland</p><p class="city-list">Middelburg, Vlissingen, Goes, Terneuzen, Zierikzee, Hulst, Tholen.</p></article>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TT Digital Design | High-End Webdevelopment &amp; Automation</p>
+            </div>
+        </div>
+    </footer>
 
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    <script src="menu.js"></script>
+    <script src="extra.js"></script>
+    <script>
+        // Lees geselecteerd pakket uit URL query param
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const pakket = params.get('pakket');
+            if (pakket) {
+                const banner = document.getElementById('pakket-banner');
+                const naam   = document.getElementById('pakket-naam');
+                const intro  = document.getElementById('pakket-intro');
+                if (banner) banner.style.display = 'block';
+                if (naam)   naam.textContent = pakket;
+                if (intro)  intro.textContent = 'Hieronder de beschikbare uitbreidingen voor uw "' + pakket + '" pakket. Stuur ons een bericht om alles samen te stellen.';
+            }
+        })();
     </script>
 </body>
 </html>

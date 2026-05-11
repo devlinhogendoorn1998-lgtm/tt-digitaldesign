@@ -9,11 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
   function openMenu() {
     navMenu.classList.add('active');
     menuBtn.classList.add('open');
+    // Accessibility: informeer screenreaders dat menu open is
+    menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', 'Sluit navigatiemenu');
   }
 
   function closeMenu() {
     navMenu.classList.remove('active');
     menuBtn.classList.remove('open');
+    // Accessibility: informeer screenreaders dat menu gesloten is
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open navigatiemenu');
   }
 
   menuBtn.addEventListener('click', function (e) {

@@ -1,6 +1,6 @@
 /* home.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
 
-/* Geselecteerde pakketkaart highlight */
+/* ── Geselecteerde pakketkaart highlight ── */
 .package-card.pkg-selected {
     border-color: rgba(212, 175, 55, 0.7);
     box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 20px 60px rgba(0,0,0,0.5);
@@ -11,5 +11,157 @@
     background: rgba(212, 175, 55, 0.15);
     border-color: rgba(212, 175, 55, 0.6);
     color: #d4af37;
+}
+
+/* ── About / Voorstel sectie ── */
+.about-section {
+    position: relative;
+    padding: 90px 5% 80px;
+    z-index: 2;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent);
+}
+
+.about-flex {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Tekst kolom */
+.about-text .section-title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.about-text p strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.about-stats li {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.about-stats li::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #d4af37;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.gold-text {
+    color: #d4af37;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-right: 0.15rem;
+}
+
+.cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #d4af37;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(212,175,55,0.35);
+    padding-bottom: 0.1rem;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cta-link:hover {
+    color: #f5e27a;
+    border-color: rgba(245,226,122,0.6);
+}
+
+/* Foto kolom */
+.about-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.image-frame {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(212,175,55,0.25);
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 3 / 4;
+    background: rgba(255,255,255,0.03);
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.35) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+    .about-flex {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .about-visual {
+        order: -1;
+        max-width: 280px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .about-text .section-title {
+        text-align: center;
+    }
+    .about-stats { align-items: flex-start; }
+}
+
+/* ── Mobiel ── */
+@media (max-width: 540px) {
+    .about-section { padding: 60px 5% 50px; }
+    .about-text p  { font-size: 0.92rem; }
+    .image-frame   { max-width: 240px; }
 }
 

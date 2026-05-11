@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TT Digital Design | Support</title>
+    <!-- SEO: metabeschrijving voor Google -->
+    <meta name="description" content="Persoonlijke support van TT Digital Design. Snel bereikbaar per e-mail of telefoon. Stuur een bericht via ons contactformulier voor technische hulp of strategisch advies.">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="support.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -15,7 +19,7 @@
 
     <nav class="navbar">
         <div class="logo">TT <span>Digital Design</span></div>
-        <button class="menu-btn" id="menu-btn">
+        <button class="menu-btn" id="menu-btn" aria-label="Open navigatiemenu" aria-expanded="false" aria-controls="nav-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -101,7 +105,9 @@
                                 <label for="message">Bericht</label>
                                 <textarea id="message" name="message" rows="4" placeholder="Beschrijf uw vraag of project..." required></textarea>
                             </div>
-                            <button type="submit" class="select-btn featured-btn" style="width:100%; cursor:pointer; border:none;">VERSTUUR BERICHT</button>
+                            <!-- aria-label: verduidelijkt actie voor screenreaders -->
+                            <button type="submit" id="support-submit" class="select-btn featured-btn" style="width:100%; cursor:pointer; border:none;" aria-label="Verstuur uw contactbericht naar TT Digital Design">VERSTUUR BERICHT</button>
+                            <div id="support-status" role="alert" aria-live="polite" style="display:none; margin-top:1rem; padding:0.85rem 1rem; border-radius:10px; font-size:0.88rem; font-weight:600; letter-spacing:0.04em; text-align:center;"></div>
                         </form>
                     </article>
 
@@ -116,18 +122,18 @@
         <div class="footer-container">
             <h2 class="footer-title">Actief door heel <span>Nederland</span></h2>
             <div class="provincie-grid">
-                <article class="provincie-card"><h4 class="provincie-name">Noord-Holland</h4><p class="city-list">Amsterdam, Haarlem, Alkmaar, Hilversum, Amstelveen, Hoofddorp, Purmerend, Zaandam.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Zuid-Holland</h4><p class="city-list">Rotterdam, Den Haag, Leiden, Dordrecht, Zoetermeer, Delft, Schiedam, Spijkenisse.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Utrecht</h4><p class="city-list">Utrecht, Amersfoort, Zeist, Nieuwegein, Veenendaal, Houten, Woerden, Soest.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Noord-Brabant</h4><p class="city-list">Eindhoven, Tilburg, Breda, Den Bosch, Helmond, Roosendaal, Oss, Bergen op Zoom.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Gelderland</h4><p class="city-list">Arnhem, Nijmegen, Apeldoorn, Ede, Doetinchem, Zutphen, Harderwijk, Tiel.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Overijssel</h4><p class="city-list">Enschede, Zwolle, Deventer, Hengelo, Almelo, Kampen, Oldenzaal, Steenwijk.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Limburg</h4><p class="city-list">Maastricht, Venlo, Sittard, Geleen, Heerlen, Roermond, Weert, Kerkrade.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Friesland</h4><p class="city-list">Leeuwarden, Drachten, Sneek, Heerenveen, Harlingen, Joure, Wolvega, Franeker.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Groningen</h4><p class="city-list">Groningen, Veendam, Stadskanaal, Winschoten, Delfzijl, Appingedam, Hoogezand.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Drenthe</h4><p class="city-list">Assen, Emmen, Hoogeveen, Meppel, Coevorden, Beilen, Roden, Klazienaveen.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Flevoland</h4><p class="city-list">Almere, Lelystad, Dronten, Emmeloord, Zeewolde, Urk, Biddinghuizen.</p></article>
-                <article class="provincie-card"><h4 class="provincie-name">Zeeland</h4><p class="city-list">Middelburg, Vlissingen, Goes, Terneuzen, Zierikzee, Hulst, Tholen.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Noord-Holland</p><p class="city-list">Amsterdam, Haarlem, Alkmaar, Hilversum, Amstelveen, Hoofddorp, Purmerend, Zaandam.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Zuid-Holland</p><p class="city-list">Rotterdam, Den Haag, Leiden, Dordrecht, Zoetermeer, Delft, Schiedam, Spijkenisse.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Utrecht</p><p class="city-list">Utrecht, Amersfoort, Zeist, Nieuwegein, Veenendaal, Houten, Woerden, Soest.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Noord-Brabant</p><p class="city-list">Eindhoven, Tilburg, Breda, Den Bosch, Helmond, Roosendaal, Oss, Bergen op Zoom.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Gelderland</p><p class="city-list">Arnhem, Nijmegen, Apeldoorn, Ede, Doetinchem, Zutphen, Harderwijk, Tiel.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Overijssel</p><p class="city-list">Enschede, Zwolle, Deventer, Hengelo, Almelo, Kampen, Oldenzaal, Steenwijk.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Limburg</p><p class="city-list">Maastricht, Venlo, Sittard, Geleen, Heerlen, Roermond, Weert, Kerkrade.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Friesland</p><p class="city-list">Leeuwarden, Drachten, Sneek, Heerenveen, Harlingen, Joure, Wolvega, Franeker.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Groningen</p><p class="city-list">Groningen, Veendam, Stadskanaal, Winschoten, Delfzijl, Appingedam, Hoogezand.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Drenthe</p><p class="city-list">Assen, Emmen, Hoogeveen, Meppel, Coevorden, Beilen, Roden, Klazienaveen.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Flevoland</p><p class="city-list">Almere, Lelystad, Dronten, Emmeloord, Zeewolde, Urk, Biddinghuizen.</p></article>
+                <article class="provincie-card"><p class="provincie-name">Zeeland</p><p class="city-list">Middelburg, Vlissingen, Goes, Terneuzen, Zierikzee, Hulst, Tholen.</p></article>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 TT Digital Design | High-End Webdevelopment & Automation</p>
@@ -136,5 +142,64 @@
     </footer>
 
     <script src="menu.js"></script>
+    <script>
+    (function () {
+        emailjs.init({ publicKey: 'WmdbKABruq6DF33lp' });
+
+        var form      = document.getElementById('support-form');
+        var submitBtn = document.getElementById('support-submit');
+        var statusEl  = document.getElementById('support-status');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Browser-validatie: email is required + type="email" — blokkeert bij leeg of ongeldig
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            submitBtn.disabled    = true;
+            submitBtn.textContent = 'Bezig met versturen...';
+            showStatus('', 'loading');
+
+            emailjs.send('service_8dd8z15', 'template_dugtmza', {
+                name:    document.getElementById('name').value,
+                email:   document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            })
+            .then(function () {
+                showStatus('\u2714 Uw bericht is verstuurd! Wij nemen binnen 24 uur contact met u op.', 'success');
+                submitBtn.textContent = '\u2714 Verstuurd';
+                form.reset();
+            })
+            .catch(function (err) {
+                showStatus('\u26A0 Er ging iets mis. Probeer het opnieuw of mail naar info@ttdigitaldesign.nl', 'error');
+                submitBtn.disabled    = false;
+                submitBtn.textContent = 'VERSTUUR BERICHT';
+                console.error('EmailJS fout:', err);
+            });
+        });
+
+        function showStatus(msg, type) {
+            statusEl.style.display = msg ? 'block' : 'none';
+            statusEl.textContent   = msg;
+            if (type === 'success') {
+                statusEl.style.background = 'rgba(0,200,100,0.12)';
+                statusEl.style.border     = '1px solid rgba(0,200,100,0.4)';
+                statusEl.style.color      = '#4ade80';
+            } else if (type === 'error') {
+                statusEl.style.background = 'rgba(220,50,50,0.12)';
+                statusEl.style.border     = '1px solid rgba(220,50,50,0.4)';
+                statusEl.style.color      = '#f87171';
+            } else {
+                statusEl.style.background = 'rgba(212,175,55,0.08)';
+                statusEl.style.border     = '1px solid rgba(212,175,55,0.3)';
+                statusEl.style.color      = '#d4af37';
+            }
+        }
+    })();
+    </script>
 </body>
 </html>
