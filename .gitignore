@@ -1,0 +1,11 @@
+# Geheimen (ZÉÉR BELANGRIJK)
+.env
+backend/.env
+
+# Grote troep (Render installeert dit zelf)
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Systeem bestanden
+.DS_Store
