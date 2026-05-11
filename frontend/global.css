@@ -359,7 +359,8 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
 
 .package-header .price {
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.45);
+    /* Contrast fix: 0.45 haalt ~3.4:1 niet — verhoogd naar 0.72 voor 4.5:1+ */
+    color: rgba(255,255,255,0.72);
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -444,7 +445,6 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     }
     .package-card.featured {
         transform: none;
-        order: -1;
     }
     .packages-section { padding: 70px 5%; }
 }
@@ -524,7 +524,8 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
 }
 
 .city-list {
-    color: rgba(255,255,255,0.5);
+    /* Contrast fix: rgba(255,255,255,0.5) haalt ~3:1 niet — verhoogd naar 0.72 voor 4.5:1+ op donkere bg */
+    color: rgba(255,255,255,0.72);
     font-size: 0.8rem;
     line-height: 1.6;
     margin: 0;
@@ -535,7 +536,8 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255,255,255,0.07);
     text-align: center;
-    color: rgba(255,255,255,0.3);
+    /* Contrast fix: rgba(255,255,255,0.3) is onleesbaar — verhoogd naar 0.55 voor minimaal 4.5:1 */
+    color: rgba(255,255,255,0.55);
     font-size: 0.8rem;
     letter-spacing: 0.04em;
 }
