@@ -1,0 +1,48 @@
+/* hosting.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
+
+/* 2×2 grid voor de 4 hosting pakketten */
+.hosting-section .packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 860px;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+
+/* Featured kaart niet omhoog verschuiven in 2×2 */
+.hosting-section .package-card.featured {
+    transform: none;
+}
+
+.hosting-section .package-card.featured:hover {
+    transform: translateY(-6px);
+}
+
+/* Sectie subtitle */
+.section-subtitle {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* Tablet: ook 2 kolommen */
+@media (max-width: 900px) {
+    .hosting-section .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 620px;
+        gap: 1rem;
+    }
+}
+
+/* Mobiel: 1 kolom */
+@media (max-width: 560px) {
+    .hosting-section .packages-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+    .hosting-section .package-card {
+        padding: 1.5rem 1.2rem;
+    }
+}

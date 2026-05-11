@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT Digital Design | Home</title>
+    <link rel="stylesheet" href="global.css">
+</head>
+<body>
+
+    <div id="stars-viewport">
+        <div class="star-layer"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">TT <span>Digital Design</span></div>
+        
+        <button class="menu-btn" id="menu-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="ai.html">AI Guide</a></li>
+            <li><a href="hosting.html">Hosting</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <main style="padding: 4rem 5%; min-height: 80vh;">
+        <h1 style="font-size: 3rem; color: #d4af37;">Welkom bij het Empire</h1>
+        <p>Dit is je centrale hub voor digitale innovatie.</p>
+    </main>
+
+    <script>
+        // Logica voor het mobiele menu
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
