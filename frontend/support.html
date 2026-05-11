@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT Digital Design | Support</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="support.css">
+</head>
+<body>
+
+    <div id="stars-viewport">
+        <div class="star-layer"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">TT <span>Digital Design</span></div>
+        <button class="menu-btn" id="menu-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+
+    <ul class="nav-menu" id="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ai.html">AI Guide</a></li>
+        <li><a href="hosting.html">Hosting</a></li>
+        <li><a href="support.html" class="active">Support</a></li>
+        <li><a href="overons.html">Over Ons</a></li>
+    </ul>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Website <span>Support</span><br>Altijd Bereikbaar</h1>
+                <p class="hero-subtitle">
+                    Wij staan klaar wanneer u ons nodig heeft. 
+                    Van technische hulp tot strategisch advies — direct menselijk contact.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-tag"> Snelle Reactie</div>
+                    <div class="feature-tag"> SPOED Contact</div>
+                    <div class="feature-tag"> Altijd Bereikbaar</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-orb"></div>
+            </div>
+        </section>
+
+        <!-- Contactformulier sectie -->
+        <section class="packages-section">
+            <div class="container">
+                <h2 class="section-title">Neem <span>Contact Op</span></h2>
+
+                <div class="support-grid">
+
+                    <!-- Contactkaarten -->
+                    <article class="package-card support-info">
+                        <div class="package-header">
+                            <h3>Directe Contactmiddelen</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li><span class="gold-icon">✉</span> info@ttdigitaldesign.nl</li>
+                            <li><span class="gold-icon">⏱</span> Reactietijd: binnen 24 uur</li>
+                            <li><span class="gold-icon">🗓</span> Ma–Vr, 09:00–18:00</li>
+                            <li>
+                                <span class="gold-icon">🚨</span>
+                                <span style="flex:1;">
+                                    <strong style="color:#fff; display:block; margin-bottom:0.2rem;">SPOED Contact</strong>
+                                    <span style="color:rgba(255,255,255,0.5); font-size:0.82rem;">Starttarief €100 &nbsp;·&nbsp; daarna €75 / uur</span><br>
+                                    <button id="show-phone-btn" onclick="document.getElementById('spoed-number').style.display='inline'; this.style.display='none';" style="margin-top:0.5rem; background:linear-gradient(135deg,#8a0000,#ee1515); color:#111; border:none; border-radius:8px; padding:0.4rem 1rem; font-size:0.78rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer;">Toon Nummer</button>
+                                    <a id="spoed-number" href="tel:+31614717444" style="display:none; margin-top:0.5rem; color:#e90202; font-weight:700; font-size:1rem; text-decoration:none; letter-spacing:0.04em;">📞 +31 6 147 17 444</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Contactformulier -->
+                    <article class="package-card support-form-card">
+                        <div class="package-header">
+                            <h3>Stuur een Bericht</h3>
+                        </div>
+                        <form class="support-form" id="support-form">
+                            <div class="form-group">
+                                <label for="name">Naam</label>
+                                <input type="text" id="name" name="name" placeholder="Uw naam" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" placeholder="uw@email.nl" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Onderwerp</label>
+                                <input type="text" id="subject" name="subject" placeholder="Hoe kunnen wij helpen?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Bericht</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Beschrijf uw vraag of project..." required></textarea>
+                            </div>
+                            <button type="submit" class="select-btn featured-btn" style="width:100%; cursor:pointer; border:none;">VERSTUUR BERICHT</button>
+                        </form>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <h2 class="footer-title">Actief door heel <span>Nederland</span></h2>
+            <div class="provincie-grid">
+                <article class="provincie-card"><h4 class="provincie-name">Noord-Holland</h4><p class="city-list">Amsterdam, Haarlem, Alkmaar, Hilversum, Amstelveen, Hoofddorp, Purmerend, Zaandam.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Zuid-Holland</h4><p class="city-list">Rotterdam, Den Haag, Leiden, Dordrecht, Zoetermeer, Delft, Schiedam, Spijkenisse.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Utrecht</h4><p class="city-list">Utrecht, Amersfoort, Zeist, Nieuwegein, Veenendaal, Houten, Woerden, Soest.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Noord-Brabant</h4><p class="city-list">Eindhoven, Tilburg, Breda, Den Bosch, Helmond, Roosendaal, Oss, Bergen op Zoom.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Gelderland</h4><p class="city-list">Arnhem, Nijmegen, Apeldoorn, Ede, Doetinchem, Zutphen, Harderwijk, Tiel.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Overijssel</h4><p class="city-list">Enschede, Zwolle, Deventer, Hengelo, Almelo, Kampen, Oldenzaal, Steenwijk.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Limburg</h4><p class="city-list">Maastricht, Venlo, Sittard, Geleen, Heerlen, Roermond, Weert, Kerkrade.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Friesland</h4><p class="city-list">Leeuwarden, Drachten, Sneek, Heerenveen, Harlingen, Joure, Wolvega, Franeker.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Groningen</h4><p class="city-list">Groningen, Veendam, Stadskanaal, Winschoten, Delfzijl, Appingedam, Hoogezand.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Drenthe</h4><p class="city-list">Assen, Emmen, Hoogeveen, Meppel, Coevorden, Beilen, Roden, Klazienaveen.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Flevoland</h4><p class="city-list">Almere, Lelystad, Dronten, Emmeloord, Zeewolde, Urk, Biddinghuizen.</p></article>
+                <article class="provincie-card"><h4 class="provincie-name">Zeeland</h4><p class="city-list">Middelburg, Vlissingen, Goes, Terneuzen, Zierikzee, Hulst, Tholen.</p></article>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TT Digital Design | High-End Webdevelopment & Automation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>

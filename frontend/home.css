@@ -1,0 +1,15 @@
+/* home.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
+
+/* Geselecteerde pakketkaart highlight */
+.package-card.pkg-selected {
+    border-color: rgba(212, 175, 55, 0.7);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 20px 60px rgba(0,0,0,0.5);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.package-card.pkg-selected .pkg-select-btn {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.6);
+    color: #d4af37;
+}
+
