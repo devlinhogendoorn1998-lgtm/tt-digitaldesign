@@ -8,7 +8,7 @@ const RENDER_URL = 'https://tt-digitaldesign.onrender.com/api/chat';
 
 // EmailJS — zelfde service als de rest van de site
 const EMAILJS_SERVICE  = 'service_8dd8z15';
-const EMAILJS_TEMPLATE = 'template_ai_lead'; // Aanmaken in EmailJS dashboard (zie onder)
+const EMAILJS_TEMPLATE = 'template_dugtmza';
 const EMAILJS_PUBKEY   = 'WmdbKABruq6DF33lp';
 
 let chatHistory     = [];
@@ -163,9 +163,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
-            klant_email:  email,
-            samenvatting: samenvatting,
-            datum:        datum
+            name:    'AI Lead — ' + email,
+            email:   email,
+            subject: 'Nieuwe AI-lead via chatbot — ' + datum,
+            message: samenvatting + '\n\n— AI'
         })
         .then(function () {
             toonStatus(statusEl,
