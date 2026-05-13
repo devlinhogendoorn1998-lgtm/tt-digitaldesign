@@ -322,3 +322,16 @@
 .provincie-name     { font-weight: 700; font-size: 0.8rem; color: #d4af37; margin-bottom: 0.3rem; }
 .city-list          { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
 .footer-bottom      { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); font-size: 0.75rem; }
+
+/* ── Mobiel ────────────────────────────────────────────── */
+/* // cls-fix mobiel: op 360-768px staan 6 kaarten verticaal gestapeld (~400px per kaart)
+   min-height:2200px reserveert de ruimte zodat CTA en footer niet omhoog springen
+   terwijl het grid wordt gebouwd; gap vergroot voor betere leesbaarheid */
+@media (max-width: 768px) {
+    .portfolio-section {
+        min-height: 2200px;
+    }
+    .portfolio-grid {
+        gap: 2rem;
+    }
+}

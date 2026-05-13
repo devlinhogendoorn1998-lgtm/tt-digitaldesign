@@ -15,7 +15,8 @@
     <style>
       /* reset */
       *{margin:0;padding:0;box-sizing:border-box}
-      body{background:#050505;color:#fff;font-family:sans-serif;overflow-x:hidden}
+      /* // perf: optimizeSpeed vermijdt FOUT (Flash of Unstyled Text) door fontrendering te versnellen */
+      body{background:#050505;color:#fff;font-family:sans-serif;overflow-x:hidden;text-rendering:optimizeSpeed}
       /* sterren achtergrond */
       #stars-viewport{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle at bottom,#111,#050505)}
       .star-layer{position:absolute;width:100%;height:200%;background-image:radial-gradient(2px 2px at 20px 30px,#eee,rgba(0,0,0,0)),radial-gradient(2px 2px at 100px 150px,#fff,rgba(0,0,0,0)),radial-gradient(1.5px 1.5px at 200px 250px,#d4af37,rgba(0,0,0,0));background-size:300px 300px;animation:moveStars 60s linear infinite}
@@ -51,6 +52,9 @@
       .card-footer{margin-top:1.2rem;padding-top:1rem}
       /* // cls-fix: main krijgt min-height zodat container niet omhoog springt voordat grid laadt */
       main{min-height:100vh}
+      /* // cls-fix mobiel: kaarten zijn gestapeld op mobiel — min-height voorkomt dat
+         CTA en footer omhoog springen terwijl het grid wordt opgebouwd */
+      @media(max-width:768px){.portfolio-section{min-height:2200px}.portfolio-grid{gap:2rem}}
     </style>
 
     <!-- // optimization: CSS asynchroon laden — elimineert render-blocking resources -->
@@ -118,9 +122,10 @@
                         <!-- Foto: vervang src met pad naar screenshot, bijv. src="img/dsd-preview.jpg" -->
                         <!-- // optimization: LCP-afbeelding — geen lazy loading, hoge fetchpriority -->
                         <!-- // compression: genereer img/dsd-400w.webp (~30KB) en img/dsd-800w.webp (~70KB) via squoosh.app of sharp; origineel mag max ~80KB zijn -->
-                        <img src="img/dsd.webp"
-                             srcset="img/dsd-400w.webp 400w, img/dsd-800w.webp 800w, img/dsd.webp 1200w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
+                        <!-- // img-fix: src wijst nu naar bestaand -800w bestand; 1200w variant bestaat niet -->                        <!-- // sizes-fix: max-width:480px 100vw zorgt dat mobiel (360-480px) de 400w variant pakt -->
+                        <img src="img/dsd-800w.webp"
+                             srcset="img/dsd-400w.webp 400w, img/dsd-800w.webp 800w"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
                              alt="Preview DSD Schoonmaak website"
                              fetchpriority="high"
                              width="800" height="450">
@@ -159,9 +164,8 @@
                         <span class="card-badge">Live</span>
                         <!-- Foto: vervang src met pad naar screenshot, bijv. src="img/tt-preview.jpg" -->
                         <!-- // todo: voeg screenshot toe; genereer ook tt-400w.webp en tt-800w.webp (max ~80KB totaal) -->
+                        <!-- // img-fix: tt-400w/800w bestaan nog niet — srcset verwijderd om 404-fouten te vermijden -->
                         <img src=""
-                             srcset="img/tt-400w.webp 400w, img/tt-800w.webp 800w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
                              alt="Preview TT Digital Design website"
                              loading="lazy"
                              width="800" height="450">
@@ -200,9 +204,11 @@
                         <span class="card-badge">Live</span>
                         <!-- // lcp-fix: eerste zichtbare afbeelding — lazy verwijderd, fetchpriority=high toegevoegd -->
                         <!-- // compression: genereer img/loodgieter-400w.webp en img/loodgieter-800w.webp; origineel max ~80KB -->
-                        <img src="img/loodgieter.webp"
-                             srcset="img/loodgieter-400w.webp 400w, img/loodgieter-800w.webp 800w, img/loodgieter.webp 1200w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
+                        <!-- // img-fix: src wijst nu naar bestaand -800w bestand; 1200w variant bestaat niet -->
+                        <!-- // lcp-fix: loodgieter-400w.webp (8.77kB) is de prioriteitsafbeelding op mobiel -->
+                        <img src="img/loodgieter-800w.webp"
+                             srcset="img/loodgieter-400w.webp 400w, img/loodgieter-800w.webp 800w"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
                              alt="Preview Luxe Plumbing loodgieter website"
                              fetchpriority="high"
                              width="800" height="450">
@@ -239,9 +245,10 @@
                     <div class="card-thumb card-thumb-zorg">
                         <span class="card-badge">Live</span>
                         <!-- // compression: genereer img/schilder-400w.webp en img/schilder-800w.webp; origineel max ~80KB -->
-                        <img src="img/schilder.webp"
-                             srcset="img/schilder-400w.webp 400w, img/schilder-800w.webp 800w, img/schilder.webp 1200w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
+                        <!-- // img-fix: src wijst nu naar bestaand -800w bestand; 1200w variant bestaat niet -->
+                        <img src="img/schilder-800w.webp"
+                             srcset="img/schilder-400w.webp 400w, img/schilder-800w.webp 800w"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
                              alt="Preview Meester Schilder website"
                              loading="lazy"
                              width="800" height="450">
@@ -278,9 +285,10 @@
                     <div class="card-thumb card-thumb-schade">
                         <span class="card-badge">Live</span>
                         <!-- // compression: genereer img/schade-400w.webp en img/schade-800w.webp; origineel max ~80KB -->
-                        <img src="img/schade.webp"
-                             srcset="img/schade-400w.webp 400w, img/schade-800w.webp 800w, img/schade.webp 1200w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
+                        <!-- // img-fix: src wijst nu naar bestaand -800w bestand; 1200w variant bestaat niet -->
+                        <img src="img/schade-800w.webp"
+                             srcset="img/schade-400w.webp 400w, img/schade-800w.webp 800w"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
                              alt="Preview Diamond Schadeherstel website"
                              loading="lazy"
                              width="800" height="450">
@@ -317,9 +325,8 @@
                     <div class="card-thumb card-thumb-vastgoed">
                         <span class="card-badge" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.4);">Voorbeeld</span>
                         <!-- // todo: voeg screenshot toe; genereer ook vastgoed-400w.webp en vastgoed-800w.webp -->
+                        <!-- // img-fix: vastgoed-400w/800w bestaan nog niet — srcset verwijderd om 404-fouten te vermijden -->
                         <img src=""
-                             srcset="img/vastgoed-400w.webp 400w, img/vastgoed-800w.webp 800w"
-                             sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 960px) calc(50vw - 3rem), 340px"
                              alt="Preview vastgoed makelaar website"
                              loading="lazy"
                              width="800" height="450">
