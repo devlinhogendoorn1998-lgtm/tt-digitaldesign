@@ -335,18 +335,18 @@
                     </div>
                 </article>
 
-                <!-- Vastgoed (voorbeeld) -->
+                <!-- AI Makelaar (vastgoed) -->
                 <article class="portfolio-card">
                     <div class="card-thumb card-thumb-vastgoed">
-                        <span class="card-badge" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.4);">Voorbeeld</span>
-                        <!-- // todo: voeg screenshot toe; genereer ook vastgoed-400w.webp en vastgoed-800w.webp -->
-                        <!-- // img-fix: vastgoed-400w/800w bestaan nog niet — srcset verwijderd om 404-fouten te vermijden -->
-                        <img src=""
-                             alt="Preview vastgoed makelaar website"
+                        <span class="card-badge">Live</span>
+                        <img src="img/ai-800w.webp"
+                             srcset="img/ai-400w.webp 400w, img/ai-800w.webp 800w"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
+                             alt="Preview AI Makelaar website"
                              loading="lazy"
                              width="800" height="450">
                         <div class="card-thumb-inner">
-                            <span class="card-logo-text" style="font-size:1.1rem;">EstateNL</span>
+                            <span class="card-logo-text" style="font-size:1.1rem;">AI Makelaar</span>
                             <div class="card-mock-bar"></div>
                             <div class="card-mock-line"></div>
                             <div class="card-mock-line short"></div>
@@ -354,7 +354,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-category">Vastgoed</p>
-                        <h3 class="card-title">Vastgoedmakelaar Website</h3>
+                        <h3 class="card-title">AI Makelaar</h3>
                         <p class="card-desc">Premium website voor een makelaarskantoor. Woningaanbod-overzicht, filterfunctie op prijs &amp; type, leadformulier en professionele branding.</p>
                         <div class="card-tags">
                             <span class="tag">HTML</span>
@@ -364,7 +364,11 @@
                             <span class="tag">PageSpeed 89+</span>
                         </div>
                         <div class="card-footer">
-                            <span class="card-link card-link--disabled">Voorbeeldproject</span>
+                            <a href="https://aimakelaars.netlify.app" class="card-link" target="_blank" rel="noopener noreferrer"
+                               aria-label="Bekijk live website van AI Makelaar (opent in nieuw tabblad)">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Bekijk voorbeeldsite
+                            </a>
                         </div>
                     </div>
                 </article>
