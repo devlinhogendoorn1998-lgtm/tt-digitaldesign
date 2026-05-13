@@ -55,6 +55,13 @@
       /* // cls-fix mobiel: kaarten zijn gestapeld op mobiel — min-height voorkomt dat
          CTA en footer omhoog springen terwijl het grid wordt opgebouwd */
       @media(max-width:768px){.portfolio-section{min-height:2200px}.portfolio-grid{gap:2rem}}
+      /* // cls-fix desktop: browser weet op 961px+ niet hoe groot het grid is vóór async CSS laadt
+         — min-height:1200px reserveert ruimte; min-height op card voorkomt groei bij tekst-load */
+      @media(min-width:961px){
+        .portfolio-section{min-height:1200px!important}
+        .portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem}
+        .portfolio-card{min-height:550px}
+      }
     </style>
 
     <!-- // optimization: CSS asynchroon laden — elimineert render-blocking resources -->
@@ -208,7 +215,7 @@
                         <!-- // lcp-fix: loodgieter-400w.webp (8.77kB) is de prioriteitsafbeelding op mobiel -->
                         <img src="img/loodgieter-800w.webp"
                              srcset="img/loodgieter-400w.webp 400w, img/loodgieter-800w.webp 800w"
-                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 33vw"
+                             sizes="(max-width: 480px) 100vw, (max-width: 960px) 50vw, 600px"
                              alt="Preview Luxe Plumbing loodgieter website"
                              fetchpriority="high"
                              width="800" height="450">
