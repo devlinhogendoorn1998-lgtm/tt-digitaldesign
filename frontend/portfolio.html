@@ -41,6 +41,16 @@
       .card-thumb{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
       .card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
       .card-body{padding:1.4rem 1.5rem 1.6rem}
+      /* // cls-fix: card-body typografie inline — portfolio.css laadt async; zonder deze regels
+         groeien kaarten ~40-60px bij de CSS-load (margin-bottom card-desc + margin/padding card-footer)
+         wat de volledige sectie en footer naar beneden duwt (CLS 0.614) */
+      .card-category{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d4af37;margin-bottom:.4rem}
+      .card-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#fff}
+      .card-desc{font-size:.82rem;line-height:1.65;margin-bottom:1.2rem}
+      .card-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+      .card-footer{margin-top:1.2rem;padding-top:1rem}
+      /* // cls-fix: main krijgt min-height zodat container niet omhoog springt voordat grid laadt */
+      main{min-height:100vh}
     </style>
 
     <!-- // optimization: CSS asynchroon laden — elimineert render-blocking resources -->
@@ -76,7 +86,9 @@
     <main>
 
         <!-- Hero -->
-        <section class="hero-section">
+        <!-- // cls-fix: inline style vergrendelt min-height en padding — externe async stylesheets
+             (global.css zet min-height:100vh) kunnen deze waarden niet overschrijven -->
+        <section class="hero-section" style="min-height:52vh;padding:10rem 2rem 5rem">
             <div class="hero-content">
                 <h1 class="hero-title">Ons <span>Portfolio</span></h1>
                 <p class="hero-subtitle">

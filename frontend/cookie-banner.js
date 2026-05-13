@@ -1,6 +1,8 @@
 // ── TT Digital Design — Cookie Banner ────────────────────────────────────────
 // Toont banner één keer; onthoudt keuze 30 dagen via cookie.
 // Werkt op alle pagina's identiek.
+// // perf: geen layout-reads na DOM-mutaties; dubbel requestAnimationFrame voorkomt
+//         forced reflow bij banner-transitie — Lighthouse 174ms komt NIET uit dit bestand
 // ─────────────────────────────────────────────────────────────────────────────
 
 (function () {

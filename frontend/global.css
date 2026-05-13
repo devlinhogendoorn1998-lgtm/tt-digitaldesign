@@ -51,7 +51,8 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
 .bar {
     width: 30px; height: 3px;
     background: #d4af37;
-    transition: 0.4s;
+    /* // perf: expliciet transform+opacity — 'transition:0.4s' animeerde alle properties incl. non-composited */
+    transition: transform 0.4s, opacity 0.4s;
 }
 
 /* // section: Dropdown Menu — glassmorphism, zwevende tekst */
@@ -311,7 +312,9 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-sizing: border-box;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    /* // perf: alleen transform — border-color/box-shadow zijn non-composited en werden instant toegepast */
+    transition: transform 0.3s;
+    will-change: transform;
 }
 
 .package-card:hover {
@@ -415,7 +418,8 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    /* // perf: background/border-color/color zijn non-composited — opacity+transform zijn compositor-safe */
+    transition: opacity 0.2s, transform 0.15s;
     font-family: inherit;
 }
 
@@ -506,7 +510,7 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     padding: 1rem 1.1rem;
     box-sizing: border-box;
     width: 100%;
-    transition: border-color 0.25s, background 0.25s;
+    /* // perf: border-color/background zijn non-composited — hover-effect wordt instant toegepast */
 }
 
 .provincie-card:hover {

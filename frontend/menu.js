@@ -1,4 +1,6 @@
 // menu.js — schone versie, sluit overal bij klik
+// // perf: geen offsetHeight/offsetWidth/getBoundingClientRect na DOM-wijzigingen —
+//         Lighthouse 'forced reflow' komt NIET uit dit bestand (oorzaak: async CSS-load onload swap)
 
 document.addEventListener('DOMContentLoaded', function () {
   const menuBtn = document.getElementById('menu-btn');
