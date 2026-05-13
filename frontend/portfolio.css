@@ -78,7 +78,7 @@
 .card-thumb-tt   { background: linear-gradient(135deg, #0a0a14 0%, #12121e 100%); }
 .card-thumb-rest { background: linear-gradient(135deg, #0d0a06 0%, #1a1408 100%); }
 .card-thumb-zorg { background: linear-gradient(135deg, #060d0a 0%, #0c1810 100%); }
-.card-thumb-gym  { background: linear-gradient(135deg, #0d0608 0%, #1a0c0f 100%); }
+.card-thumb-schade { background: linear-gradient(135deg, #080807 0%, #141108 60%, #1c1606 100%); }
 .card-thumb-vastgoed { background: linear-gradient(135deg, #080810 0%, #10101a 100%); }
 
 .card-thumb-inner {
