@@ -145,13 +145,13 @@
     padding: 1.4rem 1.5rem 1.6rem;
 }
 
-/* // a11y: opacity verhoogd van 0.7 naar 0.9 voor goud-op-donker (bold uppercase kleine tekst vereist 4.5:1) */
+/* // a11y: opacity verwijderd — #d4af37 vol gebruikt; gold-op-donker (#050505) haalt ~8:1 contrast */
 .card-category {
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(212,175,55,0.9);
+    color: #d4af37;
     margin-bottom: 0.4rem;
 }
 
@@ -304,9 +304,9 @@
 .footer-container   { max-width: 1140px; margin: 0 auto; }
 .footer-title       { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; margin-bottom: 2rem; text-align: center; }
 .footer-title span  { color: #d4af37; }
-/* // a11y: city-list opacity 0.35→0.55, footer-bottom 0.2→0.45 — beiden faalden WCAG AA */
+/* // a11y: city-list 0.35→0.55, footer-bottom 0.45→0.55 — 0.45 was 4.41:1 (net onder WCAG AA grens) */
 .provincie-grid     { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
 .provincie-card     { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 0.9rem 1rem; }
 .provincie-name     { font-weight: 700; font-size: 0.8rem; color: #d4af37; margin-bottom: 0.3rem; }
 .city-list          { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
-.footer-bottom      { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.45); font-size: 0.75rem; }
+.footer-bottom      { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); font-size: 0.75rem; }
