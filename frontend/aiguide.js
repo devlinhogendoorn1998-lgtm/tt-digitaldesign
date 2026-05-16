@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(function (err) {
             toonStatus(statusEl,
-                '\u26A0 Versturen mislukt. Probeer opnieuw of mail naar info@ttdigitaldesign.nl',
+                '\u26A0 Versturen mislukt. Probeer opnieuw of mail naar marketing@ttdigitaldesign.nl',
                 'error'
             );
             emailBtn.disabled    = false;

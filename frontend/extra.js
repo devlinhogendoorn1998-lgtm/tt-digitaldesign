@@ -72,7 +72,7 @@
                 emailInput.disabled = true;
             })
             .catch(function (err) {
-                showStatus('\u26A0 Er ging iets mis. Probeer het opnieuw of mail naar info@ttdigitaldesign.nl', 'error');
+                showStatus('\u26A0 Er ging iets mis. Probeer het opnieuw of mail naar marketing@ttdigitaldesign.nl', 'error');
                 payBtn.disabled    = false;
                 payBtn.removeAttribute('aria-disabled');
                 payBtn.textContent = '\u2756 Verstuur Aanvraag';
