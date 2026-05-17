@@ -105,8 +105,8 @@ Excl. BTW
 Een complete professionele website met meerdere pagina's voor bedrijven die online willen groeien.
 
 ✔ 6 volledige pagina's
-✔ 24 foto's
-✔ Over Ons pagina
+✔ Visuele Kracht (16 foto's)
+✔ Vertrouwensfactor (Over Ons)
 ✔ Automatische respons
 ✔ Geavanceerde navigatie
 ✔ SEO met statistieken
@@ -119,8 +119,8 @@ VANAF
 Excl. BTW
 Het zwaarste websitepakket voor bedrijven die regionaal of nationaal willen domineren — inclusief branding en leadgeneratie.
 
-✔ 12 afdelingspagina's
-✔ 50 foto's
+✔ 12 Afdeling-pagina's
+✔ Mega Beeldbank (24 foto's)
 ✔ Logo & Branding
 ✔ Deep SEO — Google Dominantie
 ✔ Slim leadsysteem
@@ -131,7 +131,7 @@ HOSTING & LEASE PAKKETTEN — KANT-EN-KLARE OUTPUT
 ════════════════════════════════════════
 
 Basis Cloud
-€14,94 per maand
+€14,99 per maand
 Excl. BTW
 Solide cloudhosting voor wie zijn eigen website zelf beheert. Snel, veilig en schaalbaar.
 
