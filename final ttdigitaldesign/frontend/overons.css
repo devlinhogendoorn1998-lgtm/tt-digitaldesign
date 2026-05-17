@@ -1,0 +1,162 @@
+/* overons.css — Over Ons pagina specifieke stijlen. Gedeelde stijlen staan in global.css */
+
+/* ── Founder Story sectie ── */
+.founder-story-section {
+    position: relative;
+    padding: 90px 5% 80px;
+    z-index: 2;
+}
+
+.founder-story-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent);
+}
+
+.story-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Tekst kolom */
+.story-text .section-title {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.story-text p {
+    color: rgba(255,255,255,0.72);
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+}
+
+.story-text p strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Empire Start highlight blok */
+.deal-highlight {
+    background: rgba(212,175,55,0.07);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 2rem;
+    backdrop-filter: blur(8px);
+}
+
+.deal-highlight h4 {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 0.75rem;
+}
+
+.deal-highlight p {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.deal-highlight p strong {
+    color: #d4af37;
+    font-weight: 800;
+}
+
+/* Foto kolom */
+.image-frame {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(212,175,55,0.25);
+    background: rgba(255,255,255,0.03);
+    aspect-ratio: 3 / 4;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+}
+
+.frame-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 0 60px rgba(212,175,55,0.08);
+    pointer-events: none;
+}
+
+/* ── Missie kaarten grid ── */
+.overons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.overons-grid .package-card.featured {
+    transform: translateY(-10px);
+}
+
+.overons-grid .package-card.featured:hover {
+    transform: translateY(-16px);
+}
+
+/* ── Tablet ── */
+@media (max-width: 960px) {
+    .story-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .story-image {
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .story-text .section-title {
+        text-align: center;
+    }
+    .overons-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .overons-grid .package-card.featured {
+        transform: none;
+        order: -1;
+    }
+}
+
+/* ── Mobiel ── */
+@media (max-width: 560px) {
+    .founder-story-section {
+        padding: 60px 5% 50px;
+    }
+    .story-text p {
+        font-size: 0.92rem;
+    }
+    .deal-highlight {
+        padding: 1.2rem 1.2rem;
+    }
+    .overons-grid {
+        max-width: 100%;
+    }
+    .overons-grid .package-card {
+        padding: 1.5rem 1.2rem;
+    }
+}
