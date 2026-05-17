@@ -90,11 +90,11 @@ Excl. BTW
 Een one-pager die als digitaal visitekaartje dient.
 
 ✔ Directe actieknop (bel, mail, WhatsApp)
-✔ Visueel Portfolio (3 foto's)
-✔ Smartphone-Proof
-✔ Slimme Navigatie
-✔ Contact-Ready
-✔ SEO-Basis
+✔ Visueel Portfolio (3 tot 9 foto's)
+✔ Ultra Fast Edge-Caching
+✔ One-Page Funnel Structuur
+✔ GDPR Cookie-Proof Framework
+✔ Google Index Fundament
 
 ———————————————
 
@@ -102,14 +102,15 @@ ULTIMATE — AANBEVOLEN
 VANAF
 €999,99
 Excl. BTW
-Een complete professionele website met meerdere pagina's voor bedrijven die online willen groeien.
+Een complete professionele Multi-Page Business Structuur die online willen groeien.
 
+✔ Inclusief alles uit "The Digital Card"
 ✔ 6 volledige pagina's
-✔ Visuele Kracht (16 foto's)
-✔ Vertrouwensfactor (Over Ons)
-✔ Automatische respons
-✔ Geavanceerde navigatie
-✔ SEO met statistieken
+✔ Visuele Kracht (20 foto's)
+✔ Authority Branding Module
+✔ Instant Lead-Responder
+✔ Multi-Faceted User Experience
+✔ Advanced SEO Engine & Live Analytics
 
 ———————————————
 
@@ -118,13 +119,13 @@ VANAF
 €1.999,99
 Excl. BTW
 Het zwaarste websitepakket voor bedrijven die regionaal of nationaal willen domineren — inclusief branding en leadgeneratie.
-
-✔ 12 Afdeling-pagina's
-✔ Mega Beeldbank (24 foto's)
-✔ Logo & Branding
-✔ Deep SEO — Google Dominantie
-✔ Slim leadsysteem
-✔ Unieke regio-focus
+✔ Inclusief alles uit "ULTIMATE"
+✔ Complete Enterprise Architectuur
+✔ High-End Media Vault (30 Projectfoto's)
+✔ Corporate Identity & Branding
+✔ Deep SEO — Markt Dominantie
+✔ Advanced Lead-Funnel & CRM-Koppeling
+✔ Hyper-Targeted Regio Funnel
 
 ════════════════════════════════════════
 HOSTING & LEASE PAKKETTEN — KANT-EN-KLARE OUTPUT
