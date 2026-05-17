@@ -17,6 +17,10 @@ let emailFormActief = false; // Zorgt dat het formulier maar één keer verschij
 document.addEventListener('DOMContentLoaded', function () {
     emailjs.init({ publicKey: EMAILJS_PUBKEY });
 
+    // Wake-up ping — Render free tier slaapt na inactiviteit.
+    // Dit start de service alvast op zodat het eerste bericht snel reageert.
+    fetch('https://tt-digitaldesign.onrender.com/api/health').catch(() => {});
+
     const input    = document.getElementById('chat-input');
     const sendBtn  = document.getElementById('chat-send');
     const messages = document.getElementById('chat-messages');
@@ -49,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body:    JSON.stringify({ messages: chatHistory }),
-                signal:  AbortSignal.timeout(15000)
+                signal:  AbortSignal.timeout(60000)
             });
 
             verwijderTyping(typingId);
@@ -82,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (err) {
             verwijderTyping(typingId);
             const melding = err.name === 'TimeoutError'
-                ? 'De AI reageert te langzaam. Probeer het opnieuw.'
-                : 'Verbindingsfout. Controleer of de backend actief is op Render.';
+                ? 'De backend start op (Render cold start). Wacht 30 seconden en probeer opnieuw.'
+                : 'Verbindingsfout. De backend is mogelijk aan het opstarten — wacht even en probeer opnieuw.';
             voegBerichtToe('ai', melding);
             console.warn('Chat fout:', err.message);
         } finally {
