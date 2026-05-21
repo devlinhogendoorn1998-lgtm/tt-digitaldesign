@@ -108,6 +108,92 @@
     border-color: rgba(245,226,122,0.6);
 }
 
+/* ── Google Review Badge ── */
+.google-review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 12px;
+    padding: 0.7rem 1.2rem;
+    margin-bottom: 1.8rem;
+    backdrop-filter: blur(6px);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.google-review-badge:hover {
+    border-color: rgba(212,175,55,0.5);
+    box-shadow: 0 0 18px rgba(212,175,55,0.08);
+}
+
+.grb-google {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.grb-g-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.grb-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.grb-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(212,175,55,0.2);
+    margin: 0 1rem;
+    flex-shrink: 0;
+}
+
+.grb-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.grb-stars {
+    color: #d4af37;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.grb-numbers {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.grb-numbers strong {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.grb-slash {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+}
+
+.grb-count {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+}
+
 /* Foto kolom */
 .about-visual {
     display: flex;

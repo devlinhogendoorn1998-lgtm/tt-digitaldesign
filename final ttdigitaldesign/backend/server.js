@@ -249,7 +249,7 @@ app.post('/api/chat', async (req, res) => {
 
     try {
         const response = await getAiClient().models.generateContent({
-            model: 'gemini-2.0-flash',
+            model: 'gemini-3-flash-preview',
             contents: history,
             config: {
                 systemInstruction: SYSTEM_PROMPT,
