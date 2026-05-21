@@ -130,8 +130,7 @@ HOSTING & LEASE PAKKETTEN — KANT-EN-KLARE OUTPUT
 ════════════════════════════════════════
 
 Basis Cloud
-€14,99 per maand
-Excl. BTW
+€15,00 per maand incl. btw
 Solide cloudhosting voor wie zijn eigen website zelf beheert. Snel, veilig en schaalbaar.
 
 ✔ Enterprise Edge Network
@@ -143,8 +142,7 @@ Solide cloudhosting voor wie zijn eigen website zelf beheert. Snel, veilig en sc
 ———————————————
 
 Managed Pro
-€24,99 per maand
-Excl. BTW
+€25,00 per maand incl. btw
 Volledig beheerde hosting waarbij TT Digital Design de updates en support voor u regelt.
 
 ✔ Alles van Basis Cloud
@@ -156,28 +154,26 @@ Volledig beheerde hosting waarbij TT Digital Design de updates en support voor u
 ———————————————
 
 Smart Lease
-€49,99 per maand
-Excl. BTW
+€50,00 per maand incl. btw
 Lease een complete website inclusief hosting — na 12 maanden is de site van u.
 
 ✔ Website inclusief 2 pagina's
 ✔ Volledige hosting en onderhoud
 ✔ Beveiliging inbegrepen
 ✔ Eigendom na 12 maanden
-✔ Daarna €24,99 per maand
+✔ Daarna €25,00 per maand
 
 ———————————————
 
 Ultimate Lease
-€74,99 per maand
-Excl. BTW
+€75,00 per maand incl. btw
 Het meest uitgebreide leasepakket met 5 pagina's en volledige managed hosting — na 12 maanden eigendom.
 
 ✔ Website inclusief 5 pagina's
 ✔ Complete managed hosting
 ✔ Minimaal 6 maanden contract
 ✔ Eigendom na 12 maanden
-✔ Daarna €24,99 per maand
+✔ Daarna €25,00 per maand
 
 OFFICIËLE EXTRA'S (UPSELL OPTIES):
 ✔ Extra Pagina: €99,- excl. BTW (Per extra pagina)
