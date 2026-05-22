@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        // Section: Sla gecontroleerde naam op voor pakketselectie op home-pagina
+        window.ttCheckedDomain = naam;
+
         // Section: Reset — leeg grid, knop uitschakelen
         resultGrid.innerHTML = '';
         resultGrid.className = 'domain-results-grid hidden';

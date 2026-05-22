@@ -16,6 +16,7 @@
 
         var urlParams  = new URLSearchParams(window.location.search);
         var pakketNaam = urlParams.get('pakket') || 'Niet opgegeven';
+        var domeinNaam = urlParams.get('domein') || 'Niet opgegeven';
 
         // ---- Knop: actief als email geldig is (extras zijn optioneel) ----
         function updateBtn() {
@@ -60,6 +61,7 @@
 
             emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
                 pakket:      pakketNaam,
+                domein:      domeinNaam,
                 email:       emailInput.value.trim(),
                 extras:      payBtn.dataset.extras  || 'Geen extra\u2019s geselecteerd',
                 totaal:      payBtn.dataset.totaal   || '\u20AC0,-',

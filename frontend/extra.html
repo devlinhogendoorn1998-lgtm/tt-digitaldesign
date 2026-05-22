@@ -57,7 +57,7 @@
         <!-- Geselecteerd pakket banner -->
         <div class="container" style="padding-top: 0; padding-bottom: 0;">
             <div id="pakket-banner" style="display:none; background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.4); border-radius: 14px; padding: 1rem 1.5rem; margin-bottom: 0.5rem; text-align:center; color: #d4af37; font-weight: 700; letter-spacing: 0.06em; font-size: 0.9rem;">
-                ✦ Gekozen pakket: <span id="pakket-naam">—</span>
+                ✦ Gekozen pakket: <span id="pakket-naam">—</span><span id="domein-banner" style="display:none;"> &nbsp;·&nbsp; Domein: <strong id="domein-naam" style="color:#fff;"></strong></span>
             </div>
         </div>
 
@@ -352,17 +352,24 @@
     <script src="menu.js"></script>
     <script src="extra.js"></script>
     <script>
-        // Lees geselecteerd pakket uit URL query param
+        // Lees geselecteerd pakket + domein uit URL query params
         (function () {
-            const params = new URLSearchParams(window.location.search);
-            const pakket = params.get('pakket');
+            var params = new URLSearchParams(window.location.search);
+            var pakket = params.get('pakket');
+            var domein = params.get('domein');
             if (pakket) {
-                const banner = document.getElementById('pakket-banner');
-                const naam   = document.getElementById('pakket-naam');
-                const intro  = document.getElementById('pakket-intro');
-                if (banner) banner.style.display = 'block';
-                if (naam)   naam.textContent = pakket;
-                if (intro)  intro.textContent = 'Hieronder de beschikbare uitbreidingen voor uw "' + pakket + '" pakket. Stuur ons een bericht om alles samen te stellen.';
+                var banner       = document.getElementById('pakket-banner');
+                var naamEl       = document.getElementById('pakket-naam');
+                var introEl      = document.getElementById('pakket-intro');
+                var domeinBanner = document.getElementById('domein-banner');
+                var domeinNaamEl = document.getElementById('domein-naam');
+                if (banner)  banner.style.display = 'block';
+                if (naamEl)  naamEl.textContent = pakket;
+                if (introEl) introEl.textContent = 'Hieronder de beschikbare uitbreidingen voor uw "' + pakket + '" pakket. Stuur ons een bericht om alles samen te stellen.';
+                if (domein && domeinBanner && domeinNaamEl) {
+                    domeinBanner.style.display  = 'inline';
+                    domeinNaamEl.textContent    = domein;
+                }
             }
         })();
     </script>

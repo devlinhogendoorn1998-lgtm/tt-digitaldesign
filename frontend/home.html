@@ -360,7 +360,7 @@
                     extrasBtn.style.cursor = 'pointer';
                     extrasBtn.setAttribute('aria-disabled', 'false');
                     extrasBtn.removeAttribute('tabindex');
-                    extrasBtn.href = 'extra.html?pakket=' + encodeURIComponent(naam);
+                    extrasBtn.href = 'extra.html?pakket=' + encodeURIComponent(naam) + (window.ttCheckedDomain ? '&domein=' + encodeURIComponent(window.ttCheckedDomain) : '');
                     extrasHint.textContent = '✔ ' + naam + ' geselecteerd — klaar voor extra\'s';
                     extrasHint.style.color = 'rgba(212,175,55,0.8)';
                 });
