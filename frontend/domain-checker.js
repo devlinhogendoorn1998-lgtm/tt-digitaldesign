@@ -95,53 +95,77 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Section: bouwRij — puur DOM-constructie, nooit innerHTML met user-input
     function bouwRij(domainFull, status, prijs) {
-        var badgeTxt = status === 'available' ? 'Vrij'
-                     : status === 'taken'     ? 'Bezet' : '...';
-        var badgeCls = status === 'available' ? 'vrij'
-                     : status === 'taken'     ? 'bezet' : 'laden';
-        var rowCls   = status === 'available' ? 'available'
-                     : status === 'taken'     ? 'taken'  : 'loading';
+        var isAvailable = status === 'available';
+        var isTaken     = status === 'taken';
+        var rowCls      = isAvailable ? 'available' : isTaken ? 'taken' : 'loading';
 
-        var row = document.createElement('div');
+        // Section: Beschikbare domeinen zijn klikbaar — link naar hosting pagina
+        var row = document.createElement(isAvailable ? 'a' : 'div');
         row.className = 'domain-result-row ' + rowCls;
+        if (isAvailable) {
+            row.href = 'hosting.html?domain=' + encodeURIComponent(domainFull);
+            row.setAttribute('aria-label', 'Bestel ' + domainFull + ' — bekijk hosting opties');
+        }
 
-        var left  = document.createElement('div');
+        // Section: Links — rond icoon + naam + statuslabel
+        var left = document.createElement('div');
         left.className = 'dr-left';
 
-        var badge = document.createElement('span');
-        badge.className   = 'dr-badge ' + badgeCls;
-        badge.textContent = badgeTxt;
+        var icoonEl = document.createElement('span');
+        icoonEl.className   = 'dr-icoon ' + (isAvailable ? 'vrij' : isTaken ? 'bezet' : 'laden');
+        icoonEl.textContent = isAvailable ? '\u2714' : isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
+        icoonEl.setAttribute('aria-hidden', 'true');
+
+        var infoEl = document.createElement('div');
+        infoEl.className = 'dr-info';
 
         var naamEl = document.createElement('span');
         naamEl.className   = 'dr-name';
         naamEl.textContent = domainFull;
 
-        // -- Vinkje voor vrije domeinen
-        if (status === 'available') {
-            var vinkje = document.createElement('span');
-            vinkje.className   = 'dr-vinkje';
-            vinkje.textContent = '\u2714';
-            left.appendChild(vinkje);
-        }
+        var statusTxt = document.createElement('span');
+        statusTxt.className   = 'dr-status-txt';
+        statusTxt.textContent = isAvailable ? 'Beschikbaar'
+                              : isTaken     ? 'Niet beschikbaar'
+                              : 'Wordt gecontroleerd\u2026';
 
-        left.appendChild(badge);
-        left.appendChild(naamEl);
+        infoEl.appendChild(naamEl);
+        infoEl.appendChild(statusTxt);
+        left.appendChild(icoonEl);
+        left.appendChild(infoEl);
         row.appendChild(left);
 
-        if (prijs) {
-            var right  = document.createElement('div');
-            right.className = 'dr-price';
+        // Section: Rechts — prijs + gratis tag + CTA pijl (alleen bij vrij)
+        if (isAvailable && prijs) {
+            var right = document.createElement('div');
+            right.className = 'dr-right';
 
-            var sterk  = document.createElement('strong');
-            sterk.textContent = prijs;
+            var prijsEl = document.createElement('strong');
+            prijsEl.className   = 'dr-prijs';
+            prijsEl.textContent = prijs;
 
-            var gratis = document.createElement('span');
-            gratis.className   = 'gratis';
-            gratis.textContent = 'Gratis domain bij hosting!';
+            var gratisEl = document.createElement('span');
+            gratisEl.className   = 'dr-gratis';
+            gratisEl.textContent = 'Gratis domain bij hosting!';
 
-            right.appendChild(sterk);
-            right.appendChild(gratis);
+            var ctaEl = document.createElement('span');
+            ctaEl.className   = 'dr-cta';
+            ctaEl.textContent = 'Bestel \u2192';
+
+            right.appendChild(prijsEl);
+            right.appendChild(gratisEl);
+            right.appendChild(ctaEl);
             row.appendChild(right);
+        } else if (isTaken) {
+            var rightB = document.createElement('div');
+            rightB.className = 'dr-right';
+
+            var bezetEl = document.createElement('span');
+            bezetEl.className   = 'dr-bezet-label';
+            bezetEl.textContent = 'Bezet';
+
+            rightB.appendChild(bezetEl);
+            row.appendChild(rightB);
         }
 
         return row;
