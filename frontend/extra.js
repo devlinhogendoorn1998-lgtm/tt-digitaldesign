@@ -5,9 +5,11 @@
     var EMAILJS_TEMPLATE = 'template_unpav1f';
     var EMAILJS_PUBKEY   = 'WmdbKABruq6DF33lp';
 
-    emailjs.init({ publicKey: EMAILJS_PUBKEY });
-
     document.addEventListener('DOMContentLoaded', function () {
+        // // Sectie: EmailJS init — pas initialiseren als SDK geladen is
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init({ publicKey: EMAILJS_PUBKEY });
+        }
         var checkboxes  = document.querySelectorAll('.extra-check');
         var totalEl     = document.getElementById('extras-total');
         var payBtn      = document.getElementById('pay-btn');
@@ -58,6 +60,15 @@
             payBtn.disabled    = true;
             payBtn.textContent = 'Bezig met versturen...';
             showStatus('', 'loading');
+
+            // // Sectie: EmailJS guard — fallback als SDK niet geladen is
+            if (typeof emailjs === 'undefined') {
+                showStatus('\u26A0 Er ging iets mis. Probeer het opnieuw of mail naar marketing@ttdigitaldesign.nl', 'error');
+                payBtn.disabled    = false;
+                payBtn.removeAttribute('aria-disabled');
+                payBtn.textContent = '\u2756 Verstuur Aanvraag';
+                return;
+            }
 
             emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
                 pakket:      pakketNaam,
