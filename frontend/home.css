@@ -155,7 +155,7 @@
 /* // Section: Rij — CSS Grid 3 kolommen: icoon | naam | prijs */
 .dr-row {
     display: grid;
-    grid-template-columns: 22px 1fr auto;
+    grid-template-columns: 28px 22px 1fr auto;
     align-items: center;
     column-gap: 0.75rem;
     padding: 0.9rem 1.2rem;

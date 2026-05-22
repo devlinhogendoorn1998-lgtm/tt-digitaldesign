@@ -124,32 +124,39 @@ document.addEventListener('DOMContentLoaded', function () {
         var row = document.createElement('div');
         row.className = 'dr-row ' + (isAvailable ? 'dr-vrij' : isTaken ? 'dr-bezet' : 'dr-laden');
 
-        // // Kolom 1 — checkbox of icoon
-        var col1;
+        // Kolom 1 — checkbox (indien beschikbaar, anders leeg)
+        var colCheck = document.createElement('span');
         if (isAvailable) {
-            col1 = document.createElement('input');
-            col1.type = 'checkbox';
-            col1.className = 'dr-check';
-            col1.setAttribute('data-tld', tld);
-            col1.setAttribute('aria-label', 'Selecteer domein ' + domainFull);
-        } else {
-            col1 = document.createElement('span');
-            col1.className = 'dr-icoon';
-            col1.textContent = isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
-            col1.setAttribute('aria-hidden', 'true');
+            var cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.className = 'dr-check';
+            cb.setAttribute('data-tld', tld);
+            cb.setAttribute('aria-label', 'Selecteer domein ' + domainFull);
+            colCheck.appendChild(cb);
         }
 
-        // Kolom 2 — domeinnaam
+        // Kolom 2 — icoon
+        var icoon = document.createElement('span');
+        icoon.className = 'dr-icoon';
+        if (isAvailable) {
+            icoon.textContent = '';
+        } else {
+            icoon.textContent = isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
+            icoon.setAttribute('aria-hidden', 'true');
+        }
+
+        // Kolom 3 — domeinnaam
         var naam = document.createElement('span');
         naam.className   = 'dr-naam';
         naam.textContent = domainFull;
 
-        // Kolom 3 — prijs (leeg bij bezet/laden)
+        // Kolom 4 — prijs
         var prijsEl = document.createElement('span');
         prijsEl.className   = 'dr-prijs';
         prijsEl.textContent = (isAvailable && prijs) ? prijs : '';
 
-        row.appendChild(col1);
+        row.appendChild(colCheck);
+        row.appendChild(icoon);
         row.appendChild(naam);
         row.appendChild(prijsEl);
 
