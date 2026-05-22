@@ -124,101 +124,84 @@
 
 /* // Section: Resultaten grid */
 .domain-results-grid {
-    margin-top: 1.4rem;
+    margin-top: 1.6rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
     width: 100%;
-    text-align: left;
 }
 
 .domain-results-grid.hidden {
     display: none;
 }
 
-/* // Section: Resultaatrij */
-.domain-result-row {
-    display: flex;
-    flex-wrap: nowrap;
+/* // Section: Rij — CSS Grid 3 kolommen: icoon | naam | prijs */
+.dr-row {
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.85rem 1.1rem;
+    column-gap: 0.75rem;
+    padding: 0.9rem 1.2rem;
     border-radius: 10px;
-    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    text-align: left;
 }
 
-.domain-result-row.available {
-    border-color: rgba(52,211,153,0.3);
+.dr-row.dr-vrij {
+    border-color: rgba(52,211,153,0.35);
     background: rgba(52,211,153,0.04);
 }
 
-.domain-result-row.taken {
-    border-color: rgba(248,81,73,0.18);
+.dr-row.dr-bezet {
+    border-color: rgba(248,81,73,0.2);
     background: rgba(248,81,73,0.03);
-    opacity: 0.68;
+    opacity: 0.62;
 }
 
-.domain-result-row.loading {
-    border-color: rgba(212,175,55,0.12);
+.dr-row.dr-laden {
+    border-color: rgba(212,175,55,0.15);
     animation: dr-pulse 1.4s ease-in-out infinite;
 }
 
 @keyframes dr-pulse {
-    0%, 100% { opacity: 0.4; }
-    50%       { opacity: 0.8; }
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.8;  }
 }
 
-/* // Section: Links — icoon + domeinnaam */
-.dr-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-width: 0;
-    flex: 1;
-}
-
+/* // Section: Kolom 1 — icoon */
 .dr-icoon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 900;
-    flex-shrink: 0;
+    text-align: center;
     line-height: 1;
 }
 
-.dr-icoon.vrij  { color: #34d399; }
-.dr-icoon.bezet { color: #f85149; }
-.dr-icoon.laden { color: rgba(212,175,55,0.5); font-size: 0.5rem; letter-spacing: 0.25em; }
+.dr-row.dr-vrij  .dr-icoon { color: #34d399; }
+.dr-row.dr-bezet .dr-icoon { color: #f85149; }
+.dr-row.dr-laden .dr-icoon { color: rgba(212,175,55,0.55); font-size: 0.45rem; letter-spacing: 0.22em; }
 
-.dr-name {
-    font-size: 0.93rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.92);
+/* // Section: Kolom 2 — domeinnaam */
+.dr-naam {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
     letter-spacing: 0.01em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.domain-result-row.available .dr-name {
-    color: #fff;
+.dr-row.dr-bezet .dr-naam {
+    color: rgba(255,255,255,0.3);
 }
 
-.domain-result-row.taken .dr-name {
-    color: rgba(255,255,255,0.35);
-}
-
-/* // Section: Rechts — prijs in goud, zelfde regel */
+/* // Section: Kolom 3 — prijs in goud */
 .dr-prijs {
     font-size: 0.88rem;
     font-weight: 800;
     color: #d4af37;
     white-space: nowrap;
-    flex-shrink: 0;
-    margin-left: 1rem;
     letter-spacing: 0.02em;
 }
 
@@ -258,7 +241,7 @@
         padding: 0.85rem 1rem;
     }
 
-    .dr-name {
+    .dr-naam {
         font-size: 0.88rem;
     }
 }

@@ -93,39 +93,33 @@ document.addEventListener('DOMContentLoaded', function () {
         // submit-event wordt al afgevangen, dit is alleen fallback
     });
 
-    // Section: bouwRij — puur DOM-constructie, nooit innerHTML met user-input
+    // Section: bouwRij — CSS Grid rij: icoon | naam | prijs
     function bouwRij(domainFull, status, prijs) {
         var isAvailable = status === 'available';
         var isTaken     = status === 'taken';
-        var rowCls      = isAvailable ? 'available' : isTaken ? 'taken' : 'loading';
 
         var row = document.createElement('div');
-        row.className = 'domain-result-row ' + rowCls;
+        row.className = 'dr-row ' + (isAvailable ? 'dr-vrij' : isTaken ? 'dr-bezet' : 'dr-laden');
 
-        // Section: Links — icoon + domeinnaam
-        var left = document.createElement('div');
-        left.className = 'dr-left';
+        // Section: Kolom 1 — icoon
+        var icoon = document.createElement('span');
+        icoon.className   = 'dr-icoon';
+        icoon.textContent = isAvailable ? '\u2714' : isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
+        icoon.setAttribute('aria-hidden', 'true');
 
-        var icoonEl = document.createElement('span');
-        icoonEl.className   = 'dr-icoon ' + (isAvailable ? 'vrij' : isTaken ? 'bezet' : 'laden');
-        icoonEl.textContent = isAvailable ? '\u2714' : isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
-        icoonEl.setAttribute('aria-hidden', 'true');
+        // Section: Kolom 2 — domeinnaam
+        var naam = document.createElement('span');
+        naam.className   = 'dr-naam';
+        naam.textContent = domainFull;
 
-        var naamEl = document.createElement('span');
-        naamEl.className   = 'dr-name';
-        naamEl.textContent = domainFull;
+        // Section: Kolom 3 — prijs (leeg bij bezet/laden)
+        var prijsEl = document.createElement('span');
+        prijsEl.className   = 'dr-prijs';
+        prijsEl.textContent = (isAvailable && prijs) ? prijs : '';
 
-        left.appendChild(icoonEl);
-        left.appendChild(naamEl);
-        row.appendChild(left);
-
-        // Section: Rechts — prijs in goud (alleen bij beschikbaar)
-        if (isAvailable && prijs) {
-            var prijsEl = document.createElement('span');
-            prijsEl.className   = 'dr-prijs';
-            prijsEl.textContent = prijs;
-            row.appendChild(prijsEl);
-        }
+        row.appendChild(icoon);
+        row.appendChild(naam);
+        row.appendChild(prijsEl);
 
         return row;
     }
