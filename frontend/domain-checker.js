@@ -116,6 +116,14 @@ document.addEventListener('DOMContentLoaded', function () {
         naamEl.className   = 'dr-name';
         naamEl.textContent = domainFull;
 
+        // -- Vinkje voor vrije domeinen
+        if (status === 'available') {
+            var vinkje = document.createElement('span');
+            vinkje.className   = 'dr-vinkje';
+            vinkje.textContent = '\u2714';
+            left.appendChild(vinkje);
+        }
+
         left.appendChild(badge);
         left.appendChild(naamEl);
         row.appendChild(left);
@@ -129,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var gratis = document.createElement('span');
             gratis.className   = 'gratis';
-            gratis.textContent = 'Gratis bij hosting!';
+            gratis.textContent = 'Gratis domain bij hosting!';
 
             right.appendChild(sterk);
             right.appendChild(gratis);
