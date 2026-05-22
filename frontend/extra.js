@@ -1,9 +1,10 @@
 // extra.js — email verplicht, extra's optioneel, EmailJS versturen
 
 (function () {
-    var EMAILJS_SERVICE  = 'service_8dd8z15';
-    var EMAILJS_TEMPLATE = 'template_unpav1f';
-    var EMAILJS_PUBKEY   = 'WmdbKABruq6DF33lp';
+    var EMAILJS_SERVICE       = 'service_8dd8z15';
+    var EMAILJS_TEMPLATE_JOUW = 'template_unpav1f';  // mail naar jou (TT Digital Design)
+    var EMAILJS_TEMPLATE_KLANT = 'template_f547kxa'; // bevestigingsmail naar klant
+    var EMAILJS_PUBKEY        = 'WmdbKABruq6DF33lp';
 
     document.addEventListener('DOMContentLoaded', function () {
         // // Sectie: EmailJS init — pas initialiseren als SDK geladen is
@@ -70,14 +71,20 @@
                 return;
             }
 
-            emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+            // // Sectie: EmailJS versturen — jouw mail + bevestiging naar klant tegelijk
+            var mailData = {
                 pakket:      pakketNaam,
                 domein:      domeinNaam,
                 email:       emailInput.value.trim(),
                 extras:      payBtn.dataset.extras  || 'Geen extra\u2019s geselecteerd',
                 totaal:      payBtn.dataset.totaal   || '\u20AC0,-',
                 aanbetaling: '\u20AC50,-'
-            })
+            };
+
+            Promise.all([
+                emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_JOUW,  mailData),
+                emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_KLANT, mailData)
+            ])
             .then(function () {
                 showStatus('\u2714 Uw aanvraag is verstuurd! Wij nemen zo snel mogelijk contact op via ' + emailInput.value.trim(), 'success');
                 payBtn.textContent = '\u2714 Verstuurd';
