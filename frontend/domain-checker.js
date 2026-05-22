@@ -99,15 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var isTaken     = status === 'taken';
         var rowCls      = isAvailable ? 'available' : isTaken ? 'taken' : 'loading';
 
-        // Section: Beschikbare domeinen zijn klikbaar — link naar hosting pagina
-        var row = document.createElement(isAvailable ? 'a' : 'div');
+        var row = document.createElement('div');
         row.className = 'domain-result-row ' + rowCls;
-        if (isAvailable) {
-            row.href = 'hosting.html?domain=' + encodeURIComponent(domainFull);
-            row.setAttribute('aria-label', 'Bestel ' + domainFull + ' — bekijk hosting opties');
-        }
 
-        // Section: Links — rond icoon + naam + statuslabel
+        // Section: Links — icoon + domeinnaam
         var left = document.createElement('div');
         left.className = 'dr-left';
 
@@ -116,56 +111,20 @@ document.addEventListener('DOMContentLoaded', function () {
         icoonEl.textContent = isAvailable ? '\u2714' : isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
         icoonEl.setAttribute('aria-hidden', 'true');
 
-        var infoEl = document.createElement('div');
-        infoEl.className = 'dr-info';
-
         var naamEl = document.createElement('span');
         naamEl.className   = 'dr-name';
         naamEl.textContent = domainFull;
 
-        var statusTxt = document.createElement('span');
-        statusTxt.className   = 'dr-status-txt';
-        statusTxt.textContent = isAvailable ? 'Beschikbaar'
-                              : isTaken     ? 'Niet beschikbaar'
-                              : 'Wordt gecontroleerd\u2026';
-
-        infoEl.appendChild(naamEl);
-        infoEl.appendChild(statusTxt);
         left.appendChild(icoonEl);
-        left.appendChild(infoEl);
+        left.appendChild(naamEl);
         row.appendChild(left);
 
-        // Section: Rechts — prijs + gratis tag + CTA pijl (alleen bij vrij)
+        // Section: Rechts — prijs in goud (alleen bij beschikbaar)
         if (isAvailable && prijs) {
-            var right = document.createElement('div');
-            right.className = 'dr-right';
-
-            var prijsEl = document.createElement('strong');
+            var prijsEl = document.createElement('span');
             prijsEl.className   = 'dr-prijs';
             prijsEl.textContent = prijs;
-
-            var gratisEl = document.createElement('span');
-            gratisEl.className   = 'dr-gratis';
-            gratisEl.textContent = 'Gratis domain bij hosting!';
-
-            var ctaEl = document.createElement('span');
-            ctaEl.className   = 'dr-cta';
-            ctaEl.textContent = 'Bestel \u2192';
-
-            right.appendChild(prijsEl);
-            right.appendChild(gratisEl);
-            right.appendChild(ctaEl);
-            row.appendChild(right);
-        } else if (isTaken) {
-            var rightB = document.createElement('div');
-            rightB.className = 'dr-right';
-
-            var bezetEl = document.createElement('span');
-            bezetEl.className   = 'dr-bezet-label';
-            bezetEl.textContent = 'Bezet';
-
-            rightB.appendChild(bezetEl);
-            row.appendChild(rightB);
+            row.appendChild(prijsEl);
         }
 
         return row;
