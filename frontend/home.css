@@ -1,3 +1,20 @@
+/* // Sectie: Domain Checker Checkbox */
+.dr-check {
+    width: 17px;
+    height: 17px;
+    accent-color: #d4af37;
+    cursor: pointer;
+    margin: 0;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1.5px solid #d4af3722;
+    background: #181818;
+    transition: box-shadow 0.18s;
+}
+.dr-check:focus {
+    outline: 2px solid #d4af37;
+    box-shadow: 0 0 0 2px #d4af37bb;
+}
 /* home.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
 
 /* // Section: Domain Checker */

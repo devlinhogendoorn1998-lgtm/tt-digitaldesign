@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var input      = document.getElementById('domainInput');
     var resultGrid = document.getElementById('domainResult');
     var checkBtn   = document.getElementById('checkButton');
+    // // Sectie: Geselecteerde domeinen (array)
+    window.ttCheckedDomains = [];
 
     if (!form || !input || !resultGrid || !checkBtn) return;
 
@@ -19,8 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Section: Sla gecontroleerde naam op voor pakketselectie op home-pagina
-        window.ttCheckedDomain = naam;
+        // Section: Reset selectie
+        window.ttCheckedDomain = '';
+        window.ttCheckedDomains = [];
 
         // Section: Reset — leeg grid, knop uitschakelen
         resultGrid.innerHTML = '';
@@ -30,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Section: Skelet-rijen — directe visuele feedback per TLD
         TLDS.forEach(function (tld) {
-            var row = bouwRij(naam + tld, 'loading', null);
+            var row = bouwRij(naam + tld, 'loading', null, tld);
             row.id  = 'dr-' + tld.slice(1);
             resultGrid.appendChild(row);
         });
@@ -56,20 +59,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         Promise.all(checks).then(function (results) {
-            // Section: Resultaten — skelet-rijen vervangen door definitieve rijen
             var allesFout = results.every(function (r) { return r.fout; });
 
             results.forEach(function (r) {
                 var status = r.available === true  ? 'available'
                            : r.available === false ? 'taken' : 'error';
                 var prijs  = r.available === true  ? PRIJZEN[r.tld] : null;
-                var nieuw  = bouwRij(r.full, status, prijs);
+                var nieuw  = bouwRij(r.full, status, prijs, r.tld);
                 nieuw.id   = 'dr-' + r.tld.slice(1);
                 var oud    = document.getElementById('dr-' + r.tld.slice(1));
                 if (oud) resultGrid.replaceChild(nieuw, oud);
             });
 
-            // Section: Netlify function fout — toon melding als alle calls mislukken
+            // Section: Checkbox listeners — alleen voor beschikbare domeinen
+            results.forEach(function (r) {
+                if (r.available === true) {
+                    var cb = document.querySelector('.dr-check[data-tld="' + r.tld + '"]');
+                    if (cb) {
+                        cb.addEventListener('change', function () {
+                            if (cb.checked) {
+                                if (!window.ttCheckedDomains.includes(r.full)) window.ttCheckedDomains.push(r.full);
+                            } else {
+                                window.ttCheckedDomains = window.ttCheckedDomains.filter(function (d) { return d !== r.full; });
+                            }
+                            // Altijd laatste geselecteerde als hoofd-domein
+                            window.ttCheckedDomain = window.ttCheckedDomains.length ? window.ttCheckedDomains[window.ttCheckedDomains.length-1] : '';
+                        });
+                    }
+                }
+            });
+
             if (allesFout) {
                 resultGrid.innerHTML = '';
                 var foutRij = document.createElement('p');
@@ -97,30 +116,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Section: bouwRij — CSS Grid rij: icoon | naam | prijs
-    function bouwRij(domainFull, status, prijs) {
+    // // Sectie: Bouw een resultaat-rij met checkbox
+    function bouwRij(domainFull, status, prijs, tld) {
         var isAvailable = status === 'available';
         var isTaken     = status === 'taken';
 
         var row = document.createElement('div');
         row.className = 'dr-row ' + (isAvailable ? 'dr-vrij' : isTaken ? 'dr-bezet' : 'dr-laden');
 
-        // Section: Kolom 1 — icoon
-        var icoon = document.createElement('span');
-        icoon.className   = 'dr-icoon';
-        icoon.textContent = isAvailable ? '\u2714' : isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
-        icoon.setAttribute('aria-hidden', 'true');
+        // // Kolom 1 — checkbox of icoon
+        var col1;
+        if (isAvailable) {
+            col1 = document.createElement('input');
+            col1.type = 'checkbox';
+            col1.className = 'dr-check';
+            col1.setAttribute('data-tld', tld);
+            col1.setAttribute('aria-label', 'Selecteer domein ' + domainFull);
+        } else {
+            col1 = document.createElement('span');
+            col1.className = 'dr-icoon';
+            col1.textContent = isTaken ? '\u2715' : '\u00B7\u00B7\u00B7';
+            col1.setAttribute('aria-hidden', 'true');
+        }
 
-        // Section: Kolom 2 — domeinnaam
+        // Kolom 2 — domeinnaam
         var naam = document.createElement('span');
         naam.className   = 'dr-naam';
         naam.textContent = domainFull;
 
-        // Section: Kolom 3 — prijs (leeg bij bezet/laden)
+        // Kolom 3 — prijs (leeg bij bezet/laden)
         var prijsEl = document.createElement('span');
         prijsEl.className   = 'dr-prijs';
         prijsEl.textContent = (isAvailable && prijs) ? prijs : '';
 
-        row.appendChild(icoon);
+        row.appendChild(col1);
         row.appendChild(naam);
         row.appendChild(prijsEl);
 
