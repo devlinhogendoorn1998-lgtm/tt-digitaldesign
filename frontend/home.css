@@ -1,5 +1,202 @@
 /* home.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
 
+/* // Section: Domain Checker */
+.domain-checker-section {
+    padding: 80px 5%;
+    position: relative;
+    z-index: 2;
+}
+
+.domain-checker-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent);
+}
+
+.domain-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.domain-subtitle {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 1rem;
+}
+
+.domain-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.domain-title span {
+    background: linear-gradient(135deg, #d4af37 0%, #f5e27a 50%, #b8902e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.domain-intro {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+}
+
+/* // Section: Domain Form — glassmorphism input */
+.domain-search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.domain-input-wrapper {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    transition: border-color 0.25s;
+}
+
+.domain-input-wrapper:focus-within {
+    border-color: rgba(212,175,55,0.75);
+    box-shadow: 0 0 0 3px rgba(212,175,55,0.12);
+}
+
+#domainInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+    min-width: 0;
+}
+
+#domainInput::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+#tldSelect {
+    background: rgba(212,175,55,0.1)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4af37' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+        no-repeat right 0.75rem center;
+    border: none;
+    border-left: 1px solid rgba(212,175,55,0.25);
+    outline: none;
+    color: #d4af37;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.9rem 2.2rem 0.9rem 1rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#tldSelect option {
+    background: #111;
+    color: #fff;
+}
+
+/* // Section: Check knop */
+#checkButton {
+    width: 100%;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f5e27a 50%, #b8902e 100%);
+    color: #050505;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+#checkButton:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-2px);
+}
+
+#checkButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* // Section: Resultaat bericht */
+.domain-status-msg {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.4rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.5;
+    transition: opacity 0.2s;
+}
+
+.domain-status-msg.hidden {
+    display: none;
+}
+
+/* // Section: Domain prijsnota */
+.domain-pricing-note {
+    margin-top: 1.4rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+.domain-pricing-note strong {
+    color: rgba(255,255,255,0.7);
+}
+
+.domain-free-highlight {
+    color: #d4af37 !important;
+    font-size: 0.88rem;
+}
+
+/* // Section: Responsive domain checker — mobiel */
+@media (max-width: 540px) {
+    .domain-input-wrapper {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    #tldSelect {
+        border-left: none;
+        border-top: 1px solid rgba(212,175,55,0.25);
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    #domainInput {
+        padding: 0.85rem 1rem;
+    }
+}
+
 /* ── Geselecteerde pakketkaart highlight ── */
 .package-card.pkg-selected {
     border-color: rgba(212, 175, 55, 0.7);
