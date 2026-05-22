@@ -110,19 +110,13 @@
         <form id="domainForm" class="domain-search-box">
             <div class="domain-input-wrapper">
                 <input type="text" id="domainInput" placeholder="uwbedrijfsnaam" required autocomplete="off" spellcheck="false">
-                <select id="tldSelect" aria-label="Kies domeinextensie">
-                    <option value=".nl">.nl</option>
-                    <option value=".com">.com</option>
-                    <option value=".net">.net</option>
-                </select>
             </div>
-            <button type="submit" id="checkButton">Controleer beschikbaarheid</button>
+            <button type="submit" id="checkButton">Controleer .nl · .com · .net</button>
         </form>
 
-        <div id="domainResult" class="domain-status-msg hidden" role="status" aria-live="polite"></div>
+        <div id="domainResult" class="domain-results-grid hidden" role="status" aria-live="polite"></div>
 
         <p class="domain-pricing-note">
-            Losse domeinnaam per jaar: <strong>.nl</strong> €7,00 &nbsp;|&nbsp; <strong>.com</strong> €16,00 &nbsp;|&nbsp; <strong>.net</strong> €17,00<br>
             <strong class="domain-free-highlight">Kiest u voor onze webhosting? Dan is uw domeinnaam volledig GRATIS!</strong>
         </p>
     </div>

@@ -1,62 +1,112 @@
-// Section: Domain Checker — koppeling met Netlify function check-domain
-document.getElementById('domainForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+// Section: Domain Checker — controleert .nl, .com én .net tegelijk via Promise.all
+(function () {
+    var TLDS    = ['.nl', '.com', '.net'];
+    var PRIJZEN = { '.nl': '€7,00/jr', '.com': '€16,00/jr', '.net': '€17,00/jr' };
 
-    var domainName = document.getElementById('domainInput').value.trim();
-    var tld        = document.getElementById('tldSelect').value;
-    var fullDomain = domainName + tld;
+    var form       = document.getElementById('domainForm');
+    var input      = document.getElementById('domainInput');
+    var resultGrid = document.getElementById('domainResult');
+    var checkBtn   = document.getElementById('checkButton');
 
-    var resultDiv   = document.getElementById('domainResult');
-    var checkButton = document.getElementById('checkButton');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    // Section: Reset — wis vorig resultaat voor nieuwe check
-    resultDiv.className = 'domain-status-msg hidden';
-    resultDiv.style.color = '';
-    resultDiv.textContent = '';
-    checkButton.textContent = 'Systeem controleert...';
-    checkButton.disabled = true;
+        var naam = input.value.trim().toLowerCase();
 
-    // Section: Fetch — aanroep naar Netlify serverside function
-    fetch('/.netlify/functions/check-domain?domain=' + encodeURIComponent(fullDomain))
-        .then(function (response) {
-            if (!response.ok) { throw new Error('Netlify function reageert niet'); }
-            return response.json();
-        })
-        .then(function (data) {
-            resultDiv.classList.remove('hidden');
+        // Section: Reset — leeg grid, knop uitschakelen
+        resultGrid.innerHTML = '';
+        resultGrid.className = 'domain-results-grid hidden';
+        checkBtn.textContent = 'Systeem controleert...';
+        checkBtn.disabled    = true;
 
-            // Section: Resultaat injectie — via textContent + DOM nodes (geen innerHTML met user-input)
-            var strong = document.createElement('strong');
-            strong.textContent = fullDomain;
-
-            var msg = document.createElement('span');
-
-            if (data.available === true) {
-                resultDiv.style.color = '#3fb950';
-                msg.textContent = '\uD83C\uDF89 ';
-                resultDiv.appendChild(msg);
-                resultDiv.appendChild(strong);
-                var rest = document.createElement('span');
-                rest.textContent = ' is nog vrij! Neem direct contact op om hem te claimen.';
-                resultDiv.appendChild(rest);
-            } else {
-                resultDiv.style.color = '#f85149';
-                msg.textContent = '\u274C Helaas, ';
-                resultDiv.appendChild(msg);
-                resultDiv.appendChild(strong);
-                var rest2 = document.createElement('span');
-                rest2.textContent = ' is al bezet. Probeer een andere naam.';
-                resultDiv.appendChild(rest2);
-            }
-        })
-        .catch(function (error) {
-            resultDiv.classList.remove('hidden');
-            resultDiv.style.color = '#f85149';
-            resultDiv.textContent = 'Er ging iets mis bij het controleren. Probeer het opnieuw.';
-            console.error('Domain check error:', error);
-        })
-        .finally(function () {
-            checkButton.textContent = 'Controleer beschikbaarheid';
-            checkButton.disabled = false;
+        // Section: Skelet-rijen — toon laadstatus per TLD
+        TLDS.forEach(function (tld) {
+            var row = bouwRij(naam + tld, 'loading', null);
+            row.id  = 'dr-' + tld.slice(1);
+            resultGrid.appendChild(row);
         });
-});
+        resultGrid.classList.remove('hidden');
+
+        // Section: Promise.all — één fetch per TLD, simultaan
+        var checks = TLDS.map(function (tld) {
+            var full = naam + tld;
+            return fetch(
+                '/.netlify/functions/check-domain?domain=' + encodeURIComponent(full)
+            )
+                .then(function (res) {
+                    if (!res.ok) throw new Error();
+                    return res.json();
+                })
+                .then(function (data) {
+                    return { tld: tld, full: full, available: data.available };
+                })
+                .catch(function () {
+                    return { tld: tld, full: full, available: null };
+                });
+        });
+
+        Promise.all(checks).then(function (results) {
+            // Section: Resultaten invullen — skelet-rijen vervangen door definitieve rijen
+            results.forEach(function (r) {
+                var status = r.available === true  ? 'available'
+                           : r.available === false ? 'taken' : 'error';
+                var prijs  = r.available === true  ? PRIJZEN[r.tld] : null;
+                var nieuw  = bouwRij(r.full, status, prijs);
+                nieuw.id   = 'dr-' + r.tld.slice(1);
+                var oud    = document.getElementById('dr-' + r.tld.slice(1));
+                resultGrid.replaceChild(nieuw, oud);
+            });
+        }).finally(function () {
+            checkBtn.textContent = 'Controleer .nl \u00b7 .com \u00b7 .net';
+            checkBtn.disabled    = false;
+        });
+    });
+
+    // Section: bouwRij — puur DOM-constructie, nooit innerHTML met user-input
+    function bouwRij(domainFull, status, prijs) {
+        var row      = document.createElement('div');
+        var badgeTxt = status === 'available' ? 'Vrij'
+                     : status === 'taken'     ? 'Bezet' : '...';
+        var badgeCls = status === 'available' ? 'vrij'
+                     : status === 'taken'     ? 'bezet' : 'laden';
+        var rowCls   = status === 'available' ? 'available'
+                     : status === 'taken'     ? 'taken'  : 'loading';
+
+        row.className = 'domain-result-row ' + rowCls;
+
+        // -- Links: badge + domeinnaam
+        var left = document.createElement('div');
+        left.className = 'dr-left';
+
+        var badge = document.createElement('span');
+        badge.className   = 'dr-badge ' + badgeCls;
+        badge.textContent = badgeTxt;
+
+        var naam = document.createElement('span');
+        naam.className   = 'dr-name';
+        naam.textContent = domainFull;
+
+        left.appendChild(badge);
+        left.appendChild(naam);
+        row.appendChild(left);
+
+        // -- Rechts: prijs + gratis-melding (alleen bij vrij domein)
+        if (prijs) {
+            var right  = document.createElement('div');
+            right.className = 'dr-price';
+
+            var sterk = document.createElement('strong');
+            sterk.textContent = prijs;
+
+            var gratis = document.createElement('span');
+            gratis.className   = 'gratis';
+            gratis.textContent = 'Gratis bij hosting!';
+
+            right.appendChild(sterk);
+            right.appendChild(gratis);
+            row.appendChild(right);
+        }
+
+        return row;
+    }
+})();

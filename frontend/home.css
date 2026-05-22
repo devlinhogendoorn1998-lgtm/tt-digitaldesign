@@ -94,27 +94,6 @@
     color: rgba(255,255,255,0.3);
 }
 
-#tldSelect {
-    background: rgba(212,175,55,0.1)
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4af37' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
-        no-repeat right 0.75rem center;
-    border: none;
-    border-left: 1px solid rgba(212,175,55,0.25);
-    outline: none;
-    color: #d4af37;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.9rem 2.2rem 0.9rem 1rem;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-#tldSelect option {
-    background: #111;
-    color: #fff;
-}
-
 /* // Section: Check knop */
 #checkButton {
     width: 100%;
@@ -142,21 +121,102 @@
     transform: none;
 }
 
-/* // Section: Resultaat bericht */
-.domain-status-msg {
-    margin-top: 1.2rem;
-    padding: 0.9rem 1.4rem;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    line-height: 1.5;
-    transition: opacity 0.2s;
+/* // Section: Resultaten grid — drie extensies naast elkaar */
+.domain-results-grid {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    text-align: left;
 }
 
-.domain-status-msg.hidden {
+.domain-results-grid.hidden {
     display: none;
+}
+
+.domain-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.2rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.2s;
+}
+
+.domain-result-row.available {
+    border-color: rgba(52,211,153,0.35);
+    background: rgba(52,211,153,0.06);
+}
+
+.domain-result-row.taken {
+    border-color: rgba(248,81,73,0.25);
+    background: rgba(248,81,73,0.04);
+}
+
+.domain-result-row.loading {
+    border-color: rgba(212,175,55,0.15);
+    opacity: 0.7;
+}
+
+.dr-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dr-badge {
+    padding: 0.22rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dr-badge.vrij {
+    background: rgba(52,211,153,0.14);
+    color: #34d399;
+    border: 1px solid rgba(52,211,153,0.3);
+}
+
+.dr-badge.bezet {
+    background: rgba(248,81,73,0.12);
+    color: #f85149;
+    border: 1px solid rgba(248,81,73,0.25);
+}
+
+.dr-badge.laden {
+    background: rgba(212,175,55,0.1);
+    color: #d4af37;
+    border: 1px solid rgba(212,175,55,0.2);
+}
+
+.dr-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.dr-price {
+    text-align: right;
+    line-height: 1.4;
+}
+
+.dr-price strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #d4af37;
+}
+
+.dr-price .gratis {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #34d399;
+    letter-spacing: 0.04em;
 }
 
 /* // Section: Domain prijsnota */
@@ -180,22 +240,16 @@
 /* // Section: Responsive domain checker — mobiel */
 @media (max-width: 540px) {
     .domain-input-wrapper {
-        flex-direction: column;
         border-radius: 10px;
-    }
-
-    #tldSelect {
-        border-left: none;
-        border-top: 1px solid rgba(212,175,55,0.25);
-        padding: 0.75rem 1rem;
-        width: 100%;
-        text-align: center;
     }
 
     #domainInput {
         padding: 0.85rem 1rem;
     }
-}
+
+    .dr-name {
+        font-size: 0.85rem;
+    }
 
 /* ── Geselecteerde pakketkaart highlight ── */
 .package-card.pkg-selected {
