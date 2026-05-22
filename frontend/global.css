@@ -60,21 +60,19 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
     position: fixed;
     top: 64px;
     right: 1.5rem;
-    width: 160px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(212, 175, 55, 0.25);
+    width: 180px;
+    background: rgba(10, 10, 14, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.35);
     border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
     display: none;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    align-items: stretch;
+    gap: 0;
     list-style: none;
-    padding: 2rem 0;
-    min-height: 200px;
+    padding: 0.6rem;
     z-index: 1050;
     animation: menuFadeIn 0.2s ease;
 }
@@ -84,20 +82,19 @@ body { background: #050505; color: white; font-family: sans-serif; overflow-x: h
 }
 
 #nav-menu a, .nav-menu a {
-    color: #fff;
+    display: block;
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.6rem 1.2rem;
-    width: 100%;
-    text-align: center;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
     border-radius: 8px;
-    transition: background 0.18s, color 0.18s;
-    letter-spacing: 0.02em;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.04em;
 }
 
 #nav-menu a:hover, .nav-menu a:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.18);
     color: #d4af37;
 }
 
