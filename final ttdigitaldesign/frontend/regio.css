@@ -1,0 +1,93 @@
+/* // Section: USP Grid — vier kolommen, responsive */
+.regio-usp-section {
+    padding: 80px 5%;
+}
+
+.usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+/* // Section: USP Card — glassmorphism, consistent met site-stijl */
+.usp-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.usp-card:hover {
+    border-color: rgba(212, 175, 55, 0.55);
+    transform: translateY(-4px);
+}
+
+.usp-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.usp-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+}
+
+.usp-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+}
+
+/* // Section: CTA-banner — centraal, goud accent */
+.regio-cta-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.regio-cta-inner {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.regio-cta-sub {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 1rem 0 2rem;
+    font-size: 1rem;
+}
+
+/* // Section: CTA-knop — primaire actie, goud */
+.cta-btn {
+    display: inline-block;
+    background: #d4af37;
+    color: #050505;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.85rem 2.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.cta-btn:hover {
+    background: #f0cb55;
+    transform: translateY(-2px);
+}
+
+/* // Section: Responsive — mobiel vanaf 600px */
+@media (max-width: 600px) {
+    .usp-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .regio-cta-section,
+    .regio-usp-section {
+        padding: 60px 5%;
+    }
+}
