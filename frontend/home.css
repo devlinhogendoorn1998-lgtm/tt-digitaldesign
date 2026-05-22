@@ -94,7 +94,41 @@
     color: rgba(255,255,255,0.3);
 }
 
-/* // Section: Check knop */
+/* // Section: TLD toggle pills */
+.tld-toggle-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tld-btn {
+    padding: 0.38rem 1.1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.18s;
+    user-select: none;
+}
+
+.tld-btn:hover {
+    border-color: rgba(212,175,55,0.5);
+    color: rgba(212,175,55,0.75);
+}
+
+.tld-btn.active {
+    background: rgba(212,175,55,0.14);
+    border-color: rgba(212,175,55,0.65);
+    color: #d4af37;
+    box-shadow: 0 0 0 2px rgba(212,175,55,0.08);
+}
+
+
 #checkButton {
     width: 100%;
     padding: 0.9rem 2rem;
