@@ -424,10 +424,14 @@
 
 /* // Pakket-sectie container: flex-kolom zodat label, titel, intro en kaart netjes onder elkaar staan */
 .packages-section .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important; /* Dwingt de container breed te blijven */
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
 }
 
 /* ============================================================
@@ -437,24 +441,22 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100% !important; /* Zorgt dat het grid niet inklapt */
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
 }
 
 /* ============================================================
    // Sectie: Pakket — hero-kaart
    ============================================================ */
-
-/* // transform:none neutraliseert de featured translateY(-10px) uit global.css */
-/* // width:100% zorgt dat de kaart de volledige breedte van de flex-container vult */
 .package-card--hero {
     padding: 0;
     overflow: hidden;
     transform: none !important;
-    width: 100%;
-    max-width: 800px;
-    box-sizing: border-box;
+    width: 100% !important; /* Kaart vult nu de volledige 800px van de grid container */
+    max-width: 800px !important;
+    box-sizing: border-box !important;
     border-color: rgba(212,175,55,0.45) !important;
     box-shadow:
         0 0 0 1px rgba(212,175,55,0.18),
