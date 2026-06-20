@@ -1,20 +1,3 @@
-/* // Sectie: Domain Checker Checkbox */
-.dr-check {
-    width: 17px;
-    height: 17px;
-    accent-color: #d4af37;
-    cursor: pointer;
-    margin: 0;
-    flex-shrink: 0;
-    border-radius: 4px;
-    border: 1.5px solid #d4af3722;
-    background: #181818;
-    transition: box-shadow 0.18s;
-}
-.dr-check:focus {
-    outline: 2px solid #d4af37;
-    box-shadow: 0 0 0 2px #d4af37bb;
-}
 /* home.css — pagina-specifieke stijlen. Gedeelde stijlen staan in global.css */
 
 /* // Section: Domain Checker */
@@ -111,8 +94,28 @@
     color: rgba(255,255,255,0.3);
 }
 
+#tldSelect {
+    background: rgba(212,175,55,0.1)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4af37' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+        no-repeat right 0.75rem center;
+    border: none;
+    border-left: 1px solid rgba(212,175,55,0.25);
+    outline: none;
+    color: #d4af37;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.9rem 2.2rem 0.9rem 1rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
 
+#tldSelect option {
+    background: #111;
+    color: #fff;
+}
 
+/* // Section: Check knop */
 #checkButton {
     width: 100%;
     padding: 0.9rem 2rem;
@@ -139,98 +142,21 @@
     transform: none;
 }
 
-/* // Section: Resultaten grid */
-.domain-results-grid {
-    margin-top: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    width: 100%;
-}
-
-.domain-results-grid.hidden {
-    display: none;
-}
-
-/* // Section: Rij — CSS Grid 3 kolommen: icoon | naam | prijs */
-.dr-row {
-    display: grid;
-    grid-template-columns: 28px 22px 1fr 80px;
-    align-items: center;
-    column-gap: 0.75rem;
-    padding: 0.9rem 1.2rem;
+/* // Section: Resultaat bericht */
+.domain-status-msg {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.4rem;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.07);
-    background: rgba(255,255,255,0.03);
-    text-align: left;
-}
-
-.dr-row.dr-vrij {
-    border-color: rgba(52,211,153,0.35);
-    background: rgba(52,211,153,0.04);
-}
-
-.dr-row.dr-bezet {
-    border-color: rgba(248,81,73,0.2);
-    background: rgba(248,81,73,0.03);
-    opacity: 0.62;
-}
-
-.dr-row.dr-laden {
-    border-color: rgba(212,175,55,0.15);
-    animation: dr-pulse 1.4s ease-in-out infinite;
-}
-
-@keyframes dr-pulse {
-    0%, 100% { opacity: 0.35; }
-    50%       { opacity: 0.8;  }
-}
-
-/* // Section: Kolom 1 — icoon */
-.dr-icoon {
-    font-size: 0.9rem;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1;
-}
-
-.dr-row.dr-vrij  .dr-icoon { color: #34d399; }
-.dr-row.dr-bezet .dr-icoon { color: #f85149; }
-.dr-row.dr-laden .dr-icoon { color: rgba(212,175,55,0.55); font-size: 0.45rem; letter-spacing: 0.22em; }
-
-/* // Section: Kolom 2 — domeinnaam */
-.dr-naam {
     font-size: 0.95rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 500;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.5;
+    transition: opacity 0.2s;
 }
 
-.dr-row.dr-bezet .dr-naam {
-    color: rgba(255,255,255,0.3);
-}
-
-/* // Section: Kolom 3 — prijs in goud */
-.dr-prijs {
-    font-size: 0.88rem;
-    font-weight: 800;
-    color: #d4af37;
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-    justify-self: end;
-    text-align: right;
-    min-width: 60px;
-}
-
-/* // Section: Domain foutmelding */
-.domain-error-msg {
-    color: #f85149;
-    font-size: 0.88rem;
-    text-align: center;
-    padding: 0.75rem 0;
+.domain-status-msg.hidden {
+    display: none;
 }
 
 /* // Section: Domain prijsnota */
@@ -254,29 +180,387 @@
 /* // Section: Responsive domain checker — mobiel */
 @media (max-width: 540px) {
     .domain-input-wrapper {
+        flex-direction: column;
         border-radius: 10px;
+    }
+
+    #tldSelect {
+        border-left: none;
+        border-top: 1px solid rgba(212,175,55,0.25);
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: center;
     }
 
     #domainInput {
         padding: 0.85rem 1rem;
     }
+}
 
-    .dr-naam {
-        font-size: 0.88rem;
+/* // Section: Pakket — label boven de sectietitel */
+.section-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 0.75rem;
+}
+
+/* // Section: Pakket — intro-tekst onder de sectietitel */
+.section-intro {
+    color: rgba(255,255,255,0.6);
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+/* // Section: Pakket — grid geforceerd op 1 kolom voor enkel pakket */
+.packages-grid--single {
+    grid-template-columns: 1fr !important;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* // Section: Pakket — hero-kaart: premium uitstraling met glow */
+/* // transform:none neutraliseert de featured translateY(-10px) uit global.css voor single-card layout */
+.package-card--hero {
+    padding: 0;
+    overflow: hidden;
+    transform: none !important;
+    border-color: rgba(212,175,55,0.45) !important;
+    box-shadow:
+        0 0 0 1px rgba(212,175,55,0.18),
+        0 0 60px rgba(212,175,55,0.08),
+        0 32px 80px rgba(0,0,0,0.55) !important;
+    background: rgba(212,175,55,0.05) !important;
+    gap: 0 !important;
+}
+
+/* // Section: Pakket — hover ook zonder transform-shift */
+.package-card--hero:hover {
+    transform: translateY(-4px) !important;
+}
+
+/* // Section: Pakket — inner wrapper voor padding */
+.pkg-inner {
+    padding: 2.2rem 2.6rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* // Section: Pakket — badge in de flow, gecentreerd bovenaan */
+.pkg-badge {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+    align-self: center;
+    margin-bottom: 1.8rem;
+    font-size: 0.72rem;
+    padding: 0.35rem 1.1rem;
+}
+
+/* // Section: Pakket — header blok met naam en prijs */
+.package-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    flex-wrap: wrap;
+}
+
+.package-header h3 {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.2;
+}
+
+.pkg-header-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.pkg-tagline {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.pkg-price-block {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* // Section: Pakket — prijs sub-label */
+.price-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.06em;
+    margin-top: 0.25rem;
+    font-weight: 400;
+    text-align: right;
+}
+
+/* // Section: Pakket — feature-lijst in twee kolommen */
+.feature-list--two-col {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-list--two-col li {
+    font-size: 0.88rem !important;
+    color: rgba(255,255,255,0.8) !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    line-height: 1.45 !important;
+}
+
+.feature-list--two-col .gold-icon {
+    margin-top: 0.1rem;
+    font-size: 0.8rem !important;
+}
+
+/* // Section: Pakket — CTA knoppengroep */
+.pkg-cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+
+.pkg-cta-group .select-btn {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.8rem;
+    font-size: 0.85rem;
+    border-radius: 12px;
+}
+
+/* // Section: Pakket — WhatsApp knop */
+.whatsapp-btn {
+    flex: 1;
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 1.6rem;
+    border-radius: 12px;
+    background: rgba(37,211,102,0.12);
+    color: #25D366;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(37,211,102,0.3);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+    background: rgba(37,211,102,0.22);
+    border-color: rgba(37,211,102,0.6);
+    transform: translateY(-2px);
+}
+
+/* // Section: Pakket — garantie-badge onderaan de kaart */
+.pkg-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+    padding: 1rem 1.4rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.07), rgba(212,175,55,0.03));
+    border: 1px solid rgba(212,175,55,0.22);
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+}
+
+.guarantee-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+/* // Section: Pakket — USP-strip boven de feature-lijst */
+.pkg-usp-strip {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.6rem;
+}
+
+.pkg-usp-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid rgba(212,175,55,0.22);
+    color: #d4af37;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* // Section: Op aanvraag blok — grotere projecten */
+.custom-request-block {
+    margin-top: 3rem;
+    padding: 0 0 0.5rem;
+    position: relative;
+}
+
+.custom-request-block::before {
+    content: '';
+    display: block;
+    width: 80%;
+    max-width: 500px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+    margin: 0 auto 3rem;
+}
+
+.custom-request-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.4rem 2.4rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-request-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+
+.custom-request-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.75rem;
+}
+
+.custom-request-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.custom-request-title span {
+    background: linear-gradient(135deg, #d4af37 0%, #f5e27a 50%, #b8902e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.custom-request-text {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-request-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 2.2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(212,175,55,0.35);
+    color: #d4af37;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.custom-request-btn:hover {
+    background: rgba(212,175,55,0.1);
+    border-color: rgba(212,175,55,0.6);
+    color: #f5e27a;
+    transform: translateY(-2px);
+}
+
+/* // Responsive: pakket op tablet — feature-lijst terug naar 1 kolom */
+@media (max-width: 680px) {
+    .feature-list--two-col {
+        grid-template-columns: 1fr;
+    }
+    .package-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .pkg-price-block {
+        text-align: left;
+    }
+    .price-sub {
+        text-align: left;
     }
 }
 
-/* ── Geselecteerde pakketkaart highlight ── */
-.package-card.pkg-selected {
-    border-color: rgba(212, 175, 55, 0.7);
-    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 20px 60px rgba(0,0,0,0.5);
-    background: rgba(212, 175, 55, 0.08);
-}
-
-.package-card.pkg-selected .pkg-select-btn {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: rgba(212, 175, 55, 0.6);
-    color: #d4af37;
+/* // Responsive: pakket CTA-groep op mobiel gestapeld */
+@media (max-width: 540px) {
+    .pkg-cta-group {
+        flex-direction: column;
+    }
+    .pkg-cta-group .select-btn,
+    .whatsapp-btn {
+        width: 100%;
+        min-width: unset;
+    }
+    .pkg-inner {
+        padding: 2rem 1.4rem 1.8rem;
+    }
+    .custom-request-inner {
+        padding: 1.8rem 1.2rem;
+    }
+    .pkg-usp-strip {
+        gap: 0.45rem;
+    }
 }
 
 /* ── About / Voorstel sectie ── */

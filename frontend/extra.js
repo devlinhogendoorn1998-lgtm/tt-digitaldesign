@@ -1,16 +1,13 @@
 // extra.js — email verplicht, extra's optioneel, EmailJS versturen
 
 (function () {
-    var EMAILJS_SERVICE       = 'service_8dd8z15';
-    var EMAILJS_TEMPLATE_JOUW = 'template_unpav1f';  // mail naar jou (TT Digital Design)
-    var EMAILJS_TEMPLATE_KLANT = 'template_f547kxa'; // bevestigingsmail naar klant
-    var EMAILJS_PUBKEY        = 'WmdbKABruq6DF33lp';
+    var EMAILJS_SERVICE  = 'service_8dd8z15';
+    var EMAILJS_TEMPLATE = 'template_unpav1f';
+    var EMAILJS_PUBKEY   = 'WmdbKABruq6DF33lp';
+
+    emailjs.init({ publicKey: EMAILJS_PUBKEY });
 
     document.addEventListener('DOMContentLoaded', function () {
-        // // Sectie: EmailJS init — pas initialiseren als SDK geladen is
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init({ publicKey: EMAILJS_PUBKEY });
-        }
         var checkboxes  = document.querySelectorAll('.extra-check');
         var totalEl     = document.getElementById('extras-total');
         var payBtn      = document.getElementById('pay-btn');
@@ -19,7 +16,6 @@
 
         var urlParams  = new URLSearchParams(window.location.search);
         var pakketNaam = urlParams.get('pakket') || 'Niet opgegeven';
-        var domeinNaam = urlParams.get('domein') || 'Niet opgegeven';
 
         // ---- Knop: actief als email geldig is (extras zijn optioneel) ----
         function updateBtn() {
@@ -62,29 +58,13 @@
             payBtn.textContent = 'Bezig met versturen...';
             showStatus('', 'loading');
 
-            // // Sectie: EmailJS guard — fallback als SDK niet geladen is
-            if (typeof emailjs === 'undefined') {
-                showStatus('\u26A0 Er ging iets mis. Probeer het opnieuw of mail naar marketing@ttdigitaldesign.nl', 'error');
-                payBtn.disabled    = false;
-                payBtn.removeAttribute('aria-disabled');
-                payBtn.textContent = '\u2756 Verstuur Aanvraag';
-                return;
-            }
-
-            // // Sectie: EmailJS versturen — jouw mail + bevestiging naar klant tegelijk
-            var mailData = {
+            emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
                 pakket:      pakketNaam,
-                domein:      domeinNaam,
                 email:       emailInput.value.trim(),
                 extras:      payBtn.dataset.extras  || 'Geen extra\u2019s geselecteerd',
                 totaal:      payBtn.dataset.totaal   || '\u20AC0,-',
                 aanbetaling: '\u20AC50,-'
-            };
-
-            Promise.all([
-                emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_JOUW,  mailData),
-                emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_KLANT, mailData)
-            ])
+            })
             .then(function () {
                 showStatus('\u2714 Uw aanvraag is verstuurd! Wij nemen zo snel mogelijk contact op via ' + emailInput.value.trim(), 'success');
                 payBtn.textContent = '\u2714 Verstuurd';

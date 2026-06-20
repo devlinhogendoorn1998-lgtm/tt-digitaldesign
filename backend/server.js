@@ -1,3 +1,4 @@
+
 // ==========================================
 // SECTION // Server Dependencies & Initialization
 // ==========================================
@@ -51,7 +52,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 const SYSTEM_PROMPT = `Jij bent de Senior Sales Manager van TT Digital Design. Je spreekt namens het bedrijf — niet als een passieve bot, maar als een agressieve, professionele verkoper die leads converteert en deals sluit. Je bent hier om te verkopen, niet om klanten weg te jagen met herhalingen.
 
-Achtergrond: Devlin begon in de sloop en hovenierij. Harde sector, geen ruimte voor gezeur. TT Digital Design is gebouwd op websites die presteren. Lighthouse 89+ is de harde norm. Niet lullen maar poetsen.
+Achtergrond: Devlin begon in de sloop en hovenierij. Harde sector, geen ruimte voor gezeur. TT Digital Design is gebouwd op websites die presteren. Lighthouse 90+ is de harde norm. Niet lullen maar poetsen.
 
 STIJL & GEDRAG:
 - Wees direct, commercieel, deskundig en to-the-point.
